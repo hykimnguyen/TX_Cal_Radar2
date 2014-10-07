@@ -1058,8 +1058,6 @@ bool SetHondaTxPowerCal (int testNumber, int nestNum)
 	sprintf(max,"%lf",pow_max);
 	
 	addFailFctResultsToIts(testNumber,nestNum,"TxPowerCalHonda", charVal, min, max, !returnVal);		
-//	addFailFctResultsToIts(testNumber,nestNum,"TxPowerCalHonda", "Pass", !returnVal);	
-//	addSetHondaTxPowerCalToIts(testNumber,nestNum, value, Low_Limit, High_Limit , returnVal);
 	add_data_to_test_output_log(nestNum,charVal);  //add value to log
 	
 	if (returnVal!=1)
@@ -1118,7 +1116,8 @@ bool SetGMTxPowerCal (int testNumber, int nestNum)
 	
 	double TX1powmax_bsd,TX1powmin_bsd,TX1powmax_rcta,TX1powmin_rcta;
 	double TX2powmax_bsd,TX2powmin_bsd,TX2powmax_rcta,TX2powmin_rcta;
-	double *power1;
+	double power1[4];
+	double minLimit,maxLimit;
 
 	ssize_t powerLengt;
 	ssize_t ampLengt;
@@ -1131,61 +1130,90 @@ bool SetGMTxPowerCal (int testNumber, int nestNum)
 
 	unsigned short thermistor; 
 	int returnVal;	
+	int checkLimitStatus;
 	
 	char *value; 
 	char Low_Limit[25] = {0};
 	char High_Limit[25] = {0};
 	unsigned short point=0;
+	char charVal[100]={0};
 	
 	char DisplayMsg[512]={0};
 	char parameter[100]={0};
 	char unit[100]={0}; 
-	char min[100]={0};
-	char max[100]={0};
+	char min[4][100]={0};
+	char max[4][100]={0};
 	char pointCSV[100]={0};
 	char *pch;
-
+	char testNameArray[4][100] = {"Tx1 BSD power","Tx1 RCTA power","Tx2 BSD power", "Tx2 RCTA power"};
 	char Requirements[512] = {0};
 	
 
 	//Tx1 BSD Mode Peak CW EIRP
-	if (getUnitInfoByRequirement("Tx_H_CAL_01", min, max, parameter, pointCSV,unit) != 0)
+	if (getUnitInfoByRequirement("Tx_H_CAL_01", min[0], max[0], parameter, pointCSV,unit) != 0)
 		return 1;
 	sscanf(min,"%lf",&TX1powmin_bsd);
 	sscanf(max,"%lf",&TX1powmax_bsd);
 
 	//Tx2 BSD Mode Peak CW EIRP
- 	if (getUnitInfoByRequirement("Tx_H_CAL_02", min, max, parameter, pointCSV,unit) != 0)
+ 	if (getUnitInfoByRequirement("Tx_H_CAL_02", min[1], max[1], parameter, pointCSV,unit) != 0)
 		return 1;
 	sscanf(min,"%lf",&TX2powmin_bsd);
 	sscanf(max,"%lf",&TX2powmax_bsd);
 
 	//Tx1 RCTA Mode Peak CW EIRP
-	if (getUnitInfoByRequirement("Tx_H_CAL_03", min, max, parameter, pointCSV,unit) != 0)
+	if (getUnitInfoByRequirement("Tx_H_CAL_03", min[2], max[2], parameter, pointCSV,unit) != 0)
 		return 1;	
 	sscanf(min,"%lf",&TX1powmin_rcta);
 	sscanf(max,"%lf",&TX1powmax_rcta);
 	
 	//Tx2 RCTA Mode Peak CW EIRP 	
-	if (getUnitInfoByRequirement("Tx_H_CAL_04", min, max, parameter, pointCSV,unit) != 0)
+	if (getUnitInfoByRequirement("Tx_H_CAL_04", min[3], max[3], parameter, pointCSV,unit) != 0)
 		return 1;
 	sscanf(min,"%lf",&TX2powmin_rcta);
 	sscanf(max,"%lf",&TX2powmax_rcta);	
 
 
-	TxPowerCalGM(Test_Mfg_MfgTester_Handle[nestNum],TX1powmax_bsd, TX1powmax_rcta,TX1powmin_bsd, TX1powmin_rcta, &power1, 
+	TxPowerCalGM(Test_Mfg_MfgTester_Handle[nestNum],TX1powmax_bsd, TX1powmax_rcta,TX1powmin_bsd, TX1powmin_rcta, power1, 
 				 &powerLengt,&amp, &ampLengt,&sw, &swLength,&pdet, &pdetLengt,&thermistor, &returnVal);
 	
 	
-	sprintf(mtgTestStepInfo[nestNum][testNumber-1].testResultVal, "GM PW Power=%lf Return Val= %d",*power1, returnVal); 
+	sprintf(mtgTestStepInfo[nestNum][testNumber-1].testResultVal, "Tx1BSD=%lf Tx1RCTA=%lf Tx2BSD=%lf Tx2RCTA=%lf Return Val= %d",power1[0], power1[1], power1[2], power1[3], returnVal); 
 	
 	
 	if (returnVal!=1)
 	{
-		addFailFctResultsToIts(testNumber,nestNum,"TxPowerCalGM", "Fail", !returnVal);		
+		addFailFctResultsToIts(testNumber,nestNum,"TxPowerCalGM", "Fail", "", "", !returnVal);		
 		return 1;
 	}
-	addFailFctResultsToIts(testNumber,nestNum,"TxPowerCalGM", "Pass", !returnVal);	
+/*
+Tx1 BSD power : Tx_H_CAL_01_GM = Power_GM[0] 
+Tx1 RCTA power: Tx_H_CAL_03_GM = Power_GM[1] 
+Tx2 BSD power:  Tx_H_CAL_02_GM = Power_GM[2] 
+Tx2 RCTA power: Tx_H_CAL_04_GM = Power_GM[3] 
+*/
+
+	for (int i=0; i<4;i++)	
+	{
+		//power1++;
+		checkLimitStatus = 0; //fail
+		strcpy(charVal,"");
+		sprintf(charVal,"%lf",power1[i]); 	
+		sscanf(min[i],"%lf",&minLimit);
+		sscanf(max[i],"%lf",&maxLimit);	
+		if ((power1[i] < maxLimit) && (power1[i] > minLimit))
+			 checkLimitStatus = 1;
+		else
+			returnVal = 0;
+	
+
+		addFailFctResultsToIts(testNumber,nestNum,testNameArray[i], charVal, min[i], max[i], !checkLimitStatus);		
+		add_data_to_test_output_log(nestNum,charVal);  //add value to log
+	}
+
+	if (returnVal!=1)
+		return 1;	
+
 /////////////////////////////
 	//create Tx_H_CAL_05,Tx_H_CAL_06,...,Tx_H_CAL_17 
 	for (int i =5; i<18; i++)
