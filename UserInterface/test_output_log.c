@@ -161,12 +161,12 @@ int add_header_to_test_output_log(int dutNumber)
 				
 				else if (strstr(mtgTestStepInfo[0][i].testFuncName,"SetHondaTxPowerCal") != NULL) 
 				{
-					strcat(resHeader,"Point 1481,Point 1666,Point 1667,Point 1668,Point 1669,");					
+					strcat(resHeader,"Power,Point 1481,Point 1666,Point 1667,Point 1668,Point 1669,");					
 				}
-				
+			
 				else if (strstr(mtgTestStepInfo[0][i].testFuncName,"SetGMTxPowerCal") != NULL) 
 				{
-					strcat(resHeader,"Point 1481,Point 1482,Point 1666,Point 1667,Point 1668,Point 1669,Point 1792,Point 1883,Point 1884,Point 1885,Point 1886,Point 1887,Point 1888,");					
+					strcat(resHeader,"Tx1 BSD,Tx1 RCTA,Tx2 BSD,Tx2 RCTA,Point 1481,Point 1482,Point 1666,Point 1667,Point 1668,Point 1669,Point 1792,Point 1883,Point 1884,Point 1885,Point 1886,Point 1887,Point 1888,");					
 				}				
 				
 				else if (strstr(mtgTestStepInfo[0][i].testFuncName,"AnalogVoltMeas") != NULL) 
