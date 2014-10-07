@@ -1028,6 +1028,7 @@ bool SetHondaTxPowerCal (int testNumber, int nestNum)
 	char parameter[100]={0};
 	char min[100]={0};
 	char max[100]={0};
+	char charVal[100]={0};
 	char unit[100]={0};
 	char pointCSV[100]={0};
 	
@@ -1040,16 +1041,29 @@ bool SetHondaTxPowerCal (int testNumber, int nestNum)
 	get_param(testNumber, "MinGain", &gain_min, VAL_INTEGER, VAL_REQUIRED);
 
 	TxPowerCalHonda(Test_Mfg_MfgTester_Handle[nestNum], gain_min,pow_min, pow_max,&Power_Honda_points,&pLength1, &pLength2,&returnVal);
-	sprintf(mtgTestStepInfo[nestNum][testNumber-1].testResultVal, "Honda PW Pts=%lf Return Val= %d",*Power_Honda_points, returnVal); 
+	sprintf(mtgTestStepInfo[nestNum][testNumber-1].testResultVal, "Power=%lf Min=%lf Max=%lf Return Val= %d",*Power_Honda_points, pow_min, pow_max, returnVal); 
 
 	
 	if (returnVal!=1)
 	{
-		addFailFctResultsToIts(testNumber,nestNum,"TxPowerCalHonda", "Fail", !returnVal);		
+		addFailFctResultsToIts(testNumber,nestNum,"TxPowerCalHonda", "Fail", "", "", !returnVal);		
 		return 1;
 	}
-	addFailFctResultsToIts(testNumber,nestNum,"TxPowerCalHonda", "Pass", !returnVal);	
+	
+	if ((*Power_Honda_points > pow_max) || (*Power_Honda_points < pow_min))
+		 returnVal = 0;
+	
+	sprintf(charVal,"%lf",*Power_Honda_points);
+	sprintf(min,"%lf",pow_min);
+	sprintf(max,"%lf",pow_max);
+	
+	addFailFctResultsToIts(testNumber,nestNum,"TxPowerCalHonda", charVal, min, max, !returnVal);		
+//	addFailFctResultsToIts(testNumber,nestNum,"TxPowerCalHonda", "Pass", !returnVal);	
 //	addSetHondaTxPowerCalToIts(testNumber,nestNum, value, Low_Limit, High_Limit , returnVal);
+	add_data_to_test_output_log(nestNum,charVal);  //add value to log
+	
+	if (returnVal!=1)
+		return 1;	
 	
 /////////////////////////////
 	
@@ -2453,13 +2467,13 @@ void addReadPointResultsToIts(int testNumber,int nestNum,int point, char * value
 	}
 		ITS_Idx[nestNum]++;
 } // end 
-void addFailFctResultsToIts(int testNumber,int nestNum,char * name, char * value, int status)
+void addFailFctResultsToIts(int testNumber,int nestNum,char * name, char * value, char *min, char *max, int status)
 {
 	addItacTestStep(testNumber,nestNum,ITS_Idx[nestNum]);
 	sprintf(mtgItacTestStep[nestNum][ITS_Idx[nestNum]].testName,"T%i_%s",testNumber,name);
 	sprintf(mtgItacTestStep[nestNum][ITS_Idx[nestNum]].testResultVal,"%s",value);  
-	//sprintf(mtgItacTestStep[nestNum][ITS_Idx[nestNum]].testLowLimit,"%s",min);  
-	//sprintf(mtgItacTestStep[nestNum][ITS_Idx[nestNum]].testHighLimit,"%s",max);  
+	sprintf(mtgItacTestStep[nestNum][ITS_Idx[nestNum]].testLowLimit,"%s",min);  
+	sprintf(mtgItacTestStep[nestNum][ITS_Idx[nestNum]].testHighLimit,"%s",max);  
 	
 	if (status == 0)	
 	{

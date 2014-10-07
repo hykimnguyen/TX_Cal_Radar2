@@ -147,7 +147,7 @@ bool DiscardAllHandles (void);
 void addVerifyDUTDataToIts(int testNumber,int nestNum,char * value, int status);
 void addWriteToPointResultsToIts(int testNumber,int nestNum,int point, char * value, char *min, char *max, int status);
 void addReadPointResultsToIts(int testNumber,int nestNum,int point, char * value, char *min, char *max, int status);
-void addFailFctResultsToIts(int testNumber,int nestNum,char * name, char * value, int status);
+void addFailFctResultsToIts(int testNumber,int nestNum,char * name, char * value, char *min, char *max, int status);
 bool SetGMTxPowerCal (int testNumber, int nestNum);   
 bool Reset_Bat(int testNumber, int nestNum);
 
