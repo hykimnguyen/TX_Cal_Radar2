@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="FlashProgrammer.xsl"?>
+<FlashProgrammer>
+	<RecipeFields>
+<Recipe_Number>Recipe.Number</Recipe_Number>
+</RecipeFields>
+<RecipeFields>
+<Recipe_TestSequence>Recipe.TestSequence</Recipe_TestSequence>
+</RecipeFields>
+<RecipeFields>
+<Recipe_TesterFile0>Recipe.[TesterFile0]</Recipe_TesterFile0>
+</RecipeFields>
+<RecipeFields>
+<Recipe_TesterFile1>Recipe.[TesterFile1]</Recipe_TesterFile1>
+</RecipeFields>
+<RecipeFields>
+<Recipe_TesterFile2>Recipe.[TesterFile2]</Recipe_TesterFile2>
+</RecipeFields>
+<RecipeFields>
+<Recipe_TesterFile3>Recipe.[TesterFile3]</Recipe_TesterFile3>
+</RecipeFields>
+<RecipeFields>
+<Recipe_TesterFile4>Recipe.[TesterFile4]</Recipe_TesterFile4>
+</RecipeFields>
+<RecipeFields>
+<Recipe_TesterFile5>Recipe.[TesterFile5]</Recipe_TesterFile5>
+</RecipeFields>
+<RecipeFields>
+<Recipe_PartNumber>Recipe.PartNumber</Recipe_PartNumber>
+</RecipeFields>
+<RecipeFields>
+<Recipe_BoardID>Recipe.BoardID</Recipe_BoardID>
+</RecipeFields>
+</FlashProgrammer>
+

@@ -352,13 +352,14 @@ int InitMain(void)
 	char customerType[100]={0};
 	NonBlockDelay(4);
 	strcpy(customerType,getProductType(selRecipe.Variant));
-	while (strcmp(getFixtureName(getFixtureId()),customerType))
+	if (strcmp(getFixtureName(getFixtureId()),customerType) != 0)
 	{
 		sprintf(tempErrStr, "Product is %s, Fixture is for %s \n",customerType,getFixtureName(getFixtureId())); //
 		ProcessSystemEvents();
 		MessagePopup("Fixture ID error",tempErrStr);
 		NonBlockDelay(2);
-
+		ResetAndExit();
+		exit(0);
 	}
  
 

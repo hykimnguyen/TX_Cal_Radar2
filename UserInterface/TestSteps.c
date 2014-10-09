@@ -1311,7 +1311,7 @@ bool GetTxPower (int testNumber, int nestNum)
 		add_data_to_test_output_log(nestNum,LogMsg);
 		
 	
-	addGetTxPowerToIts(testNumber,nestNum, main_power, Low_Limit, High_Limit, returnVal );
+	addGetTxPowerToIts(testNumber,nestNum, main_power, Low_Limit, High_Limit, !returnVal );
 	
 	
 	return !returnVal;  //check if returnVal is 0 when everything pass		//AA Check
@@ -1426,7 +1426,7 @@ bool GetCwLeakage (int testNumber, int nestNum)
 	add_data_to_test_output_log(nestNum,LogMsg);
 		
 	
-	addGetCwLeakageToIts(testNumber, nestNum, main_Leakage, unit, Low_Limit, High_Limit, returnVal);
+	addGetCwLeakageToIts(testNumber, nestNum, main_Leakage, unit, Low_Limit, High_Limit, !returnVal);
 	
 	return !returnVal;  //check if returnVal is 1 when everything pass		   //aa Check
 }
