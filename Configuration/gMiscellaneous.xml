@@ -260,6 +260,7 @@
 <!--<?xml:stylesheet type ="text/xsl" href="xsl2.xsl"?>-->
 <!--<?xml:stylesheet type ="text/xsl" href="xsl2.xsl"?>-->
 <!--<?xml:stylesheet type ="text/xsl" href="xsl2.xsl"?>-->
+<!--<?xml:stylesheet type ="text/xsl" href="xsl2.xsl"?>-->
 <gSystem>
 	<Misc>
 <SystemName>TesterName</SystemName>
@@ -267,7 +268,7 @@
 </Misc>
 <Misc>
 <SystemName>ITACEnable</SystemName>
-<SystemValue>0</SystemValue>
+<SystemValue>1</SystemValue>
 </Misc>
 <Misc>
 <SystemName>ITACStationID</SystemName>

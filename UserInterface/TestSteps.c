@@ -1365,7 +1365,7 @@ bool GetCenterFrequency (int testNumber, int nestNum)
 		returnVal |= 1;
 	else
 		returnVal = 0;
-	sprintf(mtgTestStepInfo[nestNum][testNumber-1].testResultVal, "CenterFreq=%.3f %s,Min=%s,Max=%s",main_frequency, unit,Low_Limit, High_Limit);  
+	sprintf(mtgTestStepInfo[nestNum][testNumber-1].testResultVal, "CenterFreq=%.6f %s,Min=%s,Max=%s",main_frequency, unit,Low_Limit, High_Limit);  
 	sprintf(LogMsg,"%f", main_frequency);						   
 	add_data_to_test_output_log(nestNum,LogMsg);
 		
