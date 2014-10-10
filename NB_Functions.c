@@ -164,13 +164,13 @@ int write_to_point(Alv_NarrowBand_SensorComm Handle,unsigned short point,char * 
 * Command to Set TxPowerCalHonda                                                         
 *********************************************************/ 
 int TxPowerCalHonda(Alv_Test_Mfg_MfgTester Handle,int gain_min,
-					double pow_min,double pow_max,double ** points, 
+					double pow_min,double pow_max,double * power,double ** points, 
 					ssize_t *pointsLength1,ssize_t *pointsLength2
 					,int *TxPowerCalHonda_return)
 {
 	int status=-1;  //true = 0  
 	                                                                                                                                                
-	status =Alv_Test_Mfg_MfgTester_TxPowerCalHonda(Handle, gain_min,pow_min, pow_max,points
+	status =Alv_Test_Mfg_MfgTester_TxPowerCalHonda_1(Handle, gain_min,pow_min, pow_max,power,points
 									,pointsLength1,pointsLength2,TxPowerCalHonda_return, 0);
 
 	return TxPowerCalHonda_return;

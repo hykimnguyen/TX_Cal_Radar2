@@ -61,7 +61,7 @@ int Get_CwLeakage(Alv_Test_Mfg_MfgTester Handle,Alv_NarrowBand_NBProtocol_Antenn
 int write_to_point(Alv_NarrowBand_SensorComm Handle,unsigned short point,char * value,
 					Alv_NarrowBand_NBProtocol_Status *NBProtocol_Status);              
 
-int TxPowerCalHonda(Alv_Test_Mfg_MfgTester Handle,int gain_min,double pow_min,double pow_max,double ** points,               
+int TxPowerCalHonda(Alv_Test_Mfg_MfgTester Handle,int gain_min,double pow_min,double pow_max,double * power,double ** points,               
 					ssize_t * __pointsLength1,ssize_t * __pointsLength2,int *TxPowerCalHonda_return);          
 
 int SelectTxAntenna(Alv_NarrowBand_SensorComm Handle,Alv_NarrowBand_NBProtocol_Antenna antenna,

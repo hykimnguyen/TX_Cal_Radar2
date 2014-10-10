@@ -1013,6 +1013,7 @@ bool SetHondaTxPowerCal (int testNumber, int nestNum)
 	double pow_min=0;
 	double pow_max=0;
 	double * Power_Honda_points;
+	double power;
 	ssize_t pLength1;
 	ssize_t pLength2;
 	char temp[256];
@@ -1040,8 +1041,8 @@ bool SetHondaTxPowerCal (int testNumber, int nestNum)
 	get_param(testNumber, "MaxPower", &pow_max, VAL_DOUBLE, VAL_REQUIRED);
 	get_param(testNumber, "MinGain", &gain_min, VAL_INTEGER, VAL_REQUIRED);
 
-	TxPowerCalHonda(Test_Mfg_MfgTester_Handle[nestNum], gain_min,pow_min, pow_max,&Power_Honda_points,&pLength1, &pLength2,&returnVal);
-	sprintf(mtgTestStepInfo[nestNum][testNumber-1].testResultVal, "Power=%lf Min=%lf Max=%lf Return Val= %d",*Power_Honda_points, pow_min, pow_max, returnVal); 
+	TxPowerCalHonda(Test_Mfg_MfgTester_Handle[nestNum], gain_min,pow_min, pow_max,&power, &Power_Honda_points,&pLength1, &pLength2,&returnVal);
+	sprintf(mtgTestStepInfo[nestNum][testNumber-1].testResultVal, "Power=%lf Min=%lf Max=%lf Return Val= %d",power, pow_min, pow_max, returnVal); 
 
 	
 	if (returnVal!=1)
@@ -1050,10 +1051,10 @@ bool SetHondaTxPowerCal (int testNumber, int nestNum)
 		return 1;
 	}
 	
-	if ((*Power_Honda_points > pow_max) || (*Power_Honda_points < pow_min))
+	if ((power > pow_max) || (power < pow_min))
 		 returnVal = 0;
 	
-	sprintf(charVal,"%lf",*Power_Honda_points);
+	sprintf(charVal,"%lf",power);
 	sprintf(min,"%lf",pow_min);
 	sprintf(max,"%lf",pow_max);
 	
