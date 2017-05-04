@@ -1,0 +1,1 @@
+a. Added 1.5 sec delay when switching to BSD mode due to Fiat needs delay for BSD. Change is in TestStep.c. - 2014_11_06

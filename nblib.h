@@ -1,4 +1,4 @@
-// CVI wrapper header file for .NET assembly: NbLib, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+// CVI wrapper header file for .NET assembly: NbLib, Version=1.2.0.1, Culture=neutral, PublicKeyToken=null
 //
 // This is specified by the '__assemblyName' constant in the generated source file.
 // If there are multiple versions of this assembly, and you want .NET to determine 
@@ -18,7 +18,7 @@
 // Types exposed by the target assembly but defined in other assemblies:
 // CVI name: System_Xml_XmlNodeList, .NET name: System.Xml.XmlNodeList, Assembly: System.Xml, Module: Global Assembly Cache
 // CVI name: System_Collections_Generic_List_T1, .NET name: System.Collections.Generic.List`1[[System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], Assembly: mscorlib, Module: Global Assembly Cache
-// CVI name: System_Collections_Generic_List_T1, .NET name: System.Collections.Generic.List`1[[Alv.NarrowBand.DataPoint, NbLib, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], Assembly: mscorlib, Module: Global Assembly Cache
+// CVI name: System_Collections_Generic_List_T1, .NET name: System.Collections.Generic.List`1[[Alv.NarrowBand.DataPoint, NbLib, Version=1.2.0.1, Culture=neutral, PublicKeyToken=null]], Assembly: mscorlib, Module: Global Assembly Cache
 
 #include <cvidotnet.h>
 
@@ -27,7 +27,6 @@ extern "C" {
 #endif
 
 // Type definitions
-typedef struct __Alv_NarrowBand_Message * Alv_NarrowBand_Message;
 typedef struct __Alv_NarrowBand_DataPoints * Alv_NarrowBand_DataPoints;
 typedef struct __System_Collections_Generic_List_T1 * System_Collections_Generic_List_T1;
 typedef struct __System_Collections_Generic_List_T1 * System_Collections_Generic_List_T1;
@@ -37,14 +36,16 @@ typedef struct __Alv_CAN_PeakCan * Alv_CAN_PeakCan;
 typedef struct __Alv_NarrowBand_Sensor * Alv_NarrowBand_Sensor;
 typedef struct __Alv_NarrowBand_SensorComm * Alv_NarrowBand_SensorComm;
 typedef struct __Alv_CAN_CanMsg * Alv_CAN_CanMsg;
+typedef struct __Alv_CAN_CanSettings * Alv_CAN_CanSettings;
 typedef struct __Alv_CAN_NiCan * Alv_CAN_NiCan;
-typedef struct __Alv_NarrowBand_HP_DIAG * Alv_NarrowBand_HP_DIAG;
-typedef struct __Alv_NarrowBand_UNT_DAT * Alv_NarrowBand_UNT_DAT;
 typedef struct __Alv_NarrowBand_NBProtocol * Alv_NarrowBand_NBProtocol;
 typedef struct __Alv_NarrowBand_DataPoint * Alv_NarrowBand_DataPoint;
 typedef struct __Alv_CAN_SoftingCan * Alv_CAN_SoftingCan;
 typedef struct __Alv_NarrowBand_Enumeration * Alv_NarrowBand_Enumeration;
+typedef struct __Alv_NarrowBand_NbMsg * Alv_NarrowBand_NbMsg;
 typedef struct __Alv_NarrowBand_DSP_DIAG * Alv_NarrowBand_DSP_DIAG;
+typedef struct __Alv_NarrowBand_HP_DIAG * Alv_NarrowBand_HP_DIAG;
+typedef struct __Alv_NarrowBand_UNT_DAT * Alv_NarrowBand_UNT_DAT;
 typedef struct __Alv_NbLib * Alv_NbLib;
 
 // C wrapper for enumeration type Alv.NarrowBand.PointTypes
@@ -106,15 +107,15 @@ typedef enum Alv_NarrowBand_NBProtocol_Status
 	Alv_NarrowBand_NBProtocol_Status_STATUS_CONFIG_IO_TIMED_OUT = 0xe,
 	Alv_NarrowBand_NBProtocol_Status_STATUS_RESERVED = 0xf,
 	Alv_NarrowBand_NBProtocol_Status_STATUS_CONFIG_RADAR_INVALID = 0x10,
-	Alv_NarrowBand_NBProtocol_Status_STATUS_NO_ACCESSOR = 0x11,
-	Alv_NarrowBand_NBProtocol_Status_STATUS_CAN_READ_ERROR = 0x75,
-	Alv_NarrowBand_NBProtocol_Status_STATUS_CAN_WRITE_ERROR = 0x76,
-	Alv_NarrowBand_NBProtocol_Status_STATUS_NOTALLOWED = 0x77,
-	Alv_NarrowBand_NBProtocol_Status_STATUS_KEYNOTVALID = 0x78,
-	Alv_NarrowBand_NBProtocol_Status_STATUS_INVALIDENTRY = 0x79,
-	Alv_NarrowBand_NBProtocol_Status_STATUS_DATACHANGED = 0x7a,
-	Alv_NarrowBand_NBProtocol_Status_STATUS_POINTNOTFOUND = 0x7b,
-	Alv_NarrowBand_NBProtocol_Status_STATUS_EXTENDEDSTATUS = 0xfe,
+	Alv_NarrowBand_NBProtocol_Status_STATUS_CAN_READ_ERROR = 0x11,
+	Alv_NarrowBand_NBProtocol_Status_STATUS_CAN_WRITE_ERROR = 0x12,
+	Alv_NarrowBand_NBProtocol_Status_STATUS_NOTALLOWED = 0x13,
+	Alv_NarrowBand_NBProtocol_Status_STATUS_KEYNOTVALID = 0x14,
+	Alv_NarrowBand_NBProtocol_Status_STATUS_INVALIDENTRY = 0x15,
+	Alv_NarrowBand_NBProtocol_Status_STATUS_DATACHANGED = 0x16,
+	Alv_NarrowBand_NBProtocol_Status_STATUS_POINTNOTFOUND = 0x17,
+	Alv_NarrowBand_NBProtocol_Status_STATUS_EXTENDEDSTATUS = 0xff,
+	Alv_NarrowBand_NBProtocol_Status_STATUS_UNKNOWN = 0xff00,
 } Alv_NarrowBand_NBProtocol_Status;
 #endif // Alv_NarrowBand_NBProtocol_Status_DEFINED
 
@@ -140,6 +141,20 @@ typedef enum Alv_CAN_CanWakeupModes
 	Alv_CAN_CanWakeupModes_Highspeed = 0x3,
 } Alv_CAN_CanWakeupModes;
 #endif // Alv_CAN_CanWakeupModes_DEFINED
+
+// C wrapper for enumeration type Alv.NarrowBand.NBProtocol+GearPosition
+#ifndef Alv_NarrowBand_NBProtocol_GearPosition_DEFINED
+#define Alv_NarrowBand_NBProtocol_GearPosition_DEFINED
+typedef enum Alv_NarrowBand_NBProtocol_GearPosition
+{
+	Alv_NarrowBand_NBProtocol_GearPosition_Park = 0x0,
+	Alv_NarrowBand_NBProtocol_GearPosition_Drive = 0x5,
+	Alv_NarrowBand_NBProtocol_GearPosition_Neutral = 0x6,
+	Alv_NarrowBand_NBProtocol_GearPosition_Reverse = 0x7,
+	Alv_NarrowBand_NBProtocol_GearPosition_Manual = 0x8,
+	Alv_NarrowBand_NBProtocol_GearPosition_Error = 0xf,
+} Alv_NarrowBand_NBProtocol_GearPosition;
+#endif // Alv_NarrowBand_NBProtocol_GearPosition_DEFINED
 
 // C wrapper for enumeration type Alv.NarrowBand.NBProtocol+Position
 #ifndef Alv_NarrowBand_NBProtocol_Position_DEFINED
@@ -285,20 +300,6 @@ typedef enum Alv_NarrowBand_NBProtocol_ControlLogger
 } Alv_NarrowBand_NBProtocol_ControlLogger;
 #endif // Alv_NarrowBand_NBProtocol_ControlLogger_DEFINED
 
-// C wrapper for enumeration type Alv.NarrowBand.NBProtocol+GearPosition
-#ifndef Alv_NarrowBand_NBProtocol_GearPosition_DEFINED
-#define Alv_NarrowBand_NBProtocol_GearPosition_DEFINED
-typedef enum Alv_NarrowBand_NBProtocol_GearPosition
-{
-	Alv_NarrowBand_NBProtocol_GearPosition_Park = 0x0,
-	Alv_NarrowBand_NBProtocol_GearPosition_Drive = 0x5,
-	Alv_NarrowBand_NBProtocol_GearPosition_Neutral = 0x6,
-	Alv_NarrowBand_NBProtocol_GearPosition_Reverse = 0x7,
-	Alv_NarrowBand_NBProtocol_GearPosition_Manual = 0x8,
-	Alv_NarrowBand_NBProtocol_GearPosition_Error = 0xf,
-} Alv_NarrowBand_NBProtocol_GearPosition;
-#endif // Alv_NarrowBand_NBProtocol_GearPosition_DEFINED
-
 // C wrapper for enumeration type Alv.NarrowBand.NBProtocol+ExecuteFunctions
 #ifndef Alv_NarrowBand_NBProtocol_ExecuteFunctions_DEFINED
 #define Alv_NarrowBand_NBProtocol_ExecuteFunctions_DEFINED
@@ -337,47 +338,6 @@ typedef enum Alv_CAN_CanDevices
 	Alv_CAN_CanDevices_SoftingCan = 0x2,
 } Alv_CAN_CanDevices;
 #endif // Alv_CAN_CanDevices_DEFINED
-
-// C wrapper for enumeration type Alv.NarrowBand.HP_DIAG+HP_States
-#ifndef Alv_NarrowBand_HP_DIAG_HP_States_DEFINED
-#define Alv_NarrowBand_HP_DIAG_HP_States_DEFINED
-typedef enum Alv_NarrowBand_HP_DIAG_HP_States
-{
-	Alv_NarrowBand_HP_DIAG_HP_States_INITIALIZATION_STATE = 0x0,
-	Alv_NarrowBand_HP_DIAG_HP_States_DISABLED_STATE = 0x1,
-	Alv_NarrowBand_HP_DIAG_HP_States_STANDBY_STATE = 0x2,
-	Alv_NarrowBand_HP_DIAG_HP_States_TEMP_DISABLE = 0x3,
-	Alv_NarrowBand_HP_DIAG_HP_States_BSD_DISABLED = 0x4,
-	Alv_NarrowBand_HP_DIAG_HP_States_BSD_AND_LCA_ACTIVE = 0x5,
-	Alv_NarrowBand_HP_DIAG_HP_States_BSD_AND_LCA_ALERT_ENABLED = 0x6,
-	Alv_NarrowBand_HP_DIAG_HP_States_RCTA_ACTIVE = 0x7,
-	Alv_NarrowBand_HP_DIAG_HP_States_RCTA_ALERT_ENABLED = 0x8,
-} Alv_NarrowBand_HP_DIAG_HP_States;
-#endif // Alv_NarrowBand_HP_DIAG_HP_States_DEFINED
-
-// C wrapper for enumeration type Alv.NarrowBand.HP_DIAG+HP_Run_Modes
-#ifndef Alv_NarrowBand_HP_DIAG_HP_Run_Modes_DEFINED
-#define Alv_NarrowBand_HP_DIAG_HP_Run_Modes_DEFINED
-typedef enum Alv_NarrowBand_HP_DIAG_HP_Run_Modes
-{
-	Alv_NarrowBand_HP_DIAG_HP_Run_Modes_Bootloader = 0x1,
-	Alv_NarrowBand_HP_DIAG_HP_Run_Modes_BootReloader = 0x2,
-	Alv_NarrowBand_HP_DIAG_HP_Run_Modes_Application = 0x3,
-} Alv_NarrowBand_HP_DIAG_HP_Run_Modes;
-#endif // Alv_NarrowBand_HP_DIAG_HP_Run_Modes_DEFINED
-
-// C wrapper for enumeration type Alv.NarrowBand.HP_DIAG+DSP_States
-#ifndef Alv_NarrowBand_HP_DIAG_DSP_States_DEFINED
-#define Alv_NarrowBand_HP_DIAG_DSP_States_DEFINED
-typedef enum Alv_NarrowBand_HP_DIAG_DSP_States
-{
-	Alv_NarrowBand_HP_DIAG_DSP_States_eSSM_NONE = 0x0,
-	Alv_NarrowBand_HP_DIAG_DSP_States_eSSM_IDLE = 0x1,
-	Alv_NarrowBand_HP_DIAG_DSP_States_eSSM_BSM = 0x2,
-	Alv_NarrowBand_HP_DIAG_DSP_States_eSSM_RCP = 0x3,
-	Alv_NarrowBand_HP_DIAG_DSP_States_eSSM_LCA_LCA = 0x4,
-} Alv_NarrowBand_HP_DIAG_DSP_States;
-#endif // Alv_NarrowBand_HP_DIAG_DSP_States_DEFINED
 
 // C wrapper for enumeration type Alv.NarrowBand.NBProtocol+SensorRx
 #ifndef Alv_NarrowBand_NBProtocol_SensorRx_DEFINED
@@ -422,9 +382,9 @@ typedef enum Alv_NarrowBand_NBProtocol_SensorTx
 	Alv_NarrowBand_NBProtocol_SensorTx_SYNC = 0x5,
 	Alv_NarrowBand_NBProtocol_SensorTx_CRTSN_DAT = 0x6,
 	Alv_NarrowBand_NBProtocol_SensorTx_UNT_DAT = 0x7,
-	Alv_NarrowBand_NBProtocol_SensorTx_RCTA_DEBUG = 0x8,
-	Alv_NarrowBand_NBProtocol_SensorTx_CLASS_DEBUG = 0x9,
-	Alv_NarrowBand_NBProtocol_SensorTx_MTI_DEBUG = 0xa,
+	Alv_NarrowBand_NBProtocol_SensorTx_RCTA = 0x8,
+	Alv_NarrowBand_NBProtocol_SensorTx_CLASS = 0x9,
+	Alv_NarrowBand_NBProtocol_SensorTx_MTI = 0xa,
 	Alv_NarrowBand_NBProtocol_SensorTx_READ_DATA_RSP = 0xb,
 	Alv_NarrowBand_NBProtocol_SensorTx_WRITE_DATA_RSP = 0xc,
 	Alv_NarrowBand_NBProtocol_SensorTx_EXECUTE_FUNCTION_RSP = 0xd,
@@ -468,17 +428,53 @@ typedef enum Alv_NarrowBand_NBProtocol_EngineeringMode
 } Alv_NarrowBand_NBProtocol_EngineeringMode;
 #endif // Alv_NarrowBand_NBProtocol_EngineeringMode_DEFINED
 
+// C wrapper for enumeration type Alv.NarrowBand.HP_DIAG+HP_States
+#ifndef Alv_NarrowBand_HP_DIAG_HP_States_DEFINED
+#define Alv_NarrowBand_HP_DIAG_HP_States_DEFINED
+typedef enum Alv_NarrowBand_HP_DIAG_HP_States
+{
+	Alv_NarrowBand_HP_DIAG_HP_States_INITIALIZATION_STATE = 0x0,
+	Alv_NarrowBand_HP_DIAG_HP_States_DISABLED_STATE = 0x1,
+	Alv_NarrowBand_HP_DIAG_HP_States_STANDBY_STATE = 0x2,
+	Alv_NarrowBand_HP_DIAG_HP_States_TEMP_DISABLE = 0x3,
+	Alv_NarrowBand_HP_DIAG_HP_States_BSD_DISABLED = 0x4,
+	Alv_NarrowBand_HP_DIAG_HP_States_BSD_AND_LCA_ACTIVE = 0x5,
+	Alv_NarrowBand_HP_DIAG_HP_States_BSD_AND_LCA_ALERT_ENABLED = 0x6,
+	Alv_NarrowBand_HP_DIAG_HP_States_RCTA_ACTIVE = 0x7,
+	Alv_NarrowBand_HP_DIAG_HP_States_RCTA_ALERT_ENABLED = 0x8,
+} Alv_NarrowBand_HP_DIAG_HP_States;
+#endif // Alv_NarrowBand_HP_DIAG_HP_States_DEFINED
+
+// C wrapper for enumeration type Alv.NarrowBand.HP_DIAG+HP_Run_Modes
+#ifndef Alv_NarrowBand_HP_DIAG_HP_Run_Modes_DEFINED
+#define Alv_NarrowBand_HP_DIAG_HP_Run_Modes_DEFINED
+typedef enum Alv_NarrowBand_HP_DIAG_HP_Run_Modes
+{
+	Alv_NarrowBand_HP_DIAG_HP_Run_Modes_Bootloader = 0x1,
+	Alv_NarrowBand_HP_DIAG_HP_Run_Modes_BootReloader = 0x2,
+	Alv_NarrowBand_HP_DIAG_HP_Run_Modes_Application = 0x3,
+} Alv_NarrowBand_HP_DIAG_HP_Run_Modes;
+#endif // Alv_NarrowBand_HP_DIAG_HP_Run_Modes_DEFINED
+
+// C wrapper for enumeration type Alv.NarrowBand.HP_DIAG+DSP_States
+#ifndef Alv_NarrowBand_HP_DIAG_DSP_States_DEFINED
+#define Alv_NarrowBand_HP_DIAG_DSP_States_DEFINED
+typedef enum Alv_NarrowBand_HP_DIAG_DSP_States
+{
+	Alv_NarrowBand_HP_DIAG_DSP_States_eSSM_NONE = 0x0,
+	Alv_NarrowBand_HP_DIAG_DSP_States_eSSM_IDLE = 0x1,
+	Alv_NarrowBand_HP_DIAG_DSP_States_eSSM_BSM = 0x2,
+	Alv_NarrowBand_HP_DIAG_DSP_States_eSSM_RCP = 0x3,
+	Alv_NarrowBand_HP_DIAG_DSP_States_eSSM_LCA_LCA = 0x4,
+} Alv_NarrowBand_HP_DIAG_DSP_States;
+#endif // Alv_NarrowBand_HP_DIAG_DSP_States_DEFINED
+
 
 
 
 // Global Functions
 int CVIFUNC Initialize_NbLib(void);
 int CVIFUNC Close_NbLib(void);
-
-// Type: Alv.NarrowBand.Message
-int CVIFUNC Alv_NarrowBand_Message__Create(
-	Alv_NarrowBand_Message * __instance,
-	CDotNetHandle * __exception);
 
 // Type: Alv.NarrowBand.DataPoints
 int CVIFUNC Alv_NarrowBand_DataPoints__Create(
@@ -628,6 +624,11 @@ int CVIFUNC Alv_CAN_CanComm_Connect(
 	Alv_CAN_CanComm __instance,
 	int * __returnValue,
 	CDotNetHandle * __exception);
+int CVIFUNC Alv_CAN_CanComm_Connect_1(
+	Alv_CAN_CanComm __instance,
+	Alv_CAN_CanSettings s,
+	int * __returnValue,
+	CDotNetHandle * __exception);
 int CVIFUNC Alv_CAN_CanComm_Disconnect(
 	Alv_CAN_CanComm __instance,
 	int * __returnValue,
@@ -719,6 +720,11 @@ int CVIFUNC Alv_CAN_PeakCan_Connect(
 	Alv_CAN_PeakCan __instance,
 	int * __returnValue,
 	CDotNetHandle * __exception);
+int CVIFUNC Alv_CAN_PeakCan_Connect_1(
+	Alv_CAN_PeakCan __instance,
+	Alv_CAN_CanSettings s,
+	int * __returnValue,
+	CDotNetHandle * __exception);
 int CVIFUNC Alv_CAN_PeakCan_Disconnect(
 	Alv_CAN_PeakCan __instance,
 	int * __returnValue,
@@ -742,6 +748,20 @@ int CVIFUNC Alv_CAN_PeakCan_Write(
 int CVIFUNC Alv_NarrowBand_Sensor_Get_Position(
 	Alv_NarrowBand_Sensor __instance,
 	Alv_NarrowBand_NBProtocol_Position * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_Sensor_ClearQueue(
+	Alv_NarrowBand_Sensor __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_Sensor_SendVehicleSpeed(
+	Alv_NarrowBand_Sensor __instance,
+	unsigned int speed,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_Sensor_SendGearPosition(
+	Alv_NarrowBand_Sensor __instance,
+	Alv_NarrowBand_NBProtocol_GearPosition gear,
+	int * __returnValue,
 	CDotNetHandle * __exception);
 int CVIFUNC Alv_NarrowBand_Sensor_Init(
 	Alv_NarrowBand_Sensor __instance,
@@ -892,20 +912,6 @@ int CVIFUNC Alv_NarrowBand_Sensor_ReadHpDiag(
 int CVIFUNC Alv_NarrowBand_Sensor_ReadUntDat(
 	Alv_NarrowBand_Sensor __instance,
 	Alv_NarrowBand_UNT_DAT * Msg,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_Sensor_ClearQueue(
-	Alv_NarrowBand_Sensor __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_Sensor_SendVehicleSpeed(
-	Alv_NarrowBand_Sensor __instance,
-	unsigned int speed,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_Sensor_SendGearPosition(
-	Alv_NarrowBand_Sensor __instance,
-	Alv_NarrowBand_NBProtocol_GearPosition gear,
 	int * __returnValue,
 	CDotNetHandle * __exception);
 
@@ -1145,6 +1151,67 @@ int CVIFUNC Alv_CAN_CanMsg__Set__Data(
 	ssize_t __DataLength,
 	CDotNetHandle * __exception);
 
+// Type: Alv.CAN.CanSettings
+int CVIFUNC Alv_CAN_CanSettings__Create(
+	Alv_CAN_CanSettings * __instance,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_CAN_CanSettings__Get__DeviceType(
+	Alv_CAN_CanSettings __instance,
+	Alv_CAN_CanDevices * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_CAN_CanSettings__Set__DeviceType(
+	Alv_CAN_CanSettings __instance,
+	Alv_CAN_CanDevices DeviceType,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_CAN_CanSettings__Get__BusMode(
+	Alv_CAN_CanSettings __instance,
+	Alv_CAN_CanBusModes * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_CAN_CanSettings__Set__BusMode(
+	Alv_CAN_CanSettings __instance,
+	Alv_CAN_CanBusModes BusMode,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_CAN_CanSettings__Get__BaudRate(
+	Alv_CAN_CanSettings __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_CAN_CanSettings__Set__BaudRate(
+	Alv_CAN_CanSettings __instance,
+	int BaudRate,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_CAN_CanSettings__Get__DriverID(
+	Alv_CAN_CanSettings __instance,
+	char ** __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_CAN_CanSettings__Set__DriverID(
+	Alv_CAN_CanSettings __instance,
+	char * DriverID,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_CAN_CanSettings__Get__ClientID(
+	Alv_CAN_CanSettings __instance,
+	char ** __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_CAN_CanSettings__Set__ClientID(
+	Alv_CAN_CanSettings __instance,
+	char * ClientID,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_CAN_CanSettings__Get__ReadTimeout(
+	Alv_CAN_CanSettings __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_CAN_CanSettings__Set__ReadTimeout(
+	Alv_CAN_CanSettings __instance,
+	int ReadTimeout,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_CAN_CanSettings__Get__WriteTimeout(
+	Alv_CAN_CanSettings __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_CAN_CanSettings__Set__WriteTimeout(
+	Alv_CAN_CanSettings __instance,
+	int WriteTimeout,
+	CDotNetHandle * __exception);
+
 // Type: Alv.CAN.NiCan
 int CVIFUNC Alv_CAN_NiCan__Create(
 	Alv_CAN_NiCan * __instance,
@@ -1217,6 +1284,11 @@ int CVIFUNC Alv_CAN_NiCan_Connect(
 	Alv_CAN_NiCan __instance,
 	int * __returnValue,
 	CDotNetHandle * __exception);
+int CVIFUNC Alv_CAN_NiCan_Connect_1(
+	Alv_CAN_NiCan __instance,
+	Alv_CAN_CanSettings s,
+	int * __returnValue,
+	CDotNetHandle * __exception);
 int CVIFUNC Alv_CAN_NiCan_Disconnect(
 	Alv_CAN_NiCan __instance,
 	int * __returnValue,
@@ -1234,241 +1306,6 @@ int CVIFUNC Alv_CAN_NiCan_Write(
 	Alv_CAN_NiCan __instance,
 	Alv_CAN_CanMsg * msg,
 	int * __returnValue,
-	CDotNetHandle * __exception);
-
-// Type: Alv.NarrowBand.HP_DIAG
-int CVIFUNC Alv_NarrowBand_HP_DIAG__Create(
-	Alv_NarrowBand_HP_DIAG * __instance,
-	unsigned char * Data,
-	ssize_t __DataLength,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_HP_State(
-	Alv_NarrowBand_HP_DIAG __instance,
-	Alv_NarrowBand_HP_DIAG_HP_States * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_Toggle_Flag(
-	Alv_NarrowBand_HP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_Processor_Run_Mode(
-	Alv_NarrowBand_HP_DIAG __instance,
-	Alv_NarrowBand_HP_DIAG_HP_Run_Modes * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_Expected_DSP_State(
-	Alv_NarrowBand_HP_DIAG __instance,
-	Alv_NarrowBand_HP_DIAG_DSP_States * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_OEM_INCOMPATIBLE(
-	Alv_NarrowBand_HP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_LOST_DSP_INFO_MESSAGE(
-	Alv_NarrowBand_HP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_LOST_DSP_BSD_MESSAGE(
-	Alv_NarrowBand_HP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_LOST_DSP_RCTA_MESSAGE(
-	Alv_NarrowBand_HP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_HIGH_33_VOLT(
-	Alv_NarrowBand_HP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_LOW_33_VOLT(
-	Alv_NarrowBand_HP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_HIGH_19_VOLT(
-	Alv_NarrowBand_HP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_LOW_19_VOLT(
-	Alv_NarrowBand_HP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_DIAG_VIN_MISMATCH(
-	Alv_NarrowBand_HP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_TEST_ROM_INIT_FAULT(
-	Alv_NarrowBand_HP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_TEST_ROM_FAULT(
-	Alv_NarrowBand_HP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_TEST_SENSOR_ADDRESS_UNSTABLE(
-	Alv_NarrowBand_HP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_RESET_INTERNAL_WATCHDOG_TIMEOUT(
-	Alv_NarrowBand_HP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_RESET_TASK_WATCHDOG_TIMEOUT(
-	Alv_NarrowBand_HP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_RESET_OS_ERROR(
-	Alv_NarrowBand_HP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_RESET_UNEXPECTED_EXCEPTION(
-	Alv_NarrowBand_HP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_NCA_LOST_COMM_SBZA_L(
-	Alv_NarrowBand_HP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_NCA_LOST_COMM_SBZA_R(
-	Alv_NarrowBand_HP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_NCA_LOST_COMM_EOCM(
-	Alv_NarrowBand_HP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_EEP_CAL_NOT_PROGRAMMED(
-	Alv_NarrowBand_HP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_EEP_OUT_OF_ORDER(
-	Alv_NarrowBand_HP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_EEP_CORRUPTED(
-	Alv_NarrowBand_HP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_EEP_INCOMPATIBLE(
-	Alv_NarrowBand_HP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_EEP_NOT_PROGRAMMED(
-	Alv_NarrowBand_HP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_NCA_BUS_OFF(
-	Alv_NarrowBand_HP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_NCA_LOST_COMM_BCM(
-	Alv_NarrowBand_HP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_NCA_LOST_COMM_IPC(
-	Alv_NarrowBand_HP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_NCA_LOST_COMM_HUD(
-	Alv_NarrowBand_HP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_NCA_LOST_COMM_APA(
-	Alv_NarrowBand_HP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_NCA_LOST_COMM_RADIO(
-	Alv_NarrowBand_HP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_NCA_LOST_COMM_ONSTAR(
-	Alv_NarrowBand_HP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_NCA_LOST_COMM_MSM(
-	Alv_NarrowBand_HP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_IPC_BUS_OFF(
-	Alv_NarrowBand_HP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_LOST_DSP_MESSAGE(
-	Alv_NarrowBand_HP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_TEST_VOLT_BELOW_THRESHOLD(
-	Alv_NarrowBand_HP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_TEST_VOLT_ABOVE_THRESHOLD(
-	Alv_NarrowBand_HP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_LED_SHORT_TO_BATT(
-	Alv_NarrowBand_HP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_LED_SHORT_TO_GROUND(
-	Alv_NarrowBand_HP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_LED_OPEN_CIRCUIT(
-	Alv_NarrowBand_HP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_NCA_INACTIVE_NODE(
-	Alv_NarrowBand_HP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-
-// Type: Alv.NarrowBand.UNT_DAT
-int CVIFUNC Alv_NarrowBand_UNT_DAT__Create(
-	Alv_NarrowBand_UNT_DAT * __instance,
-	unsigned char * Data,
-	ssize_t __DataLength,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_UNT_DAT_Get_Object_ID(
-	Alv_NarrowBand_UNT_DAT __instance,
-	unsigned int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_UNT_DAT_Get_Squinted_Beam_Antenna_Detection(
-	Alv_NarrowBand_UNT_DAT __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_UNT_DAT_Get_Normal_Beam_Antenna_Detection(
-	Alv_NarrowBand_UNT_DAT __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_UNT_DAT_Get_Relative_Distance(
-	Alv_NarrowBand_UNT_DAT __instance,
-	double * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_UNT_DAT_Get_Relative_Speed(
-	Alv_NarrowBand_UNT_DAT __instance,
-	double * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_UNT_DAT_Get_Azimuth(
-	Alv_NarrowBand_UNT_DAT __instance,
-	double * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_UNT_DAT_Get_Doppler_Data_SNR(
-	Alv_NarrowBand_UNT_DAT __instance,
-	unsigned int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_UNT_DAT_Get_Sensor_Mode(
-	Alv_NarrowBand_UNT_DAT __instance,
-	Alv_NarrowBand_NBProtocol_ControlRadarMode * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_UNT_DAT_Get_Range_Data_SNR(
-	Alv_NarrowBand_UNT_DAT __instance,
-	unsigned int * __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_UNT_DAT_ToString(
-	Alv_NarrowBand_UNT_DAT __instance,
-	char * delim,
-	char ** __returnValue,
-	CDotNetHandle * __exception);
-int CVIFUNC Alv_NarrowBand_UNT_DAT_Header(
-	char * delim,
-	char ** __returnValue,
 	CDotNetHandle * __exception);
 
 // Type: Alv.NarrowBand.NBProtocol
@@ -1779,6 +1616,11 @@ int CVIFUNC Alv_CAN_SoftingCan_Connect(
 	Alv_CAN_SoftingCan __instance,
 	int * __returnValue,
 	CDotNetHandle * __exception);
+int CVIFUNC Alv_CAN_SoftingCan_Connect_1(
+	Alv_CAN_SoftingCan __instance,
+	Alv_CAN_CanSettings s,
+	int * __returnValue,
+	CDotNetHandle * __exception);
 int CVIFUNC Alv_CAN_SoftingCan_Disconnect(
 	Alv_CAN_SoftingCan __instance,
 	int * __returnValue,
@@ -1820,11 +1662,29 @@ int CVIFUNC Alv_NarrowBand_Enumeration_FindDisplay(
 	char ** __returnValue,
 	CDotNetHandle * __exception);
 
+// Type: Alv.NarrowBand.NbMsg
+int CVIFUNC Alv_NarrowBand_NbMsg__Create(
+	Alv_NarrowBand_NbMsg * __instance,
+	Alv_CAN_CanMsg message,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_NbMsg_Get_Data(
+	Alv_NarrowBand_NbMsg __instance,
+	unsigned char ** __returnValue,
+	ssize_t * ____returnValueLength,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_NbMsg_Get_Len(
+	Alv_NarrowBand_NbMsg __instance,
+	unsigned char * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_NbMsg_Get_ID(
+	Alv_NarrowBand_NbMsg __instance,
+	unsigned int * __returnValue,
+	CDotNetHandle * __exception);
+
 // Type: Alv.NarrowBand.DSP_DIAG
 int CVIFUNC Alv_NarrowBand_DSP_DIAG__Create(
 	Alv_NarrowBand_DSP_DIAG * __instance,
-	unsigned char * Data,
-	ssize_t __DataLength,
+	Alv_CAN_CanMsg message,
 	CDotNetHandle * __exception);
 int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Sensor_Position(
 	Alv_NarrowBand_DSP_DIAG __instance,
@@ -1993,6 +1853,278 @@ int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Blockage_Warning(
 int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Incompatible_Hardware_Fault(
 	Alv_NarrowBand_DSP_DIAG __instance,
 	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Data(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	unsigned char ** __returnValue,
+	ssize_t * ____returnValueLength,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Len(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	unsigned char * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_ID(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	unsigned int * __returnValue,
+	CDotNetHandle * __exception);
+
+// Type: Alv.NarrowBand.HP_DIAG
+int CVIFUNC Alv_NarrowBand_HP_DIAG__Create(
+	Alv_NarrowBand_HP_DIAG * __instance,
+	Alv_CAN_CanMsg message,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_HP_State(
+	Alv_NarrowBand_HP_DIAG __instance,
+	Alv_NarrowBand_HP_DIAG_HP_States * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_Toggle_Flag(
+	Alv_NarrowBand_HP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_Processor_Run_Mode(
+	Alv_NarrowBand_HP_DIAG __instance,
+	Alv_NarrowBand_HP_DIAG_HP_Run_Modes * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_Expected_DSP_State(
+	Alv_NarrowBand_HP_DIAG __instance,
+	Alv_NarrowBand_HP_DIAG_DSP_States * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_OEM_INCOMPATIBLE(
+	Alv_NarrowBand_HP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_LOST_DSP_INFO_MESSAGE(
+	Alv_NarrowBand_HP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_LOST_DSP_BSD_MESSAGE(
+	Alv_NarrowBand_HP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_LOST_DSP_RCTA_MESSAGE(
+	Alv_NarrowBand_HP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_HIGH_33_VOLT(
+	Alv_NarrowBand_HP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_LOW_33_VOLT(
+	Alv_NarrowBand_HP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_HIGH_19_VOLT(
+	Alv_NarrowBand_HP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_LOW_19_VOLT(
+	Alv_NarrowBand_HP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_DIAG_VIN_MISMATCH(
+	Alv_NarrowBand_HP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_TEST_ROM_INIT_FAULT(
+	Alv_NarrowBand_HP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_TEST_ROM_FAULT(
+	Alv_NarrowBand_HP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_TEST_SENSOR_ADDRESS_UNSTABLE(
+	Alv_NarrowBand_HP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_RESET_INTERNAL_WATCHDOG_TIMEOUT(
+	Alv_NarrowBand_HP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_RESET_TASK_WATCHDOG_TIMEOUT(
+	Alv_NarrowBand_HP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_RESET_OS_ERROR(
+	Alv_NarrowBand_HP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_RESET_UNEXPECTED_EXCEPTION(
+	Alv_NarrowBand_HP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_NCA_LOST_COMM_SBZA_L(
+	Alv_NarrowBand_HP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_NCA_LOST_COMM_SBZA_R(
+	Alv_NarrowBand_HP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_NCA_LOST_COMM_EOCM(
+	Alv_NarrowBand_HP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_EEP_CAL_NOT_PROGRAMMED(
+	Alv_NarrowBand_HP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_EEP_OUT_OF_ORDER(
+	Alv_NarrowBand_HP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_EEP_CORRUPTED(
+	Alv_NarrowBand_HP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_EEP_INCOMPATIBLE(
+	Alv_NarrowBand_HP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_EEP_NOT_PROGRAMMED(
+	Alv_NarrowBand_HP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_NCA_BUS_OFF(
+	Alv_NarrowBand_HP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_NCA_LOST_COMM_BCM(
+	Alv_NarrowBand_HP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_NCA_LOST_COMM_IPC(
+	Alv_NarrowBand_HP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_NCA_LOST_COMM_HUD(
+	Alv_NarrowBand_HP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_NCA_LOST_COMM_APA(
+	Alv_NarrowBand_HP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_NCA_LOST_COMM_RADIO(
+	Alv_NarrowBand_HP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_NCA_LOST_COMM_ONSTAR(
+	Alv_NarrowBand_HP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_NCA_LOST_COMM_MSM(
+	Alv_NarrowBand_HP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_IPC_BUS_OFF(
+	Alv_NarrowBand_HP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_LOST_DSP_MESSAGE(
+	Alv_NarrowBand_HP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_TEST_VOLT_BELOW_THRESHOLD(
+	Alv_NarrowBand_HP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_TEST_VOLT_ABOVE_THRESHOLD(
+	Alv_NarrowBand_HP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_LED_SHORT_TO_BATT(
+	Alv_NarrowBand_HP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_LED_SHORT_TO_GROUND(
+	Alv_NarrowBand_HP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_LED_OPEN_CIRCUIT(
+	Alv_NarrowBand_HP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ERR_U8_NCA_INACTIVE_NODE(
+	Alv_NarrowBand_HP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_Data(
+	Alv_NarrowBand_HP_DIAG __instance,
+	unsigned char ** __returnValue,
+	ssize_t * ____returnValueLength,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_Len(
+	Alv_NarrowBand_HP_DIAG __instance,
+	unsigned char * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ID(
+	Alv_NarrowBand_HP_DIAG __instance,
+	unsigned int * __returnValue,
+	CDotNetHandle * __exception);
+
+// Type: Alv.NarrowBand.UNT_DAT
+int CVIFUNC Alv_NarrowBand_UNT_DAT__Create(
+	Alv_NarrowBand_UNT_DAT * __instance,
+	Alv_CAN_CanMsg message,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_UNT_DAT_Get_Object_ID(
+	Alv_NarrowBand_UNT_DAT __instance,
+	unsigned int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_UNT_DAT_Get_Squinted_Beam_Antenna_Detection(
+	Alv_NarrowBand_UNT_DAT __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_UNT_DAT_Get_Normal_Beam_Antenna_Detection(
+	Alv_NarrowBand_UNT_DAT __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_UNT_DAT_Get_Relative_Distance(
+	Alv_NarrowBand_UNT_DAT __instance,
+	double * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_UNT_DAT_Get_Relative_Speed(
+	Alv_NarrowBand_UNT_DAT __instance,
+	double * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_UNT_DAT_Get_Azimuth(
+	Alv_NarrowBand_UNT_DAT __instance,
+	double * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_UNT_DAT_Get_Doppler_Data_SNR(
+	Alv_NarrowBand_UNT_DAT __instance,
+	unsigned int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_UNT_DAT_Get_Sensor_Mode(
+	Alv_NarrowBand_UNT_DAT __instance,
+	Alv_NarrowBand_NBProtocol_ControlRadarMode * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_UNT_DAT_Get_Range_Data_SNR(
+	Alv_NarrowBand_UNT_DAT __instance,
+	unsigned int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_UNT_DAT_Get_Data(
+	Alv_NarrowBand_UNT_DAT __instance,
+	unsigned char ** __returnValue,
+	ssize_t * ____returnValueLength,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_UNT_DAT_Get_Len(
+	Alv_NarrowBand_UNT_DAT __instance,
+	unsigned char * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_UNT_DAT_Get_ID(
+	Alv_NarrowBand_UNT_DAT __instance,
+	unsigned int * __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_UNT_DAT_ToString(
+	Alv_NarrowBand_UNT_DAT __instance,
+	char * delim,
+	char ** __returnValue,
+	CDotNetHandle * __exception);
+int CVIFUNC Alv_NarrowBand_UNT_DAT_Header(
+	char * delim,
+	char ** __returnValue,
 	CDotNetHandle * __exception);
 
 // Type: Alv.NbLib

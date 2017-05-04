@@ -103,13 +103,16 @@ int loadTableFromDatabase(char DSN[100],char UserID[100],char Password[100])
 	char databaseName[] = {"Recipe"} ;
 	//char SQLCommand[] = {"Select Recipe.ID,RecipeNumber,PartNumber1,AutolivPN1,TesterFile1.TesterFile, TesterFile2.TesterFile, TesterFile3.TesterFile, dbo.Recipe.Description from dbo.Recipe,TesterProfileData,TesterFile1, TesterFile2, TesterFile3 where Recipe.ID = TesterProfileData.ID AND TesterFile1.TesterFileID = TesterProfileData.TesterFile1 AND TesterFile2.TesterFileID = TesterProfileData.TesterFile2 AND TesterFile3.TesterFileID = TesterProfileData.TesterFile3"};
 	
+	char AEC_Backend[10];
+	strcpy(AEC_Backend,GetCfgMiscValue("BackendLineID",80));
 //TesterDataView.TesterFile1,TesterDataView.TesterFile4,TesterDataView.TesterFile5	
 //	char SQLCommand[] = {"Select Recipe.ID,RecipeNumber,PartNumber1,AutolivPN1,AutolivPN2,ProductParamProfileData.ProductParam1,ProductParamProfileData.ProductParam11,ProductParamProfileData.ProductParam17,ModuleProfileData.ModuleParam1,ModuleProfileData.ModuleParam2,ModuleProfileData.ModuleParam3,dbo.Recipe.Description from dbo.Recipe,ProductParamProfileData,ModuleProfileData where Recipe.ID = ProductParamProfileData.ID AND Recipe.ID = ModuleProfileData.ID"};	
 //	char SQLCommand[] = {"Select Recipe.ID,Recipe.RecipeNumber,PartNumber1,AutolivPN1,AutolivPN2,TesterDataView.TesterFile1, TesterDataView.TesterFile2,TesterDataView.TesterFile6,ProductParamProfileData.ProductParam1,ProductParamProfileData.ProductParam11,ProductParamProfileData.ProductParam17,ModuleProfileData.ModuleParam1,ModuleProfileData.ModuleParam2,ModuleProfileData.ModuleParam3,dbo.Recipe.Description from dbo.Recipe,ProductParamProfileData,ModuleProfileData, TesterDataView where Recipe.ID = ProductParamProfileData.ID AND Recipe.ID = ModuleProfileData.ID AND Recipe.ID = TesterDataView.ID"};	
 //	char SQLCommand[] = {"Select Recipe.ID,Recipe.RecipeNumber,ProductParamProfileData.ProductParam1,ProductParamProfileData.ProductParam11,ProductParamProfileData.ProductParam17,TesterDataView.TesterFile1, TesterDataView.TesterFile4,TesterDataView.TesterFile5,ModuleProfileData.ModuleParam1,ModuleProfileData.ModuleParam2,ModuleProfileData.ModuleParam3,dbo.Recipe.Description from dbo.Recipe,ProductParamProfileData,ModuleProfileData, TesterDataView where Recipe.ID = ProductParamProfileData.ID AND Recipe.ID = ModuleProfileData.ID AND Recipe.ID = TesterDataView.ID"};	
-	char SQLCommand[] = {"Select Recipe.RecipeNumber,dbo.Recipe.Description, ProductParamProfileData.ProductParam1,ProductParamProfileData.ProductParam11,TesterDataView.TesterData1,TesterDataView.TesterData2,TesterDataView.TesterFile1, TesterDataView.TesterFile4,TesterDataView.TesterFile5 from dbo.Recipe,ProductParamProfileData,TesterDataView where Recipe.ID = ProductParamProfileData.ID AND Recipe.ID = TesterDataView.ID"};	
+//	char SQLCommand[] = {"Select Recipe.RecipeNumber,dbo.Recipe.Description, ProductParamProfileData.ProductParam1,ProductParamProfileData.ProductParam11,TesterDataView.TesterData1,TesterDataView.TesterData2,TesterDataView.TesterFile1, TesterDataView.TesterFile4,TesterDataView.TesterFile5,TesterDataView.TesterFile15,TesterDataView.TesterFile12,TesterDataView.TesterFile10 from dbo.Recipe,ProductParamProfileData,TesterDataView where Recipe.ID = ProductParamProfileData.ID AND Recipe.ID = TesterDataView.ID"};	
 //	char SQLCommand[] = {"Select * from TesterDataView"};	
-	
+	char SQLCommand[10000] = "";
+	sprintf(SQLCommand,"%s%s%s","Select Recipe.RecipeNumber,dbo.Recipe.Description, ProductParamProfileData.ProductParam1,ProductParamProfileData.ProductParam11,TesterDataView.TesterData1,TesterDataView.TesterData2,TesterDataView.TesterFile1, TesterDataView.TesterFile4,TesterDataView.TesterFile5,TesterDataView.TesterFile15,TesterDataView.TesterFile12,TesterDataView.TesterFile10, TesterDataView.Enabled from dbo.Recipe,ProductParamProfileData,TesterDataView where Recipe.ID = ProductParamProfileData.ID AND Recipe.ID = TesterDataView.ID AND TesterDataView.Enabled = 'true'", "AND TesterDataView.LineID = ", AEC_Backend);
 	char tempChar[200]={0};
 	char *colName;
 	int numCols;
@@ -384,6 +387,10 @@ int GetUnitFields(void)
 	int numCol=0;
 	char columnLabel[100]={0};
 	CVIXMLElement rootElement;
+	char TestStepsHonda[100]={0};
+	char TestStepsFiat[100]={0};
+	char TestStepsGM[100]={0};
+
 
 	
 	char errorMsg[512]={0};
@@ -413,7 +420,13 @@ int GetUnitFields(void)
 		else if (stricmp(columnLabel,"VariantPN") == 0)
 			strcpy(selRecipe.Variant,cellValue);
 		else if (stricmp(columnLabel,"ProgramName") == 0)
-			strcpy(selRecipe.PartNum,cellValue);	
+			strcpy(selRecipe.PartNum,cellValue);
+		else if (stricmp(columnLabel,"TesterFile15") == 0)
+			strcpy(TestStepsHonda,cellValue);		
+		else if (stricmp(columnLabel,"TesterFile12") == 0)
+			strcpy(TestStepsGM,cellValue);		
+		else if (stricmp(columnLabel,"TesterFile10") == 0)
+			strcpy(TestStepsFiat,cellValue);		
 		else if (stricmp(columnLabel,"Folder") == 0)
 		{
 			CopyString(tempFolder,0,cellValue,2,strlen(cellValue)-2);
@@ -456,11 +469,31 @@ int GetUnitFields(void)
 		MessagePopup("Variant does not exist in csv", "Variant does not exist in csv"); 
 		exit (0); 
 	}
-	sprintf(selRecipe.TestStepsFile,"TestSteps%s.xml",getProductType(selRecipe.Variant));
+	
+	if (stricmp(selRecipe.Customer,"GM") == 0)
+		sprintf(selRecipe.TestStepsFile,"%s.xml",TestStepsGM);
+	else if ((stricmp(selRecipe.Customer,"Fiat") == 0) || (stricmp(selRecipe.Customer,"Chrysler") == 0) || (stricmp(selRecipe.Customer,"Alfa Romeo") == 0) ) // alex 20150317 added for Chrysler PV build
+		sprintf(selRecipe.TestStepsFile,"%s.xml",TestStepsFiat);
+	else if (stricmp(selRecipe.Customer,"Honda") == 0)
+		sprintf(selRecipe.TestStepsFile,"%s.xml",TestStepsHonda);
+	else 
+	{		
+		MessagePopup("Customer error", "Customer not defined in SQL"); 
+		exit (0); 
+	}
+
 	strcpy (ProductType,getProductType(selRecipe.Variant)); 	
 	sprintf(targetTestStepFileName,"%s\\Configuration\\%s",dir, selRecipe.TestStepsFile);
 	rootElement = LoadConfigurationDocument(targetTestStepFileName);
+	if (rootElement == 0)
+	{		
+		MessagePopup("Test Steps error", "Test Steps not defined in SQL"); 
+		exit (0); 
+	}		
+	
 	ParseXMLDocument(rootElement, 0);	
+	//selRecipe.PartNum;
+	//selRecipe.Recipe;
 	return 0;	
 }
 

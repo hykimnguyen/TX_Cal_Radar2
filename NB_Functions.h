@@ -61,7 +61,7 @@ int Get_CwLeakage(Alv_Test_Mfg_MfgTester Handle,Alv_NarrowBand_NBProtocol_Antenn
 int write_to_point(Alv_NarrowBand_SensorComm Handle,unsigned short point,char * value,
 					Alv_NarrowBand_NBProtocol_Status *NBProtocol_Status);              
 
-int TxPowerCalHonda(Alv_Test_Mfg_MfgTester Handle,int gain_min,double pow_min,double pow_max,double * power,double ** points,               
+int TxPowerCalHonda(Alv_Test_Mfg_MfgTester Handle,int gain_min,int initDAC_AMP, int initDAC_SW, double pow_min,double pow_max,double * power,double ** points,               
 					ssize_t * __pointsLength1,ssize_t * __pointsLength2,int *TxPowerCalHonda_return);          
 
 int SelectTxAntenna(Alv_NarrowBand_SensorComm Handle,Alv_NarrowBand_NBProtocol_Antenna antenna,
@@ -107,8 +107,15 @@ int Get_Point(Alv_Test_SensorControl Handle,unsigned short point,unsigned int * 
 
 int Get_ErrorCodeNBProtocolStatus(short code, char *buf);
 
+//int TxPowerCalGM(Alv_Test_Mfg_MfgTester Handle,double max_bsd_pow, double max_rcta_pow, 
+//				 double min_bsd_pow, double min_rcta_pow, double **power_GM, ssize_t *powLength,
+//				unsigned short **amp_GM, ssize_t *ampLength,unsigned short **sw_GM, ssize_t *swLength,
+//				unsigned short **pdet_GM, ssize_t *pdetLength,unsigned short *thermistor_GM, int *returnValue_GM);
+
+//NEW DLL - 20151104
 int TxPowerCalGM(Alv_Test_Mfg_MfgTester Handle,double max_bsd_pow, double max_rcta_pow, 
-				 double min_bsd_pow, double min_rcta_pow, double **power_GM, ssize_t *powLength,
-				unsigned short **amp_GM, ssize_t *ampLength,unsigned short **sw_GM, ssize_t *swLength,
-				unsigned short **pdet_GM, ssize_t *pdetLength,unsigned short *thermistor_GM, int *returnValue_GM);
+				   double min_bsd_pow, double min_rcta_pow, int initDAC_AMP, int initDAC_SW, 
+				   double **power_GM, ssize_t *powLength,
+				   unsigned short **amp_GM, ssize_t *ampLength,unsigned short **sw_GM, ssize_t *swLength,
+				   unsigned short **pdet_GM, ssize_t *pdetLength,unsigned short *thermistor_GM, int *returnValue_GM);
 #endif  /* ndef __nb_functions_H__ */

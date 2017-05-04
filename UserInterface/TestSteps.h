@@ -150,6 +150,7 @@ void addReadPointResultsToIts(int testNumber,int nestNum,int point, char * value
 void addFailFctResultsToIts(int testNumber,int nestNum,char * name, char * value, char *min, char *max, int status);
 bool SetGMTxPowerCal (int testNumber, int nestNum);   
 bool Reset_Bat(int testNumber, int nestNum);
+int UseCalInitDacHonda;  
 
 #ifdef __cplusplus
     }

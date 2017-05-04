@@ -161,7 +161,7 @@ int add_header_to_test_output_log(int dutNumber)
 				
 				else if (strstr(mtgTestStepInfo[0][i].testFuncName,"SetHondaTxPowerCal") != NULL) 
 				{
-					strcat(resHeader,"Power,Point 1481,Point 1666,Point 1667,Point 1668,Point 1669,");					
+					strcat(resHeader,"InitDAC_amp, InitDAC_sw, Power, Point 1481,Point 1666,Point 1667,Point 1668,Point 1669,");					
 				}
 			
 				else if (strstr(mtgTestStepInfo[0][i].testFuncName,"SetGMTxPowerCal") != NULL) 

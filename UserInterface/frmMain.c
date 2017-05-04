@@ -352,6 +352,13 @@ int InitMain(void)
 	char customerType[100]={0};
 	NonBlockDelay(4);
 	strcpy(customerType,getProductType(selRecipe.Variant));
+	
+	//This is due to Fiat has seprate sequence with Honda by modify Fiat (1808) type in csv to Fiat instead of nonGM - 20150224 Carol
+	if (customerType == "Fiat")
+	{
+		strcpy(customerType, "nonGM");
+	}
+	
 	if (strcmp(getFixtureName(getFixtureId()),customerType) != 0)
 	{
 		sprintf(tempErrStr, "Product is %s, Fixture is for %s \n",customerType,getFixtureName(getFixtureId())); //
@@ -361,6 +368,8 @@ int InitMain(void)
 		ResetAndExit();
 		exit(0);
 	}
+	
+	
  
 
 	 
@@ -778,8 +787,8 @@ void InitMainTable(void)
 {
 	CreateMainConfigurationTable();
 	SetTableCellVal(MainPanelHandle, DYN_TABLE_MAIN, MakePoint(1,1), " Date");
-	SetTableCellVal(MainPanelHandle, DYN_TABLE_MAIN, MakePoint(1,2), " Time");
-	SetTableCellVal(MainPanelHandle, DYN_TABLE_MAIN, MakePoint(1,3), " Product Type");
+	SetTableCellVal(MainPanelHandle, DYN_TABLE_MAIN, MakePoint(1,2), " Customer");
+	SetTableCellVal(MainPanelHandle, DYN_TABLE_MAIN, MakePoint(1,3), " TestSteps");
 	SetTableCellVal(MainPanelHandle, DYN_TABLE_MAIN, MakePoint(1,4), " DLL rev");
 
 
@@ -1306,8 +1315,8 @@ int CVICALLBACK UpdateClock (int panel, int control, int event,
 			
 		
 			SetTableCellVal(MainPanelHandle, DYN_TABLE_MAIN, MakePoint(2,1), DateStr());
-    	   	SetTableCellVal(MainPanelHandle, DYN_TABLE_MAIN, MakePoint(2,2), TimeStr());
-    	   	SetTableCellVal(MainPanelHandle, DYN_TABLE_MAIN, MakePoint(2,3), ProductType);
+    	   	SetTableCellVal(MainPanelHandle, DYN_TABLE_MAIN, MakePoint(2,2), selRecipe.Customer);
+    	   	SetTableCellVal(MainPanelHandle, DYN_TABLE_MAIN, MakePoint(2,3), selRecipe.TestStepsFile);
     	   	SetTableCellVal(MainPanelHandle, DYN_TABLE_MAIN, MakePoint(2,4), DLLrev);
 			SetTableCellVal(MainPanelHandle, DYN_TABLE_MAIN, MakePoint(4,1), selRecipe.Recipe);
     	   	SetTableCellVal(MainPanelHandle, DYN_TABLE_MAIN, MakePoint(4,2), selRecipe.Variant);
@@ -1625,7 +1634,14 @@ void TestInitialization(void)
 //	}
 
 	get_test_output_log_filename();   // create file to log test output for debugging
-
+	
+	// initialize median filter array for initialDAC_amp and initialDCA_sw
+	for(int i = 0; i < MAX_LENGHT_MEDIAN_ARRAY; i++)
+	{
+		initialDAC_amp[i]=INITIAL_DAC_AMP_HONDA;
+		initialDAC_sw[i]=INITIAL_DAC_SW_HONDA;
+	}
+	
 	// intialize all worker and thread locks
 	if (!InitializeParallelWorkers())
 	{
@@ -1950,6 +1966,9 @@ void InitializeCfgMiscValue(void)
 	
 	strcpy(tmpStr,GetCfgMiscValue("TestOutputIsLog",80));
 	Scan(tmpStr,"%s>%i",&TestOutputIsLog);
+	
+	strcpy(tmpStr, GetCfgMiscValue("CalInitDacHonda",80));
+	Scan (tmpStr, "%s>%d", &UseCalInitDacHonda);
 	
 	MaxItacProceedRequestCount = atoi(GetCfgMiscValue("MaxCount",80));  
 	

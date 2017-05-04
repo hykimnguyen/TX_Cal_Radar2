@@ -163,38 +163,53 @@ int write_to_point(Alv_NarrowBand_SensorComm Handle,unsigned short point,char * 
 /********************************************************  
 * Command to Set TxPowerCalHonda                                                         
 *********************************************************/ 
-int TxPowerCalHonda(Alv_Test_Mfg_MfgTester Handle,int gain_min,
+int TxPowerCalHonda(Alv_Test_Mfg_MfgTester Handle,int gain_min, int initDAC_AMP, int initDAC_SW,
 					double pow_min,double pow_max,double * power,double ** points, 
 					ssize_t *pointsLength1,ssize_t *pointsLength2
 					,int *TxPowerCalHonda_return)
 {
 	int status=-1;  //true = 0  
 	                                                                                                                                                
-	status =Alv_Test_Mfg_MfgTester_TxPowerCalHonda_1(Handle, gain_min,pow_min, pow_max,power,points
+	status =Alv_Test_Mfg_MfgTester_TxPowerCalHonda_2(Handle, gain_min, initDAC_AMP, initDAC_SW, pow_min, pow_max,power,points
 									,pointsLength1,pointsLength2,TxPowerCalHonda_return, 0);
 
 	return TxPowerCalHonda_return;
-}	              
+}
 
- /******************************************************** 
-* Set TxPowerCalGM                                     
-*********************************************************/
-int TxPowerCalGM(Alv_Test_Mfg_MfgTester Handle,double max_bsd_pow, double max_rcta_pow, 
-				 double min_bsd_pow, double min_rcta_pow, double **power_GM, ssize_t *powLength,
-				unsigned short **amp_GM, ssize_t *ampLength,unsigned short **sw_GM, ssize_t *swLength,
-				unsigned short **pdet_GM, ssize_t *pdetLength,unsigned short *thermistor_GM, int *returnValue_GM)
+
+///*
+//******************************************************** 
+//* Set TxPowerCalGM - NEW DLL 20151104                                     
+//*********************************************************
+int TxPowerCalGM(Alv_Test_Mfg_MfgTester Handle,
+				double max_bsd_pow, double max_rcta_pow, 
+				double min_bsd_pow, double min_rcta_pow, 
+				int initDAC_AMP, int initDAC_SW, 
+				double **power_GM, ssize_t *powLength,
+				unsigned short **amp_GM, ssize_t *ampLength,
+				unsigned short **sw_GM, ssize_t *swLength,
+				unsigned short **pdet_GM, ssize_t *pdetLength,
+				unsigned short *thermistor_GM, int *returnValue_GM)
  
 { 
 	
 	int Status = -1;
 	
-	Status = Alv_Test_Mfg_MfgTester_TxPowerCalGM(Handle,max_bsd_pow, max_rcta_pow,min_bsd_pow, 
-			 										min_rcta_pow,power_GM, powLength,amp_GM, ampLength,sw_GM, swLength,
-													pdet_GM, pdetLength,thermistor_GM, returnValue_GM,0);
+	Status = Alv_Test_Mfg_MfgTester_TxPowerCalGM_1(Handle,
+													max_bsd_pow, max_rcta_pow,
+													min_bsd_pow, min_rcta_pow, 
+													initDAC_AMP, initDAC_SW, 
+													power_GM, powLength,
+													amp_GM, ampLength,
+													sw_GM, swLength,
+													pdet_GM, pdetLength,
+													thermistor_GM, returnValue_GM,0);
 	
 	
    	return returnValue_GM;
-}	 
+}
+
+
 /********************************************************  
 * Command to SelectTxAntenna                                                          
 *********************************************************/ 
@@ -218,7 +233,7 @@ int OccupiedBW(Alv_Test_Mfg_MfgTester Handle, Alv_NarrowBand_NBProtocol_ControlR
 	
 	int status=-1;  //true = 0 
 	
- 	status =Alv_Test_Mfg_MfgTester_OccupiedBW(Handle,mode,mode_time, bandwidth, OccupiedBW_ret,0);
+ 	status =Alv_Test_Mfg_MfgTester_OccupiedBW_2(Handle,mode,mode_time, bandwidth, OccupiedBW_ret,0);
 	
 	return OccupiedBW_ret;  	
 	                	

@@ -1,0 +1,3 @@
+TestDate,Time,MIS,Point 1571,Point 1572,Point 1573,Point 1574,Point 1575,Point 1576,Temperature,Current,RCTA Occupied BW,BSD Occupied BW,Power,Point 1481,Point 1666,Point 1667,Point 1668,Point 1669,Antenna1 GetTxPower,Antenna2 GetTxPower,Antenna1 GetCenterFrequency,Antenna2 GetCenterFrequency,Antenna1 GetCwLeakage,Antenna2 GetCwLeakage,Temperature,Delta,,
+2014-11-05,14:21:44,180780000055,62347,3470A,14W44,31180,78000,0055,21.7305,286.473,89.725,85.962,12.472775,2701,10,4,10,4,12.413419,8.818762,24.201595,24.201741,26.575999,25.417254,27.66969,5.939190,
+2014-11-05,15:46:00,180780000055,

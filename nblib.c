@@ -1,6 +1,6 @@
-// CVI wrapper source file for .NET assembly: NbLib, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+// CVI wrapper source file for .NET assembly: NbLib, Version=1.2.0.1, Culture=neutral, PublicKeyToken=null
 
-#include "nblib.h"
+#include "NbLib.h"
 #include <stdarg.h>
 
 // Macros
@@ -12,12 +12,20 @@
 #endif
 
 // Constants
-static const char * __assemblyName = "NbLib, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null";
+static const char * __assemblyName = "NbLib, Version=1.2.0.1, Culture=neutral, PublicKeyToken=null";
 
 // Static Variables
 static CDotNetAssemblyHandle __assemblyHandle = 0;
 
 // Forward declarations
+static int CVIFUNC Alv_NarrowBand_PointTypes__Create(
+	Alv_NarrowBand_PointTypes * value,
+	CDotNetHandle * handle,
+	CDotNetHandle * __exception);
+static int CVIFUNC Alv_NarrowBand_PointFormats__Create(
+	Alv_NarrowBand_PointFormats * value,
+	CDotNetHandle * handle,
+	CDotNetHandle * __exception);
 static int CVIFUNC Alv_NarrowBand_NBProtocol_Status__Create(
 	Alv_NarrowBand_NBProtocol_Status * value,
 	CDotNetHandle * handle,
@@ -28,6 +36,10 @@ static int CVIFUNC Alv_CAN_CanBusModes__Create(
 	CDotNetHandle * __exception);
 static int CVIFUNC Alv_CAN_CanWakeupModes__Create(
 	Alv_CAN_CanWakeupModes * value,
+	CDotNetHandle * handle,
+	CDotNetHandle * __exception);
+static int CVIFUNC Alv_NarrowBand_NBProtocol_GearPosition__Create(
+	Alv_NarrowBand_NBProtocol_GearPosition * value,
 	CDotNetHandle * handle,
 	CDotNetHandle * __exception);
 static int CVIFUNC Alv_NarrowBand_NBProtocol_Position__Create(
@@ -74,20 +86,40 @@ static int CVIFUNC Alv_NarrowBand_NBProtocol_ControlLogger__Create(
 	Alv_NarrowBand_NBProtocol_ControlLogger * value,
 	CDotNetHandle * handle,
 	CDotNetHandle * __exception);
-static int CVIFUNC Alv_NarrowBand_NBProtocol_GearPosition__Create(
-	Alv_NarrowBand_NBProtocol_GearPosition * value,
-	CDotNetHandle * handle,
-	CDotNetHandle * __exception);
 static int CVIFUNC Alv_NarrowBand_NBProtocol_ExecuteFunctions__Create(
 	Alv_NarrowBand_NBProtocol_ExecuteFunctions * value,
 	CDotNetHandle * handle,
 	CDotNetHandle * __exception);
-static int CVIFUNC Alv_NarrowBand_PointTypes__Create(
-	Alv_NarrowBand_PointTypes * value,
+static int CVIFUNC Alv_CAN_CanDevices__Create(
+	Alv_CAN_CanDevices * value,
 	CDotNetHandle * handle,
 	CDotNetHandle * __exception);
-static int CVIFUNC Alv_NarrowBand_PointFormats__Create(
-	Alv_NarrowBand_PointFormats * value,
+static int CVIFUNC Alv_NarrowBand_NBProtocol_SensorRx__Create(
+	Alv_NarrowBand_NBProtocol_SensorRx * value,
+	CDotNetHandle * handle,
+	CDotNetHandle * __exception);
+static int CVIFUNC Alv_NarrowBand_NBProtocol_SensorTx__Create(
+	Alv_NarrowBand_NBProtocol_SensorTx * value,
+	CDotNetHandle * handle,
+	CDotNetHandle * __exception);
+static int CVIFUNC Alv_NarrowBand_NBProtocol_Key__Create(
+	Alv_NarrowBand_NBProtocol_Key * value,
+	CDotNetHandle * handle,
+	CDotNetHandle * __exception);
+static int CVIFUNC Alv_NarrowBand_NBProtocol_EngineeringMode__Create(
+	Alv_NarrowBand_NBProtocol_EngineeringMode * value,
+	CDotNetHandle * handle,
+	CDotNetHandle * __exception);
+static int CVIFUNC Alv_NarrowBand_HP_DIAG_HP_States__Create(
+	Alv_NarrowBand_HP_DIAG_HP_States * value,
+	CDotNetHandle * handle,
+	CDotNetHandle * __exception);
+static int CVIFUNC Alv_NarrowBand_HP_DIAG_HP_Run_Modes__Create(
+	Alv_NarrowBand_HP_DIAG_HP_Run_Modes * value,
+	CDotNetHandle * handle,
+	CDotNetHandle * __exception);
+static int CVIFUNC Alv_NarrowBand_HP_DIAG_DSP_States__Create(
+	Alv_NarrowBand_HP_DIAG_DSP_States * value,
 	CDotNetHandle * handle,
 	CDotNetHandle * __exception);
 static void _CDotNetGenDisposeScalar(void * scalar, unsigned int typeId);
@@ -120,38 +152,6 @@ int CVIFUNC Close_NbLib(void)
 		__assemblyHandle = 0;
 	}
 
-
-
-__Error:
-	return __error;
-}
-
-
-// Type: Alv.NarrowBand.Message
-int CVIFUNC Alv_NarrowBand_Message__Create(
-	Alv_NarrowBand_Message * __instance,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	*__instance = 0;
-
-	// Call constructor
-	__errChk(CDotNetCreateGenericInstance(
-		__assemblyHandle, 
-		"Alv.NarrowBand.Message", 
-		0, 
-		0, 
-		__instance, 
-		0, 
-		0, 
-		0, 
-		0, 
-		__exception));
 
 
 __Error:
@@ -402,7 +402,7 @@ int CVIFUNC Alv_NarrowBand_DataPoints_Set_Secure(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 
@@ -425,7 +425,7 @@ int CVIFUNC Alv_NarrowBand_DataPoints_Set_Secure(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		0, 
@@ -476,7 +476,7 @@ int CVIFUNC Alv_NarrowBand_DataPoints_GetVersion(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	unsigned int __returnValueTypeId;
@@ -505,7 +505,7 @@ int CVIFUNC Alv_NarrowBand_DataPoints_GetVersion(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -528,7 +528,7 @@ int CVIFUNC Alv_NarrowBand_DataPoints_Load(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 
@@ -551,7 +551,7 @@ int CVIFUNC Alv_NarrowBand_DataPoints_Load(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		0, 
@@ -574,7 +574,7 @@ int CVIFUNC Alv_NarrowBand_DataPoints_AddEnums(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[6] = {0};
+	char * __parameterTypeNames[6];
 	unsigned int __parameterTypes[6];
 	void * __parameters[6];
 
@@ -622,7 +622,7 @@ int CVIFUNC Alv_NarrowBand_DataPoints_AddEnums(
 		0, 
 		0, 
 		6, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		0, 
@@ -683,7 +683,7 @@ int CVIFUNC Alv_NarrowBand_DataPoints_SavePointData(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	unsigned int __returnValueTypeId;
@@ -710,7 +710,7 @@ int CVIFUNC Alv_NarrowBand_DataPoints_SavePointData(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -729,7 +729,7 @@ int CVIFUNC Alv_NarrowBand_DataPoints_LoadPointData(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	unsigned int __returnValueTypeId;
@@ -756,7 +756,7 @@ int CVIFUNC Alv_NarrowBand_DataPoints_LoadPointData(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -775,7 +775,7 @@ int CVIFUNC Alv_NarrowBand_DataPoints_Find(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	unsigned int __returnValueTypeId;
@@ -804,7 +804,7 @@ int CVIFUNC Alv_NarrowBand_DataPoints_Find(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -829,7 +829,7 @@ int CVIFUNC Alv_NarrowBand_DataPoints_Data(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[2] = {0};
+	char * __parameterTypeNames[2];
 	unsigned int __parameterTypes[2];
 	void * __parameters[2];
 	unsigned int __returnValueTypeId;
@@ -861,7 +861,7 @@ int CVIFUNC Alv_NarrowBand_DataPoints_Data(
 		0, 
 		0, 
 		2, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -879,7 +879,7 @@ int CVIFUNC Alv_NarrowBand_DataPoints_Status(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	CDotNetHandle status__ = 0;
@@ -914,7 +914,7 @@ int CVIFUNC Alv_NarrowBand_DataPoints_Status(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -1037,7 +1037,7 @@ int CVIFUNC Alv_CAN_CanComm_Set_BusMode(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	CDotNetHandle value__ = 0;
@@ -1067,7 +1067,7 @@ int CVIFUNC Alv_CAN_CanComm_Set_BusMode(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		0, 
@@ -1135,7 +1135,7 @@ int CVIFUNC Alv_CAN_CanComm_Set_WakeupMode(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	CDotNetHandle value__ = 0;
@@ -1165,7 +1165,7 @@ int CVIFUNC Alv_CAN_CanComm_Set_WakeupMode(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		0, 
@@ -1224,7 +1224,7 @@ int CVIFUNC Alv_CAN_CanComm_Set_BaudRate(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 
@@ -1249,7 +1249,7 @@ int CVIFUNC Alv_CAN_CanComm_Set_BaudRate(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		0, 
@@ -1313,7 +1313,7 @@ int CVIFUNC Alv_CAN_CanComm_Set_DriverID(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 
@@ -1338,7 +1338,7 @@ int CVIFUNC Alv_CAN_CanComm_Set_DriverID(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		0, 
@@ -1402,7 +1402,7 @@ int CVIFUNC Alv_CAN_CanComm_Set_ClientID(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 
@@ -1427,7 +1427,7 @@ int CVIFUNC Alv_CAN_CanComm_Set_ClientID(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		0, 
@@ -1484,7 +1484,7 @@ int CVIFUNC Alv_CAN_CanComm_Set_ReadTimeout(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 
@@ -1509,7 +1509,7 @@ int CVIFUNC Alv_CAN_CanComm_Set_ReadTimeout(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		0, 
@@ -1566,7 +1566,7 @@ int CVIFUNC Alv_CAN_CanComm_Set_WriteTimeout(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 
@@ -1591,7 +1591,7 @@ int CVIFUNC Alv_CAN_CanComm_Set_WriteTimeout(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		0, 
@@ -1688,6 +1688,54 @@ __Error:
 	return __error;
 }
 
+int CVIFUNC Alv_CAN_CanComm_Connect_1(
+	Alv_CAN_CanComm __instance,
+	Alv_CAN_CanSettings s,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[1];
+	unsigned int __parameterTypes[1];
+	void * __parameters[1];
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process parameter: s
+	__parameterTypeNames[0] = "Alv.CAN.CanSettings";
+	__parameterTypes[0] = (CDOTNET_OBJECT);
+	__parameters[0] = &s;
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call interface member
+	__errChk(CDotNetInvokeGenericInterfaceMember(
+		__assemblyHandle, 
+		"Alv.CAN.CanComm", 
+		0, 
+		0, 
+		__instance, 
+		CDOTNET_CALL_METHOD, 
+		"Connect", 
+		0, 
+		0, 
+		1, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
 int CVIFUNC Alv_CAN_CanComm_Disconnect(
 	Alv_CAN_CanComm __instance,
 	int * __returnValue,
@@ -1734,7 +1782,7 @@ int CVIFUNC Alv_CAN_CanComm_Read(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	unsigned int __returnValueTypeId;
@@ -1763,7 +1811,7 @@ int CVIFUNC Alv_CAN_CanComm_Read(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -1787,7 +1835,7 @@ int CVIFUNC Alv_CAN_CanComm_Write(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	unsigned int __returnValueTypeId;
@@ -1816,7 +1864,7 @@ int CVIFUNC Alv_CAN_CanComm_Write(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -2002,7 +2050,7 @@ int CVIFUNC Alv_CAN_PeakCan_Set_BusMode(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	CDotNetHandle value__ = 0;
@@ -2030,7 +2078,7 @@ int CVIFUNC Alv_CAN_PeakCan_Set_BusMode(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		0, 
@@ -2096,7 +2144,7 @@ int CVIFUNC Alv_CAN_PeakCan_Set_WakeupMode(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	CDotNetHandle value__ = 0;
@@ -2124,7 +2172,7 @@ int CVIFUNC Alv_CAN_PeakCan_Set_WakeupMode(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		0, 
@@ -2181,7 +2229,7 @@ int CVIFUNC Alv_CAN_PeakCan_Set_BaudRate(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 
@@ -2204,7 +2252,7 @@ int CVIFUNC Alv_CAN_PeakCan_Set_BaudRate(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		0, 
@@ -2266,7 +2314,7 @@ int CVIFUNC Alv_CAN_PeakCan_Set_DriverID(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 
@@ -2289,7 +2337,7 @@ int CVIFUNC Alv_CAN_PeakCan_Set_DriverID(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		0, 
@@ -2351,7 +2399,7 @@ int CVIFUNC Alv_CAN_PeakCan_Set_ClientID(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 
@@ -2374,7 +2422,7 @@ int CVIFUNC Alv_CAN_PeakCan_Set_ClientID(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		0, 
@@ -2429,7 +2477,7 @@ int CVIFUNC Alv_CAN_PeakCan_Set_ReadTimeout(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 
@@ -2452,7 +2500,7 @@ int CVIFUNC Alv_CAN_PeakCan_Set_ReadTimeout(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		0, 
@@ -2507,7 +2555,7 @@ int CVIFUNC Alv_CAN_PeakCan_Set_WriteTimeout(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 
@@ -2530,7 +2578,7 @@ int CVIFUNC Alv_CAN_PeakCan_Set_WriteTimeout(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		0, 
@@ -2623,6 +2671,52 @@ __Error:
 	return __error;
 }
 
+int CVIFUNC Alv_CAN_PeakCan_Connect_1(
+	Alv_CAN_PeakCan __instance,
+	Alv_CAN_CanSettings s,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[1];
+	unsigned int __parameterTypes[1];
+	void * __parameters[1];
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process parameter: s
+	__parameterTypeNames[0] = "Alv.CAN.CanSettings";
+	__parameterTypes[0] = (CDOTNET_OBJECT);
+	__parameters[0] = &s;
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.CAN.PeakCan", 
+		__instance, 
+		CDOTNET_CALL_METHOD, 
+		"Connect", 
+		0, 
+		0, 
+		1, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
 int CVIFUNC Alv_CAN_PeakCan_Disconnect(
 	Alv_CAN_PeakCan __instance,
 	int * __returnValue,
@@ -2704,7 +2798,7 @@ int CVIFUNC Alv_CAN_PeakCan_Read(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	unsigned int __returnValueTypeId;
@@ -2731,7 +2825,7 @@ int CVIFUNC Alv_CAN_PeakCan_Read(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -2755,7 +2849,7 @@ int CVIFUNC Alv_CAN_PeakCan_Write(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	unsigned int __returnValueTypeId;
@@ -2782,7 +2876,7 @@ int CVIFUNC Alv_CAN_PeakCan_Write(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -2849,6 +2943,148 @@ __Error:
 	return __error;
 }
 
+int CVIFUNC Alv_NarrowBand_Sensor_ClearQueue(
+	Alv_NarrowBand_Sensor __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call interface member
+	__errChk(CDotNetInvokeGenericInterfaceMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.Sensor", 
+		0, 
+		0, 
+		__instance, 
+		CDOTNET_CALL_METHOD, 
+		"ClearQueue", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_Sensor_SendVehicleSpeed(
+	Alv_NarrowBand_Sensor __instance,
+	unsigned int speed,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[1];
+	unsigned int __parameterTypes[1];
+	void * __parameters[1];
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process parameter: speed
+	__parameterTypeNames[0] = "System.UInt32";
+	__parameterTypes[0] = (CDOTNET_UINT32);
+	__parameters[0] = &speed;
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call interface member
+	__errChk(CDotNetInvokeGenericInterfaceMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.Sensor", 
+		0, 
+		0, 
+		__instance, 
+		CDOTNET_CALL_METHOD, 
+		"SendVehicleSpeed", 
+		0, 
+		0, 
+		1, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_Sensor_SendGearPosition(
+	Alv_NarrowBand_Sensor __instance,
+	Alv_NarrowBand_NBProtocol_GearPosition gear,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[1];
+	unsigned int __parameterTypes[1];
+	void * __parameters[1];
+	CDotNetHandle gear__ = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process parameter: gear
+	__errChk(Alv_NarrowBand_NBProtocol_GearPosition__Create(
+		&gear, 
+		&gear__, 
+		__exception));
+	__parameterTypeNames[0] = "Alv.NarrowBand.NBProtocol+GearPosition";
+	__parameterTypes[0] = (CDOTNET_ENUM);
+	__parameters[0] = &gear__;
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call interface member
+	__errChk(CDotNetInvokeGenericInterfaceMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.Sensor", 
+		0, 
+		0, 
+		__instance, 
+		CDOTNET_CALL_METHOD, 
+		"SendGearPosition", 
+		0, 
+		0, 
+		1, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	if (gear__)
+		CDotNetDiscardHandle(gear__);
+	return __error;
+}
+
 int CVIFUNC Alv_NarrowBand_Sensor_Init(
 	Alv_NarrowBand_Sensor __instance,
 	char * PointsList,
@@ -2858,7 +3094,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_Init(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[3] = {0};
+	char * __parameterTypeNames[3];
 	unsigned int __parameterTypes[3];
 	void * __parameters[3];
 	CDotNetHandle SensorPosition__ = 0;
@@ -2902,7 +3138,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_Init(
 		0, 
 		0, 
 		3, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -2924,7 +3160,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_PointRead(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[2] = {0};
+	char * __parameterTypeNames[2];
 	unsigned int __parameterTypes[2];
 	void * __parameters[2];
 	CDotNetHandle __returnValue__ = 0;
@@ -2960,7 +3196,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_PointRead(
 		0, 
 		0, 
 		2, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -2993,7 +3229,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_PointWrite(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[2] = {0};
+	char * __parameterTypeNames[2];
 	unsigned int __parameterTypes[2];
 	void * __parameters[2];
 	CDotNetHandle __returnValue__ = 0;
@@ -3028,7 +3264,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_PointWrite(
 		0, 
 		0, 
 		2, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -3055,7 +3291,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_EnterEngineeringMode(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	CDotNetHandle __returnValue__ = 0;
@@ -3085,7 +3321,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_EnterEngineeringMode(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -3112,7 +3348,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_SaveConfiguration(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	CDotNetHandle block__ = 0;
@@ -3147,7 +3383,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_SaveConfiguration(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -3176,7 +3412,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_ReloadConfiguration(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	CDotNetHandle block__ = 0;
@@ -3211,7 +3447,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_ReloadConfiguration(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -3240,7 +3476,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_ResetConfiguration(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	CDotNetHandle block__ = 0;
@@ -3275,7 +3511,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_ResetConfiguration(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -3304,7 +3540,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_ControlCWMode(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	CDotNetHandle __returnValue__ = 0;
@@ -3334,7 +3570,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_ControlCWMode(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -3361,7 +3597,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_SelectTxAntenna(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	CDotNetHandle antenna__ = 0;
@@ -3396,7 +3632,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_SelectTxAntenna(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -3425,7 +3661,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_ControlRF(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	CDotNetHandle __returnValue__ = 0;
@@ -3455,7 +3691,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_ControlRF(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -3482,7 +3718,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_ControlRadarRx(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	CDotNetHandle __returnValue__ = 0;
@@ -3512,7 +3748,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_ControlRadarRx(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -3540,7 +3776,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_ControlDCOffset(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[2] = {0};
+	char * __parameterTypeNames[2];
 	unsigned int __parameterTypes[2];
 	void * __parameters[2];
 	CDotNetHandle softwareoffset__ = 0;
@@ -3585,7 +3821,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_ControlDCOffset(
 		0, 
 		0, 
 		2, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -3616,7 +3852,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_ResetProcessor(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	CDotNetHandle processor__ = 0;
@@ -3651,7 +3887,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_ResetProcessor(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -3683,7 +3919,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_ControlLED(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[4] = {0};
+	char * __parameterTypeNames[4];
 	unsigned int __parameterTypes[4];
 	void * __parameters[4];
 	CDotNetHandle processor__ = 0;
@@ -3738,7 +3974,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_ControlLED(
 		0, 
 		0, 
 		4, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -3772,7 +4008,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_ControlRawSweepBroadcast(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[4] = {0};
+	char * __parameterTypeNames[4];
 	unsigned int __parameterTypes[4];
 	void * __parameters[4];
 	CDotNetHandle processor__ = 0;
@@ -3822,7 +4058,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_ControlRawSweepBroadcast(
 		0, 
 		0, 
 		4, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -3851,7 +4087,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_PerformSelfTest(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	CDotNetHandle processor__ = 0;
@@ -3886,7 +4122,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_PerformSelfTest(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -3915,7 +4151,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_ControlStaticTestMode(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	CDotNetHandle selection__ = 0;
@@ -3950,7 +4186,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_ControlStaticTestMode(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -3979,7 +4215,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_ControlPulseJitter(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	CDotNetHandle __returnValue__ = 0;
@@ -4009,7 +4245,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_ControlPulseJitter(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -4036,7 +4272,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_ForceRadarMode(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	CDotNetHandle mode__ = 0;
@@ -4071,7 +4307,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_ForceRadarMode(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -4149,7 +4385,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_ReadManufacturingData(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	CDotNetHandle data__ = 0;
@@ -4182,7 +4418,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_ReadManufacturingData(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -4233,7 +4469,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_ErrorManager(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[3] = {0};
+	char * __parameterTypeNames[3];
 	unsigned int __parameterTypes[3];
 	void * __parameters[3];
 	CDotNetHandle selection__ = 0;
@@ -4278,7 +4514,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_ErrorManager(
 		0, 
 		0, 
 		3, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -4309,7 +4545,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_LoggerControl(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[3] = {0};
+	char * __parameterTypeNames[3];
 	unsigned int __parameterTypes[3];
 	void * __parameters[3];
 	CDotNetHandle logger__ = 0;
@@ -4359,7 +4595,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_LoggerControl(
 		0, 
 		0, 
 		3, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -4391,7 +4627,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_Program(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[2] = {0};
+	char * __parameterTypeNames[2];
 	unsigned int __parameterTypes[2];
 	void * __parameters[2];
 	CDotNetHandle processor__ = 0;
@@ -4431,7 +4667,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_Program(
 		0, 
 		0, 
 		2, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -4460,7 +4696,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_ReadDspDiag(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	unsigned int __returnValueTypeId;
@@ -4490,7 +4726,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_ReadDspDiag(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -4514,7 +4750,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_ReadHpDiag(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	unsigned int __returnValueTypeId;
@@ -4544,7 +4780,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_ReadHpDiag(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -4568,7 +4804,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_ReadUntDat(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	unsigned int __returnValueTypeId;
@@ -4598,7 +4834,7 @@ int CVIFUNC Alv_NarrowBand_Sensor_ReadUntDat(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -4612,148 +4848,6 @@ __Error:
 			Msg, 
 			CDOTNET_OBJECT);
 	}
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_Sensor_ClearQueue(
-	Alv_NarrowBand_Sensor __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call interface member
-	__errChk(CDotNetInvokeGenericInterfaceMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.Sensor", 
-		0, 
-		0, 
-		__instance, 
-		CDOTNET_CALL_METHOD, 
-		"ClearQueue", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_Sensor_SendVehicleSpeed(
-	Alv_NarrowBand_Sensor __instance,
-	unsigned int speed,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
-	unsigned int __parameterTypes[1];
-	void * __parameters[1];
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process parameter: speed
-	__parameterTypeNames[0] = "System.UInt32";
-	__parameterTypes[0] = (CDOTNET_UINT32);
-	__parameters[0] = &speed;
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call interface member
-	__errChk(CDotNetInvokeGenericInterfaceMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.Sensor", 
-		0, 
-		0, 
-		__instance, 
-		CDOTNET_CALL_METHOD, 
-		"SendVehicleSpeed", 
-		0, 
-		0, 
-		1, 
-		(const char **)__parameterTypeNames, 
-		__parameterTypes, 
-		__parameters, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_Sensor_SendGearPosition(
-	Alv_NarrowBand_Sensor __instance,
-	Alv_NarrowBand_NBProtocol_GearPosition gear,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
-	unsigned int __parameterTypes[1];
-	void * __parameters[1];
-	CDotNetHandle gear__ = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process parameter: gear
-	__errChk(Alv_NarrowBand_NBProtocol_GearPosition__Create(
-		&gear, 
-		&gear__, 
-		__exception));
-	__parameterTypeNames[0] = "Alv.NarrowBand.NBProtocol+GearPosition";
-	__parameterTypes[0] = (CDOTNET_ENUM);
-	__parameters[0] = &gear__;
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call interface member
-	__errChk(CDotNetInvokeGenericInterfaceMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.Sensor", 
-		0, 
-		0, 
-		__instance, 
-		CDOTNET_CALL_METHOD, 
-		"SendGearPosition", 
-		0, 
-		0, 
-		1, 
-		(const char **)__parameterTypeNames, 
-		__parameterTypes, 
-		__parameters, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	if (gear__)
-		CDotNetDiscardHandle(gear__);
 	return __error;
 }
 
@@ -4844,7 +4938,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_Init(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[3] = {0};
+	char * __parameterTypeNames[3];
 	unsigned int __parameterTypes[3];
 	void * __parameters[3];
 	CDotNetHandle SensorPosition__ = 0;
@@ -4886,7 +4980,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_Init(
 		0, 
 		0, 
 		3, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -4908,7 +5002,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_PointRead(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[2] = {0};
+	char * __parameterTypeNames[2];
 	unsigned int __parameterTypes[2];
 	void * __parameters[2];
 	CDotNetHandle __returnValue__ = 0;
@@ -4942,7 +5036,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_PointRead(
 		0, 
 		0, 
 		2, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -4975,7 +5069,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_PointWrite(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[2] = {0};
+	char * __parameterTypeNames[2];
 	unsigned int __parameterTypes[2];
 	void * __parameters[2];
 	CDotNetHandle __returnValue__ = 0;
@@ -5008,7 +5102,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_PointWrite(
 		0, 
 		0, 
 		2, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -5037,7 +5131,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_SendExecute(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[3] = {0};
+	char * __parameterTypeNames[3];
 	unsigned int __parameterTypes[3];
 	void * __parameters[3];
 	CDotNetHandle function__ = 0;
@@ -5080,7 +5174,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_SendExecute(
 		0, 
 		0, 
 		3, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -5109,7 +5203,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_EnterEngineeringMode(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	CDotNetHandle __returnValue__ = 0;
@@ -5137,7 +5231,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_EnterEngineeringMode(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -5164,7 +5258,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_EnterEngineeringModeGMVCAN(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	CDotNetHandle __returnValue__ = 0;
@@ -5192,7 +5286,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_EnterEngineeringModeGMVCAN(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -5220,7 +5314,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_ReadManufacturingData(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	CDotNetHandle response__ = 0;
@@ -5251,7 +5345,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_ReadManufacturingData(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -5300,7 +5394,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_SaveConfiguration(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	CDotNetHandle block__ = 0;
@@ -5333,7 +5427,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_SaveConfiguration(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -5362,7 +5456,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_ReloadConfiguration(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	CDotNetHandle block__ = 0;
@@ -5395,7 +5489,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_ReloadConfiguration(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -5424,7 +5518,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_ResetConfiguration(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	CDotNetHandle block__ = 0;
@@ -5457,7 +5551,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_ResetConfiguration(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -5486,7 +5580,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_ResetProcessor(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	CDotNetHandle processor__ = 0;
@@ -5519,7 +5613,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_ResetProcessor(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -5548,7 +5642,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_ControlCWMode(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	CDotNetHandle __returnValue__ = 0;
@@ -5576,7 +5670,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_ControlCWMode(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -5603,7 +5697,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_SelectTxAntenna(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	CDotNetHandle antenna__ = 0;
@@ -5636,7 +5730,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_SelectTxAntenna(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -5665,7 +5759,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_ControlRF(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	CDotNetHandle __returnValue__ = 0;
@@ -5693,7 +5787,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_ControlRF(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -5720,7 +5814,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_ControlRadarRx(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	CDotNetHandle __returnValue__ = 0;
@@ -5748,7 +5842,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_ControlRadarRx(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -5776,7 +5870,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_ControlDCOffset(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[2] = {0};
+	char * __parameterTypeNames[2];
 	unsigned int __parameterTypes[2];
 	void * __parameters[2];
 	CDotNetHandle softwareoffset__ = 0;
@@ -5819,7 +5913,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_ControlDCOffset(
 		0, 
 		0, 
 		2, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -5850,7 +5944,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_PerformSelfTest(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	CDotNetHandle processor__ = 0;
@@ -5883,7 +5977,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_PerformSelfTest(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -5915,7 +6009,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_ControlLED(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[4] = {0};
+	char * __parameterTypeNames[4];
 	unsigned int __parameterTypes[4];
 	void * __parameters[4];
 	CDotNetHandle processor__ = 0;
@@ -5968,7 +6062,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_ControlLED(
 		0, 
 		0, 
 		4, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -6002,7 +6096,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_ControlRawSweepBroadcast(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[4] = {0};
+	char * __parameterTypeNames[4];
 	unsigned int __parameterTypes[4];
 	void * __parameters[4];
 	CDotNetHandle processor__ = 0;
@@ -6050,7 +6144,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_ControlRawSweepBroadcast(
 		0, 
 		0, 
 		4, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -6079,7 +6173,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_ControlStaticTestMode(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	CDotNetHandle selection__ = 0;
@@ -6112,7 +6206,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_ControlStaticTestMode(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -6141,7 +6235,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_ControlPulseJitter(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	CDotNetHandle __returnValue__ = 0;
@@ -6169,7 +6263,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_ControlPulseJitter(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -6196,7 +6290,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_ForceRadarMode(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	CDotNetHandle mode__ = 0;
@@ -6229,7 +6323,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_ForceRadarMode(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -6304,7 +6398,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_EnterProgramMode(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	CDotNetHandle processor__ = 0;
@@ -6337,7 +6431,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_EnterProgramMode(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -6370,7 +6464,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_SendProgram(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[4] = {0};
+	char * __parameterTypeNames[4];
 	unsigned int __parameterTypes[4];
 	void * __parameters[4];
 	CDotNetHandle processor__ = 0;
@@ -6427,7 +6521,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_SendProgram(
 		0, 
 		0, 
 		4, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -6458,7 +6552,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_SendEnd(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	CDotNetHandle processor__ = 0;
@@ -6491,7 +6585,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_SendEnd(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -6521,7 +6615,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_Program(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[2] = {0};
+	char * __parameterTypeNames[2];
 	unsigned int __parameterTypes[2];
 	void * __parameters[2];
 	CDotNetHandle processor__ = 0;
@@ -6559,7 +6653,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_Program(
 		0, 
 		0, 
 		2, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -6590,7 +6684,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_ErrorManager(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[3] = {0};
+	char * __parameterTypeNames[3];
 	unsigned int __parameterTypes[3];
 	void * __parameters[3];
 	CDotNetHandle selection__ = 0;
@@ -6633,7 +6727,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_ErrorManager(
 		0, 
 		0, 
 		3, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -6664,7 +6758,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_LoggerControl(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[3] = {0};
+	char * __parameterTypeNames[3];
 	unsigned int __parameterTypes[3];
 	void * __parameters[3];
 	CDotNetHandle logger__ = 0;
@@ -6712,7 +6806,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_LoggerControl(
 		0, 
 		0, 
 		3, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -6743,7 +6837,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_ReadDspDiag(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	unsigned int __returnValueTypeId;
@@ -6771,7 +6865,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_ReadDspDiag(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -6795,7 +6889,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_ReadHpDiag(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	unsigned int __returnValueTypeId;
@@ -6823,7 +6917,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_ReadHpDiag(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -6847,7 +6941,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_ReadUntDat(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	unsigned int __returnValueTypeId;
@@ -6875,7 +6969,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_ReadUntDat(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -6936,7 +7030,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_SendVehicleSpeed(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	unsigned int __returnValueTypeId;
@@ -6963,7 +7057,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_SendVehicleSpeed(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -6982,7 +7076,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_SendGearPosition(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	CDotNetHandle gear__ = 0;
@@ -7014,7 +7108,7 @@ int CVIFUNC Alv_NarrowBand_SensorComm_SendGearPosition(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -7103,7 +7197,7 @@ int CVIFUNC Alv_CAN_CanMsg__Set__ID(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 
@@ -7126,7 +7220,7 @@ int CVIFUNC Alv_CAN_CanMsg__Set__ID(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		0, 
@@ -7181,7 +7275,7 @@ int CVIFUNC Alv_CAN_CanMsg__Set__Len(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 
@@ -7204,7 +7298,7 @@ int CVIFUNC Alv_CAN_CanMsg__Set__Len(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		0, 
@@ -7290,7 +7384,7 @@ int CVIFUNC Alv_CAN_CanMsg__Set__Data(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	CDotNetHandle Data__ = 0;
@@ -7322,7 +7416,7 @@ int CVIFUNC Alv_CAN_CanMsg__Set__Data(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		0, 
@@ -7333,6 +7427,630 @@ int CVIFUNC Alv_CAN_CanMsg__Set__Data(
 __Error:
 	if (Data__)
 		CDotNetDiscardHandle(Data__);
+	return __error;
+}
+
+
+// Type: Alv.CAN.CanSettings
+int CVIFUNC Alv_CAN_CanSettings__Create(
+	Alv_CAN_CanSettings * __instance,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	*__instance = 0;
+
+	// Call constructor
+	__errChk(CDotNetCreateGenericInstance(
+		__assemblyHandle, 
+		"Alv.CAN.CanSettings", 
+		0, 
+		0, 
+		__instance, 
+		0, 
+		0, 
+		0, 
+		0, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_CAN_CanSettings__Get__DeviceType(
+	Alv_CAN_CanSettings __instance,
+	Alv_CAN_CanDevices * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	CDotNetHandle __returnValue__ = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_ENUM;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.CAN.CanSettings", 
+		__instance, 
+		CDOTNET_GET_FIELD, 
+		"DeviceType", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		&__returnValue__, 
+		__exception));
+
+	// Post-process return value
+	if (__returnValue)
+		__errChk(CDotNetGetEnumValue(
+			__returnValue__, 
+			__returnValue));
+
+
+__Error:
+	if (__returnValue__)
+		CDotNetDiscardHandle(__returnValue__);
+	return __error;
+}
+
+int CVIFUNC Alv_CAN_CanSettings__Set__DeviceType(
+	Alv_CAN_CanSettings __instance,
+	Alv_CAN_CanDevices DeviceType,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[1];
+	unsigned int __parameterTypes[1];
+	void * __parameters[1];
+	CDotNetHandle DeviceType__ = 0;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process parameter: DeviceType
+	__errChk(Alv_CAN_CanDevices__Create(
+		&DeviceType, 
+		&DeviceType__, 
+		__exception));
+	__parameterTypeNames[0] = "Alv.CAN.CanDevices";
+	__parameterTypes[0] = (CDOTNET_ENUM);
+	__parameters[0] = &DeviceType__;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.CAN.CanSettings", 
+		__instance, 
+		CDOTNET_SET_FIELD, 
+		"DeviceType", 
+		0, 
+		0, 
+		1, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		0, 
+		0, 
+		__exception));
+
+
+__Error:
+	if (DeviceType__)
+		CDotNetDiscardHandle(DeviceType__);
+	return __error;
+}
+
+int CVIFUNC Alv_CAN_CanSettings__Get__BusMode(
+	Alv_CAN_CanSettings __instance,
+	Alv_CAN_CanBusModes * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	CDotNetHandle __returnValue__ = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_ENUM;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.CAN.CanSettings", 
+		__instance, 
+		CDOTNET_GET_FIELD, 
+		"BusMode", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		&__returnValue__, 
+		__exception));
+
+	// Post-process return value
+	if (__returnValue)
+		__errChk(CDotNetGetEnumValue(
+			__returnValue__, 
+			__returnValue));
+
+
+__Error:
+	if (__returnValue__)
+		CDotNetDiscardHandle(__returnValue__);
+	return __error;
+}
+
+int CVIFUNC Alv_CAN_CanSettings__Set__BusMode(
+	Alv_CAN_CanSettings __instance,
+	Alv_CAN_CanBusModes BusMode,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[1];
+	unsigned int __parameterTypes[1];
+	void * __parameters[1];
+	CDotNetHandle BusMode__ = 0;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process parameter: BusMode
+	__errChk(Alv_CAN_CanBusModes__Create(
+		&BusMode, 
+		&BusMode__, 
+		__exception));
+	__parameterTypeNames[0] = "Alv.CAN.CanBusModes";
+	__parameterTypes[0] = (CDOTNET_ENUM);
+	__parameters[0] = &BusMode__;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.CAN.CanSettings", 
+		__instance, 
+		CDOTNET_SET_FIELD, 
+		"BusMode", 
+		0, 
+		0, 
+		1, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		0, 
+		0, 
+		__exception));
+
+
+__Error:
+	if (BusMode__)
+		CDotNetDiscardHandle(BusMode__);
+	return __error;
+}
+
+int CVIFUNC Alv_CAN_CanSettings__Get__BaudRate(
+	Alv_CAN_CanSettings __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_INT32;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.CAN.CanSettings", 
+		__instance, 
+		CDOTNET_GET_FIELD, 
+		"BaudRate", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_CAN_CanSettings__Set__BaudRate(
+	Alv_CAN_CanSettings __instance,
+	int BaudRate,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[1];
+	unsigned int __parameterTypes[1];
+	void * __parameters[1];
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process parameter: BaudRate
+	__parameterTypeNames[0] = "System.Int32";
+	__parameterTypes[0] = (CDOTNET_INT32);
+	__parameters[0] = &BaudRate;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.CAN.CanSettings", 
+		__instance, 
+		CDOTNET_SET_FIELD, 
+		"BaudRate", 
+		0, 
+		0, 
+		1, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		0, 
+		0, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_CAN_CanSettings__Get__DriverID(
+	Alv_CAN_CanSettings __instance,
+	char ** __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+	if (__returnValue)
+		*__returnValue = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_STRING;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.CAN.CanSettings", 
+		__instance, 
+		CDOTNET_GET_FIELD, 
+		"DriverID", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	if (__error < 0) {
+		_CDotNetGenDisposeScalar(
+			__returnValue, 
+			CDOTNET_STRING);
+	}
+	return __error;
+}
+
+int CVIFUNC Alv_CAN_CanSettings__Set__DriverID(
+	Alv_CAN_CanSettings __instance,
+	char * DriverID,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[1];
+	unsigned int __parameterTypes[1];
+	void * __parameters[1];
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process parameter: DriverID
+	__parameterTypeNames[0] = "System.String";
+	__parameterTypes[0] = (CDOTNET_STRING);
+	__parameters[0] = &DriverID;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.CAN.CanSettings", 
+		__instance, 
+		CDOTNET_SET_FIELD, 
+		"DriverID", 
+		0, 
+		0, 
+		1, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		0, 
+		0, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_CAN_CanSettings__Get__ClientID(
+	Alv_CAN_CanSettings __instance,
+	char ** __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+	if (__returnValue)
+		*__returnValue = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_STRING;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.CAN.CanSettings", 
+		__instance, 
+		CDOTNET_GET_FIELD, 
+		"ClientID", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	if (__error < 0) {
+		_CDotNetGenDisposeScalar(
+			__returnValue, 
+			CDOTNET_STRING);
+	}
+	return __error;
+}
+
+int CVIFUNC Alv_CAN_CanSettings__Set__ClientID(
+	Alv_CAN_CanSettings __instance,
+	char * ClientID,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[1];
+	unsigned int __parameterTypes[1];
+	void * __parameters[1];
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process parameter: ClientID
+	__parameterTypeNames[0] = "System.String";
+	__parameterTypes[0] = (CDOTNET_STRING);
+	__parameters[0] = &ClientID;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.CAN.CanSettings", 
+		__instance, 
+		CDOTNET_SET_FIELD, 
+		"ClientID", 
+		0, 
+		0, 
+		1, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		0, 
+		0, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_CAN_CanSettings__Get__ReadTimeout(
+	Alv_CAN_CanSettings __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_INT32;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.CAN.CanSettings", 
+		__instance, 
+		CDOTNET_GET_FIELD, 
+		"ReadTimeout", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_CAN_CanSettings__Set__ReadTimeout(
+	Alv_CAN_CanSettings __instance,
+	int ReadTimeout,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[1];
+	unsigned int __parameterTypes[1];
+	void * __parameters[1];
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process parameter: ReadTimeout
+	__parameterTypeNames[0] = "System.Int32";
+	__parameterTypes[0] = (CDOTNET_INT32);
+	__parameters[0] = &ReadTimeout;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.CAN.CanSettings", 
+		__instance, 
+		CDOTNET_SET_FIELD, 
+		"ReadTimeout", 
+		0, 
+		0, 
+		1, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		0, 
+		0, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_CAN_CanSettings__Get__WriteTimeout(
+	Alv_CAN_CanSettings __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_INT32;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.CAN.CanSettings", 
+		__instance, 
+		CDOTNET_GET_FIELD, 
+		"WriteTimeout", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_CAN_CanSettings__Set__WriteTimeout(
+	Alv_CAN_CanSettings __instance,
+	int WriteTimeout,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[1];
+	unsigned int __parameterTypes[1];
+	void * __parameters[1];
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process parameter: WriteTimeout
+	__parameterTypeNames[0] = "System.Int32";
+	__parameterTypes[0] = (CDOTNET_INT32);
+	__parameters[0] = &WriteTimeout;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.CAN.CanSettings", 
+		__instance, 
+		CDOTNET_SET_FIELD, 
+		"WriteTimeout", 
+		0, 
+		0, 
+		1, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		0, 
+		0, 
+		__exception));
+
+
+__Error:
 	return __error;
 }
 
@@ -7466,7 +8184,7 @@ int CVIFUNC Alv_CAN_NiCan_Set_BusMode(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	CDotNetHandle value__ = 0;
@@ -7494,7 +8212,7 @@ int CVIFUNC Alv_CAN_NiCan_Set_BusMode(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		0, 
@@ -7560,7 +8278,7 @@ int CVIFUNC Alv_CAN_NiCan_Set_WakeupMode(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	CDotNetHandle value__ = 0;
@@ -7588,7 +8306,7 @@ int CVIFUNC Alv_CAN_NiCan_Set_WakeupMode(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		0, 
@@ -7645,7 +8363,7 @@ int CVIFUNC Alv_CAN_NiCan_Set_BaudRate(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 
@@ -7668,7 +8386,7 @@ int CVIFUNC Alv_CAN_NiCan_Set_BaudRate(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		0, 
@@ -7730,7 +8448,7 @@ int CVIFUNC Alv_CAN_NiCan_Set_DriverID(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 
@@ -7753,7 +8471,7 @@ int CVIFUNC Alv_CAN_NiCan_Set_DriverID(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		0, 
@@ -7815,7 +8533,7 @@ int CVIFUNC Alv_CAN_NiCan_Set_ClientID(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 
@@ -7838,7 +8556,7 @@ int CVIFUNC Alv_CAN_NiCan_Set_ClientID(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		0, 
@@ -7893,7 +8611,7 @@ int CVIFUNC Alv_CAN_NiCan_Set_ReadTimeout(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 
@@ -7916,7 +8634,7 @@ int CVIFUNC Alv_CAN_NiCan_Set_ReadTimeout(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		0, 
@@ -7971,7 +8689,7 @@ int CVIFUNC Alv_CAN_NiCan_Set_WriteTimeout(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 
@@ -7994,7 +8712,7 @@ int CVIFUNC Alv_CAN_NiCan_Set_WriteTimeout(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		0, 
@@ -8087,6 +8805,52 @@ __Error:
 	return __error;
 }
 
+int CVIFUNC Alv_CAN_NiCan_Connect_1(
+	Alv_CAN_NiCan __instance,
+	Alv_CAN_CanSettings s,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[1];
+	unsigned int __parameterTypes[1];
+	void * __parameters[1];
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process parameter: s
+	__parameterTypeNames[0] = "Alv.CAN.CanSettings";
+	__parameterTypes[0] = (CDOTNET_OBJECT);
+	__parameters[0] = &s;
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.CAN.NiCan", 
+		__instance, 
+		CDOTNET_CALL_METHOD, 
+		"Connect", 
+		0, 
+		0, 
+		1, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
 int CVIFUNC Alv_CAN_NiCan_Disconnect(
 	Alv_CAN_NiCan __instance,
 	int * __returnValue,
@@ -8168,7 +8932,7 @@ int CVIFUNC Alv_CAN_NiCan_Read(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	unsigned int __returnValueTypeId;
@@ -8195,7 +8959,7 @@ int CVIFUNC Alv_CAN_NiCan_Read(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -8219,7 +8983,7 @@ int CVIFUNC Alv_CAN_NiCan_Write(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	unsigned int __returnValueTypeId;
@@ -8246,7 +9010,7 @@ int CVIFUNC Alv_CAN_NiCan_Write(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -8264,18 +9028,698 @@ __Error:
 }
 
 
-// Type: Alv.NarrowBand.HP_DIAG
-int CVIFUNC Alv_NarrowBand_HP_DIAG__Create(
-	Alv_NarrowBand_HP_DIAG * __instance,
-	unsigned char * Data,
-	ssize_t __DataLength,
+// Type: Alv.NarrowBand.NBProtocol
+int CVIFUNC Alv_NarrowBand_NBProtocol__Get__UNDEF(
+	unsigned short * __returnValue,
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_UINT16;
+
+	// Call static member
+	__errChk(CDotNetInvokeGenericStaticMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.NBProtocol", 
+		0, 
+		0, 
+		CDOTNET_GET_FIELD, 
+		"UNDEF", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_NBProtocol__Set__UNDEF(
+	unsigned short UNDEF,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
-	CDotNetHandle Data__ = 0;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process parameter: UNDEF
+	__parameterTypeNames[0] = "System.UInt16";
+	__parameterTypes[0] = (CDOTNET_UINT16);
+	__parameters[0] = &UNDEF;
+
+	// Call static member
+	__errChk(CDotNetInvokeGenericStaticMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.NBProtocol", 
+		0, 
+		0, 
+		CDOTNET_SET_FIELD, 
+		"UNDEF", 
+		0, 
+		0, 
+		1, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		0, 
+		0, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_NBProtocol__Get__RX_CAN_ID(
+	unsigned short ** __returnValue,
+	ssize_t * ____returnValueLength1,
+	ssize_t * ____returnValueLength2,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	CDotNetHandle __returnValue__ = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+	if (__returnValue)
+		*__returnValue = 0;
+	if (__returnValue)
+		*____returnValueLength1 = 0;
+	if (__returnValue)
+		*____returnValueLength2 = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_UINT16 | CDOTNET_ARRAY;
+
+	// Call static member
+	__errChk(CDotNetInvokeGenericStaticMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.NBProtocol", 
+		0, 
+		0, 
+		CDOTNET_GET_FIELD, 
+		"RX_CAN_ID", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		&__returnValue__, 
+		__exception));
+
+	// Post-process return value
+	if (__returnValue__) {
+		if (__returnValue)
+			__errChk(CDotNetGetArrayElements(
+				__returnValue__, 
+				CDOTNET_UINT16, 
+				0, 
+				__returnValue));
+		if (__returnValue)
+			__errChk(CDotNetGetArrayLength(
+				__returnValue__, 
+				0, 
+				____returnValueLength1));
+		if (__returnValue)
+			__errChk(CDotNetGetArrayLength(
+				__returnValue__, 
+				1, 
+				____returnValueLength2));
+	}
+
+
+__Error:
+	if (__returnValue__)
+		CDotNetDiscardHandle(__returnValue__);
+	if (__error < 0) {
+		_CDotNetGenDisposeArray(
+			__returnValue, 
+			CDOTNET_UINT16, 
+			2, 
+			____returnValueLength1, 
+			____returnValueLength2);
+	}
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_NBProtocol__Set__RX_CAN_ID(
+	unsigned short * RX_CAN_ID,
+	ssize_t __RX_CAN_IDLength1,
+	ssize_t __RX_CAN_IDLength2,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[1];
+	unsigned int __parameterTypes[1];
+	void * __parameters[1];
+	CDotNetHandle RX_CAN_ID__ = 0;
+	ssize_t __RX_CAN_IDLengths[2];
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process parameter: RX_CAN_ID
+	__RX_CAN_IDLengths[0] = __RX_CAN_IDLength1;
+	__RX_CAN_IDLengths[1] = __RX_CAN_IDLength2;
+	if (RX_CAN_ID)
+		__errChk(CDotNetCreateArray(
+			CDOTNET_UINT16, 
+			2, 
+			0, 
+			__RX_CAN_IDLengths, 
+			RX_CAN_ID, 
+			&RX_CAN_ID__));
+	__parameterTypeNames[0] = "System.UInt16[,]";
+	__parameterTypes[0] = (CDOTNET_UINT16 | CDOTNET_ARRAY);
+	__parameters[0] = &RX_CAN_ID__;
+
+	// Call static member
+	__errChk(CDotNetInvokeGenericStaticMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.NBProtocol", 
+		0, 
+		0, 
+		CDOTNET_SET_FIELD, 
+		"RX_CAN_ID", 
+		0, 
+		0, 
+		1, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		0, 
+		0, 
+		__exception));
+
+
+__Error:
+	if (RX_CAN_ID__)
+		CDotNetDiscardHandle(RX_CAN_ID__);
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_NBProtocol__Get__TX_CAN_ID(
+	unsigned short ** __returnValue,
+	ssize_t * ____returnValueLength1,
+	ssize_t * ____returnValueLength2,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	CDotNetHandle __returnValue__ = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+	if (__returnValue)
+		*__returnValue = 0;
+	if (__returnValue)
+		*____returnValueLength1 = 0;
+	if (__returnValue)
+		*____returnValueLength2 = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_UINT16 | CDOTNET_ARRAY;
+
+	// Call static member
+	__errChk(CDotNetInvokeGenericStaticMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.NBProtocol", 
+		0, 
+		0, 
+		CDOTNET_GET_FIELD, 
+		"TX_CAN_ID", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		&__returnValue__, 
+		__exception));
+
+	// Post-process return value
+	if (__returnValue__) {
+		if (__returnValue)
+			__errChk(CDotNetGetArrayElements(
+				__returnValue__, 
+				CDOTNET_UINT16, 
+				0, 
+				__returnValue));
+		if (__returnValue)
+			__errChk(CDotNetGetArrayLength(
+				__returnValue__, 
+				0, 
+				____returnValueLength1));
+		if (__returnValue)
+			__errChk(CDotNetGetArrayLength(
+				__returnValue__, 
+				1, 
+				____returnValueLength2));
+	}
+
+
+__Error:
+	if (__returnValue__)
+		CDotNetDiscardHandle(__returnValue__);
+	if (__error < 0) {
+		_CDotNetGenDisposeArray(
+			__returnValue, 
+			CDOTNET_UINT16, 
+			2, 
+			____returnValueLength1, 
+			____returnValueLength2);
+	}
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_NBProtocol__Set__TX_CAN_ID(
+	unsigned short * TX_CAN_ID,
+	ssize_t __TX_CAN_IDLength1,
+	ssize_t __TX_CAN_IDLength2,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[1];
+	unsigned int __parameterTypes[1];
+	void * __parameters[1];
+	CDotNetHandle TX_CAN_ID__ = 0;
+	ssize_t __TX_CAN_IDLengths[2];
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process parameter: TX_CAN_ID
+	__TX_CAN_IDLengths[0] = __TX_CAN_IDLength1;
+	__TX_CAN_IDLengths[1] = __TX_CAN_IDLength2;
+	if (TX_CAN_ID)
+		__errChk(CDotNetCreateArray(
+			CDOTNET_UINT16, 
+			2, 
+			0, 
+			__TX_CAN_IDLengths, 
+			TX_CAN_ID, 
+			&TX_CAN_ID__));
+	__parameterTypeNames[0] = "System.UInt16[,]";
+	__parameterTypes[0] = (CDOTNET_UINT16 | CDOTNET_ARRAY);
+	__parameters[0] = &TX_CAN_ID__;
+
+	// Call static member
+	__errChk(CDotNetInvokeGenericStaticMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.NBProtocol", 
+		0, 
+		0, 
+		CDOTNET_SET_FIELD, 
+		"TX_CAN_ID", 
+		0, 
+		0, 
+		1, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		0, 
+		0, 
+		__exception));
+
+
+__Error:
+	if (TX_CAN_ID__)
+		CDotNetDiscardHandle(TX_CAN_ID__);
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_NBProtocol__Get__U(
+	unsigned char * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BYTE;
+
+	// Call static member
+	__errChk(CDotNetInvokeGenericStaticMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.NBProtocol", 
+		0, 
+		0, 
+		CDOTNET_GET_FIELD, 
+		"U", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_NBProtocol__Set__U(
+	unsigned char U,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[1];
+	unsigned int __parameterTypes[1];
+	void * __parameters[1];
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process parameter: U
+	__parameterTypeNames[0] = "System.Byte";
+	__parameterTypes[0] = (CDOTNET_BYTE);
+	__parameters[0] = &U;
+
+	// Call static member
+	__errChk(CDotNetInvokeGenericStaticMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.NBProtocol", 
+		0, 
+		0, 
+		CDOTNET_SET_FIELD, 
+		"U", 
+		0, 
+		0, 
+		1, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		0, 
+		0, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_NBProtocol__Get__RX_CAN_LEN(
+	unsigned char ** __returnValue,
+	ssize_t * ____returnValueLength,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	CDotNetHandle __returnValue__ = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+	if (__returnValue)
+		*__returnValue = 0;
+	if (__returnValue)
+		*____returnValueLength = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BYTE | CDOTNET_ARRAY;
+
+	// Call static member
+	__errChk(CDotNetInvokeGenericStaticMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.NBProtocol", 
+		0, 
+		0, 
+		CDOTNET_GET_FIELD, 
+		"RX_CAN_LEN", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		&__returnValue__, 
+		__exception));
+
+	// Post-process return value
+	if (__returnValue__) {
+		if (__returnValue)
+			__errChk(CDotNetGetArrayElements(
+				__returnValue__, 
+				CDOTNET_BYTE, 
+				0, 
+				__returnValue));
+		if (__returnValue)
+			__errChk(CDotNetGetArrayLength(
+				__returnValue__, 
+				0, 
+				____returnValueLength));
+	}
+
+
+__Error:
+	if (__returnValue__)
+		CDotNetDiscardHandle(__returnValue__);
+	if (__error < 0) {
+		_CDotNetGenDisposeArray(
+			__returnValue, 
+			CDOTNET_BYTE, 
+			1, 
+			____returnValueLength);
+	}
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_NBProtocol__Set__RX_CAN_LEN(
+	unsigned char * RX_CAN_LEN,
+	ssize_t __RX_CAN_LENLength,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[1];
+	unsigned int __parameterTypes[1];
+	void * __parameters[1];
+	CDotNetHandle RX_CAN_LEN__ = 0;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process parameter: RX_CAN_LEN
+	if (RX_CAN_LEN)
+		__errChk(CDotNetCreateArray(
+			CDOTNET_BYTE, 
+			1, 
+			0, 
+			&__RX_CAN_LENLength, 
+			RX_CAN_LEN, 
+			&RX_CAN_LEN__));
+	__parameterTypeNames[0] = "System.Byte[]";
+	__parameterTypes[0] = (CDOTNET_BYTE | CDOTNET_ARRAY);
+	__parameters[0] = &RX_CAN_LEN__;
+
+	// Call static member
+	__errChk(CDotNetInvokeGenericStaticMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.NBProtocol", 
+		0, 
+		0, 
+		CDOTNET_SET_FIELD, 
+		"RX_CAN_LEN", 
+		0, 
+		0, 
+		1, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		0, 
+		0, 
+		__exception));
+
+
+__Error:
+	if (RX_CAN_LEN__)
+		CDotNetDiscardHandle(RX_CAN_LEN__);
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_NBProtocol__Get__TX_CAN_LEN(
+	unsigned char ** __returnValue,
+	ssize_t * ____returnValueLength,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	CDotNetHandle __returnValue__ = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+	if (__returnValue)
+		*__returnValue = 0;
+	if (__returnValue)
+		*____returnValueLength = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BYTE | CDOTNET_ARRAY;
+
+	// Call static member
+	__errChk(CDotNetInvokeGenericStaticMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.NBProtocol", 
+		0, 
+		0, 
+		CDOTNET_GET_FIELD, 
+		"TX_CAN_LEN", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		&__returnValue__, 
+		__exception));
+
+	// Post-process return value
+	if (__returnValue__) {
+		if (__returnValue)
+			__errChk(CDotNetGetArrayElements(
+				__returnValue__, 
+				CDOTNET_BYTE, 
+				0, 
+				__returnValue));
+		if (__returnValue)
+			__errChk(CDotNetGetArrayLength(
+				__returnValue__, 
+				0, 
+				____returnValueLength));
+	}
+
+
+__Error:
+	if (__returnValue__)
+		CDotNetDiscardHandle(__returnValue__);
+	if (__error < 0) {
+		_CDotNetGenDisposeArray(
+			__returnValue, 
+			CDOTNET_BYTE, 
+			1, 
+			____returnValueLength);
+	}
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_NBProtocol__Set__TX_CAN_LEN(
+	unsigned char * TX_CAN_LEN,
+	ssize_t __TX_CAN_LENLength,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[1];
+	unsigned int __parameterTypes[1];
+	void * __parameters[1];
+	CDotNetHandle TX_CAN_LEN__ = 0;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process parameter: TX_CAN_LEN
+	if (TX_CAN_LEN)
+		__errChk(CDotNetCreateArray(
+			CDOTNET_BYTE, 
+			1, 
+			0, 
+			&__TX_CAN_LENLength, 
+			TX_CAN_LEN, 
+			&TX_CAN_LEN__));
+	__parameterTypeNames[0] = "System.Byte[]";
+	__parameterTypes[0] = (CDOTNET_BYTE | CDOTNET_ARRAY);
+	__parameters[0] = &TX_CAN_LEN__;
+
+	// Call static member
+	__errChk(CDotNetInvokeGenericStaticMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.NBProtocol", 
+		0, 
+		0, 
+		CDOTNET_SET_FIELD, 
+		"TX_CAN_LEN", 
+		0, 
+		0, 
+		1, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		0, 
+		0, 
+		__exception));
+
+
+__Error:
+	if (TX_CAN_LEN__)
+		CDotNetDiscardHandle(TX_CAN_LEN__);
+	return __error;
+}
+
+
+// Type: Alv.NarrowBand.DataPoint
+int CVIFUNC Alv_NarrowBand_DataPoint__Create(
+	Alv_NarrowBand_DataPoint * __instance,
+	char * name,
+	unsigned short point,
+	Alv_NarrowBand_PointTypes type,
+	unsigned short associated,
+	float scaling,
+	char * category,
+	int readOnly,
+	int secure,
+	float lower,
+	float upper,
+	int dynamic,
+	char * units,
+	char * enumtype,
+	Alv_NarrowBand_PointFormats format,
+	char * description,
+	char * calibration,
+	unsigned short securitygroup,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[17];
+	unsigned int __parameterTypes[17];
+	void * __parameters[17];
+	CDotNetHandle type__ = 0;
+	CDotNetHandle format__ = 0;
 
 	if (__exception)
 		*__exception = 0;
@@ -8283,18 +9727,4960 @@ int CVIFUNC Alv_NarrowBand_HP_DIAG__Create(
 
 	*__instance = 0;
 
-	// Pre-process parameter: Data
-	if (Data)
+	// Pre-process parameter: name
+	__parameterTypeNames[0] = "System.String";
+	__parameterTypes[0] = (CDOTNET_STRING);
+	__parameters[0] = &name;
+
+	// Pre-process parameter: point
+	__parameterTypeNames[1] = "System.UInt16";
+	__parameterTypes[1] = (CDOTNET_UINT16);
+	__parameters[1] = &point;
+
+	// Pre-process parameter: type
+	__errChk(Alv_NarrowBand_PointTypes__Create(
+		&type, 
+		&type__, 
+		__exception));
+	__parameterTypeNames[2] = "Alv.NarrowBand.PointTypes";
+	__parameterTypes[2] = (CDOTNET_ENUM);
+	__parameters[2] = &type__;
+
+	// Pre-process parameter: associated
+	__parameterTypeNames[3] = "System.UInt16";
+	__parameterTypes[3] = (CDOTNET_UINT16);
+	__parameters[3] = &associated;
+
+	// Pre-process parameter: scaling
+	__parameterTypeNames[4] = "System.Single";
+	__parameterTypes[4] = (CDOTNET_SINGLE);
+	__parameters[4] = &scaling;
+
+	// Pre-process parameter: category
+	__parameterTypeNames[5] = "System.String";
+	__parameterTypes[5] = (CDOTNET_STRING);
+	__parameters[5] = &category;
+
+	// Pre-process parameter: readOnly
+	__parameterTypeNames[6] = "System.Boolean";
+	__parameterTypes[6] = (CDOTNET_BOOLEAN);
+	__parameters[6] = &readOnly;
+
+	// Pre-process parameter: secure
+	__parameterTypeNames[7] = "System.Boolean";
+	__parameterTypes[7] = (CDOTNET_BOOLEAN);
+	__parameters[7] = &secure;
+
+	// Pre-process parameter: lower
+	__parameterTypeNames[8] = "System.Single";
+	__parameterTypes[8] = (CDOTNET_SINGLE);
+	__parameters[8] = &lower;
+
+	// Pre-process parameter: upper
+	__parameterTypeNames[9] = "System.Single";
+	__parameterTypes[9] = (CDOTNET_SINGLE);
+	__parameters[9] = &upper;
+
+	// Pre-process parameter: dynamic
+	__parameterTypeNames[10] = "System.Boolean";
+	__parameterTypes[10] = (CDOTNET_BOOLEAN);
+	__parameters[10] = &dynamic;
+
+	// Pre-process parameter: units
+	__parameterTypeNames[11] = "System.String";
+	__parameterTypes[11] = (CDOTNET_STRING);
+	__parameters[11] = &units;
+
+	// Pre-process parameter: enumtype
+	__parameterTypeNames[12] = "System.String";
+	__parameterTypes[12] = (CDOTNET_STRING);
+	__parameters[12] = &enumtype;
+
+	// Pre-process parameter: format
+	__errChk(Alv_NarrowBand_PointFormats__Create(
+		&format, 
+		&format__, 
+		__exception));
+	__parameterTypeNames[13] = "Alv.NarrowBand.PointFormats";
+	__parameterTypes[13] = (CDOTNET_ENUM);
+	__parameters[13] = &format__;
+
+	// Pre-process parameter: description
+	__parameterTypeNames[14] = "System.String";
+	__parameterTypes[14] = (CDOTNET_STRING);
+	__parameters[14] = &description;
+
+	// Pre-process parameter: calibration
+	__parameterTypeNames[15] = "System.String";
+	__parameterTypes[15] = (CDOTNET_STRING);
+	__parameters[15] = &calibration;
+
+	// Pre-process parameter: securitygroup
+	__parameterTypeNames[16] = "System.UInt16";
+	__parameterTypes[16] = (CDOTNET_UINT16);
+	__parameters[16] = &securitygroup;
+
+	// Call constructor
+	__errChk(CDotNetCreateGenericInstance(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DataPoint", 
+		0, 
+		0, 
+		__instance, 
+		17, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		__exception));
+
+
+__Error:
+	if (type__)
+		CDotNetDiscardHandle(type__);
+	if (format__)
+		CDotNetDiscardHandle(format__);
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DataPoint_Get_Length(
+	Alv_NarrowBand_DataPoint __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_INT32;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DataPoint", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Length", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DataPoint_Get_Name(
+	Alv_NarrowBand_DataPoint __instance,
+	char ** __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+	if (__returnValue)
+		*__returnValue = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_STRING;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DataPoint", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Name", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	if (__error < 0) {
+		_CDotNetGenDisposeScalar(
+			__returnValue, 
+			CDOTNET_STRING);
+	}
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DataPoint_Get_Point(
+	Alv_NarrowBand_DataPoint __instance,
+	unsigned short * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_UINT16;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DataPoint", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Point", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DataPoint_Get_Type(
+	Alv_NarrowBand_DataPoint __instance,
+	Alv_NarrowBand_PointTypes * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	CDotNetHandle __returnValue__ = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_ENUM;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DataPoint", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Type", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		&__returnValue__, 
+		__exception));
+
+	// Post-process return value
+	if (__returnValue)
+		__errChk(CDotNetGetEnumValue(
+			__returnValue__, 
+			__returnValue));
+
+
+__Error:
+	if (__returnValue__)
+		CDotNetDiscardHandle(__returnValue__);
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DataPoint_Get_Associated(
+	Alv_NarrowBand_DataPoint __instance,
+	unsigned short * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_UINT16;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DataPoint", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Associated", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DataPoint_Get_Scaling(
+	Alv_NarrowBand_DataPoint __instance,
+	float * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_SINGLE;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DataPoint", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Scaling", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DataPoint_Get_Category(
+	Alv_NarrowBand_DataPoint __instance,
+	char ** __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+	if (__returnValue)
+		*__returnValue = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_STRING;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DataPoint", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Category", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	if (__error < 0) {
+		_CDotNetGenDisposeScalar(
+			__returnValue, 
+			CDOTNET_STRING);
+	}
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DataPoint_Get_ReadOnly(
+	Alv_NarrowBand_DataPoint __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DataPoint", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"ReadOnly", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DataPoint_Get_Secure(
+	Alv_NarrowBand_DataPoint __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DataPoint", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Secure", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DataPoint_Get_StillSecure(
+	Alv_NarrowBand_DataPoint __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DataPoint", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"StillSecure", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DataPoint_Set_StillSecure(
+	Alv_NarrowBand_DataPoint __instance,
+	int value,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[1];
+	unsigned int __parameterTypes[1];
+	void * __parameters[1];
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process parameter: value
+	__parameterTypeNames[0] = "System.Boolean";
+	__parameterTypes[0] = (CDOTNET_BOOLEAN);
+	__parameters[0] = &value;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DataPoint", 
+		__instance, 
+		CDOTNET_SET_PROPERTY, 
+		"StillSecure", 
+		0, 
+		0, 
+		1, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		0, 
+		0, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DataPoint_Get_Lower(
+	Alv_NarrowBand_DataPoint __instance,
+	float * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_SINGLE;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DataPoint", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Lower", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DataPoint_Get_Upper(
+	Alv_NarrowBand_DataPoint __instance,
+	float * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_SINGLE;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DataPoint", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Upper", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DataPoint_Get_Dynamic(
+	Alv_NarrowBand_DataPoint __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DataPoint", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Dynamic", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DataPoint_Set_Dynamic(
+	Alv_NarrowBand_DataPoint __instance,
+	int value,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[1];
+	unsigned int __parameterTypes[1];
+	void * __parameters[1];
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process parameter: value
+	__parameterTypeNames[0] = "System.Boolean";
+	__parameterTypes[0] = (CDOTNET_BOOLEAN);
+	__parameters[0] = &value;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DataPoint", 
+		__instance, 
+		CDOTNET_SET_PROPERTY, 
+		"Dynamic", 
+		0, 
+		0, 
+		1, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		0, 
+		0, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DataPoint_Get_Units(
+	Alv_NarrowBand_DataPoint __instance,
+	char ** __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+	if (__returnValue)
+		*__returnValue = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_STRING;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DataPoint", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Units", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	if (__error < 0) {
+		_CDotNetGenDisposeScalar(
+			__returnValue, 
+			CDOTNET_STRING);
+	}
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DataPoint_Get_Format(
+	Alv_NarrowBand_DataPoint __instance,
+	Alv_NarrowBand_PointFormats * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	CDotNetHandle __returnValue__ = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_ENUM;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DataPoint", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Format", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		&__returnValue__, 
+		__exception));
+
+	// Post-process return value
+	if (__returnValue)
+		__errChk(CDotNetGetEnumValue(
+			__returnValue__, 
+			__returnValue));
+
+
+__Error:
+	if (__returnValue__)
+		CDotNetDiscardHandle(__returnValue__);
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DataPoint_Set_Format(
+	Alv_NarrowBand_DataPoint __instance,
+	Alv_NarrowBand_PointFormats value,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[1];
+	unsigned int __parameterTypes[1];
+	void * __parameters[1];
+	CDotNetHandle value__ = 0;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process parameter: value
+	__errChk(Alv_NarrowBand_PointFormats__Create(
+		&value, 
+		&value__, 
+		__exception));
+	__parameterTypeNames[0] = "Alv.NarrowBand.PointFormats";
+	__parameterTypes[0] = (CDOTNET_ENUM);
+	__parameters[0] = &value__;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DataPoint", 
+		__instance, 
+		CDOTNET_SET_PROPERTY, 
+		"Format", 
+		0, 
+		0, 
+		1, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		0, 
+		0, 
+		__exception));
+
+
+__Error:
+	if (value__)
+		CDotNetDiscardHandle(value__);
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DataPoint_Get_FormatOriginal(
+	Alv_NarrowBand_DataPoint __instance,
+	Alv_NarrowBand_PointFormats * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	CDotNetHandle __returnValue__ = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_ENUM;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DataPoint", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"FormatOriginal", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		&__returnValue__, 
+		__exception));
+
+	// Post-process return value
+	if (__returnValue)
+		__errChk(CDotNetGetEnumValue(
+			__returnValue__, 
+			__returnValue));
+
+
+__Error:
+	if (__returnValue__)
+		CDotNetDiscardHandle(__returnValue__);
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DataPoint_Get_Description(
+	Alv_NarrowBand_DataPoint __instance,
+	char ** __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+	if (__returnValue)
+		*__returnValue = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_STRING;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DataPoint", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Description", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	if (__error < 0) {
+		_CDotNetGenDisposeScalar(
+			__returnValue, 
+			CDOTNET_STRING);
+	}
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DataPoint_Get_Calibration(
+	Alv_NarrowBand_DataPoint __instance,
+	char ** __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+	if (__returnValue)
+		*__returnValue = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_STRING;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DataPoint", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Calibration", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	if (__error < 0) {
+		_CDotNetGenDisposeScalar(
+			__returnValue, 
+			CDOTNET_STRING);
+	}
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DataPoint_Get_SecurityGroup(
+	Alv_NarrowBand_DataPoint __instance,
+	unsigned short * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_UINT16;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DataPoint", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"SecurityGroup", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DataPoint_Get_Enum(
+	Alv_NarrowBand_DataPoint __instance,
+	char ** __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+	if (__returnValue)
+		*__returnValue = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_STRING;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DataPoint", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Enum", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	if (__error < 0) {
+		_CDotNetGenDisposeScalar(
+			__returnValue, 
+			CDOTNET_STRING);
+	}
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DataPoint_Get_Bytes(
+	Alv_NarrowBand_DataPoint __instance,
+	unsigned char ** __returnValue,
+	ssize_t * ____returnValueLength,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	CDotNetHandle __returnValue__ = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+	if (__returnValue)
+		*__returnValue = 0;
+	if (__returnValue)
+		*____returnValueLength = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BYTE | CDOTNET_ARRAY;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DataPoint", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Bytes", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		&__returnValue__, 
+		__exception));
+
+	// Post-process return value
+	if (__returnValue__) {
+		if (__returnValue)
+			__errChk(CDotNetGetArrayElements(
+				__returnValue__, 
+				CDOTNET_BYTE, 
+				0, 
+				__returnValue));
+		if (__returnValue)
+			__errChk(CDotNetGetArrayLength(
+				__returnValue__, 
+				0, 
+				____returnValueLength));
+	}
+
+
+__Error:
+	if (__returnValue__)
+		CDotNetDiscardHandle(__returnValue__);
+	if (__error < 0) {
+		_CDotNetGenDisposeArray(
+			__returnValue, 
+			CDOTNET_BYTE, 
+			1, 
+			____returnValueLength);
+	}
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DataPoint_Set_Bytes(
+	Alv_NarrowBand_DataPoint __instance,
+	unsigned char * value,
+	ssize_t __valueLength,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[1];
+	unsigned int __parameterTypes[1];
+	void * __parameters[1];
+	CDotNetHandle value__ = 0;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process parameter: value
+	if (value)
 		__errChk(CDotNetCreateArray(
 			CDOTNET_BYTE, 
 			1, 
 			0, 
-			&__DataLength, 
-			Data, 
-			&Data__));
+			&__valueLength, 
+			value, 
+			&value__));
 	__parameterTypeNames[0] = "System.Byte[]";
 	__parameterTypes[0] = (CDOTNET_BYTE | CDOTNET_ARRAY);
-	__parameters[0] = &Data__;
+	__parameters[0] = &value__;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DataPoint", 
+		__instance, 
+		CDOTNET_SET_PROPERTY, 
+		"Bytes", 
+		0, 
+		0, 
+		1, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		0, 
+		0, 
+		__exception));
+
+
+__Error:
+	if (value__)
+		CDotNetDiscardHandle(value__);
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DataPoint_Get_DataDisplayStandard(
+	Alv_NarrowBand_DataPoint __instance,
+	char ** __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+	if (__returnValue)
+		*__returnValue = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_STRING;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DataPoint", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"DataDisplayStandard", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	if (__error < 0) {
+		_CDotNetGenDisposeScalar(
+			__returnValue, 
+			CDOTNET_STRING);
+	}
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DataPoint_Get_Data(
+	Alv_NarrowBand_DataPoint __instance,
+	char ** __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+	if (__returnValue)
+		*__returnValue = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_STRING;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DataPoint", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Data", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	if (__error < 0) {
+		_CDotNetGenDisposeScalar(
+			__returnValue, 
+			CDOTNET_STRING);
+	}
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DataPoint_Set_Data(
+	Alv_NarrowBand_DataPoint __instance,
+	char * value,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[1];
+	unsigned int __parameterTypes[1];
+	void * __parameters[1];
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process parameter: value
+	__parameterTypeNames[0] = "System.String";
+	__parameterTypes[0] = (CDOTNET_STRING);
+	__parameters[0] = &value;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DataPoint", 
+		__instance, 
+		CDOTNET_SET_PROPERTY, 
+		"Data", 
+		0, 
+		0, 
+		1, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		0, 
+		0, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DataPoint_Get_Changed(
+	Alv_NarrowBand_DataPoint __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DataPoint", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Changed", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DataPoint_Set_Changed(
+	Alv_NarrowBand_DataPoint __instance,
+	int value,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[1];
+	unsigned int __parameterTypes[1];
+	void * __parameters[1];
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process parameter: value
+	__parameterTypeNames[0] = "System.Boolean";
+	__parameterTypes[0] = (CDOTNET_BOOLEAN);
+	__parameters[0] = &value;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DataPoint", 
+		__instance, 
+		CDOTNET_SET_PROPERTY, 
+		"Changed", 
+		0, 
+		0, 
+		1, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		0, 
+		0, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DataPoint_Get_Status(
+	Alv_NarrowBand_DataPoint __instance,
+	Alv_NarrowBand_NBProtocol_Status * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	CDotNetHandle __returnValue__ = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_ENUM;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DataPoint", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Status", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		&__returnValue__, 
+		__exception));
+
+	// Post-process return value
+	if (__returnValue)
+		__errChk(CDotNetGetEnumValue(
+			__returnValue__, 
+			__returnValue));
+
+
+__Error:
+	if (__returnValue__)
+		CDotNetDiscardHandle(__returnValue__);
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DataPoint_Set_Status(
+	Alv_NarrowBand_DataPoint __instance,
+	Alv_NarrowBand_NBProtocol_Status value,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[1];
+	unsigned int __parameterTypes[1];
+	void * __parameters[1];
+	CDotNetHandle value__ = 0;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process parameter: value
+	__errChk(Alv_NarrowBand_NBProtocol_Status__Create(
+		&value, 
+		&value__, 
+		__exception));
+	__parameterTypeNames[0] = "Alv.NarrowBand.NBProtocol+Status";
+	__parameterTypes[0] = (CDOTNET_ENUM);
+	__parameters[0] = &value__;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DataPoint", 
+		__instance, 
+		CDOTNET_SET_PROPERTY, 
+		"Status", 
+		0, 
+		0, 
+		1, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		0, 
+		0, 
+		__exception));
+
+
+__Error:
+	if (value__)
+		CDotNetDiscardHandle(value__);
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DataPoint_Get_EnumList(
+	Alv_NarrowBand_DataPoint __instance,
+	Alv_NarrowBand_Enumeration * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+	if (__returnValue)
+		*__returnValue = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_OBJECT;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DataPoint", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"EnumList", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	if (__error < 0) {
+		_CDotNetGenDisposeScalar(
+			__returnValue, 
+			CDOTNET_OBJECT);
+	}
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DataPoint_Set_EnumList(
+	Alv_NarrowBand_DataPoint __instance,
+	Alv_NarrowBand_Enumeration value,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[1];
+	unsigned int __parameterTypes[1];
+	void * __parameters[1];
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process parameter: value
+	__parameterTypeNames[0] = "Alv.NarrowBand.Enumeration";
+	__parameterTypes[0] = (CDOTNET_OBJECT);
+	__parameters[0] = &value;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DataPoint", 
+		__instance, 
+		CDOTNET_SET_PROPERTY, 
+		"EnumList", 
+		0, 
+		0, 
+		1, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		0, 
+		0, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DataPoint_Get_Row(
+	Alv_NarrowBand_DataPoint __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_INT32;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DataPoint", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Row", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DataPoint_Set_Row(
+	Alv_NarrowBand_DataPoint __instance,
+	int value,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[1];
+	unsigned int __parameterTypes[1];
+	void * __parameters[1];
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process parameter: value
+	__parameterTypeNames[0] = "System.Int32";
+	__parameterTypes[0] = (CDOTNET_INT32);
+	__parameters[0] = &value;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DataPoint", 
+		__instance, 
+		CDOTNET_SET_PROPERTY, 
+		"Row", 
+		0, 
+		0, 
+		1, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		0, 
+		0, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DataPoint_Get_Valid(
+	Alv_NarrowBand_DataPoint __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DataPoint", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Valid", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DataPoint_Set_Valid(
+	Alv_NarrowBand_DataPoint __instance,
+	int value,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[1];
+	unsigned int __parameterTypes[1];
+	void * __parameters[1];
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process parameter: value
+	__parameterTypeNames[0] = "System.Boolean";
+	__parameterTypes[0] = (CDOTNET_BOOLEAN);
+	__parameters[0] = &value;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DataPoint", 
+		__instance, 
+		CDOTNET_SET_PROPERTY, 
+		"Valid", 
+		0, 
+		0, 
+		1, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		0, 
+		0, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DataPoint_DataBytes(
+	Alv_NarrowBand_DataPoint __instance,
+	char * newdata,
+	unsigned char ** __returnValue,
+	ssize_t * ____returnValueLength,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[1];
+	unsigned int __parameterTypes[1];
+	void * __parameters[1];
+	CDotNetHandle __returnValue__ = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+	if (__returnValue)
+		*__returnValue = 0;
+	if (__returnValue)
+		*____returnValueLength = 0;
+
+
+	// Pre-process parameter: newdata
+	__parameterTypeNames[0] = "System.String";
+	__parameterTypes[0] = (CDOTNET_STRING);
+	__parameters[0] = &newdata;
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BYTE | CDOTNET_ARRAY;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DataPoint", 
+		__instance, 
+		CDOTNET_CALL_METHOD, 
+		"DataBytes", 
+		0, 
+		0, 
+		1, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		&__returnValueTypeId, 
+		&__returnValue__, 
+		__exception));
+
+	// Post-process return value
+	if (__returnValue__) {
+		if (__returnValue)
+			__errChk(CDotNetGetArrayElements(
+				__returnValue__, 
+				CDOTNET_BYTE, 
+				0, 
+				__returnValue));
+		if (__returnValue)
+			__errChk(CDotNetGetArrayLength(
+				__returnValue__, 
+				0, 
+				____returnValueLength));
+	}
+
+
+__Error:
+	if (__returnValue__)
+		CDotNetDiscardHandle(__returnValue__);
+	if (__error < 0) {
+		_CDotNetGenDisposeArray(
+			__returnValue, 
+			CDOTNET_BYTE, 
+			1, 
+			____returnValueLength);
+	}
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DataPoint_ToString(
+	Alv_NarrowBand_DataPoint __instance,
+	char ** __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+	if (__returnValue)
+		*__returnValue = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_STRING;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DataPoint", 
+		__instance, 
+		CDOTNET_CALL_METHOD, 
+		"ToString", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	if (__error < 0) {
+		_CDotNetGenDisposeScalar(
+			__returnValue, 
+			CDOTNET_STRING);
+	}
+	return __error;
+}
+
+
+// Type: Alv.CAN.SoftingCan
+int CVIFUNC Alv_CAN_SoftingCan__Create(
+	Alv_CAN_SoftingCan * __instance,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	*__instance = 0;
+
+	// Call constructor
+	__errChk(CDotNetCreateGenericInstance(
+		__assemblyHandle, 
+		"Alv.CAN.SoftingCan", 
+		0, 
+		0, 
+		__instance, 
+		0, 
+		0, 
+		0, 
+		0, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_CAN_SoftingCan_Get_DeviceType(
+	Alv_CAN_SoftingCan __instance,
+	Alv_CAN_CanDevices * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	CDotNetHandle __returnValue__ = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_ENUM;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.CAN.SoftingCan", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"DeviceType", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		&__returnValue__, 
+		__exception));
+
+	// Post-process return value
+	if (__returnValue)
+		__errChk(CDotNetGetEnumValue(
+			__returnValue__, 
+			__returnValue));
+
+
+__Error:
+	if (__returnValue__)
+		CDotNetDiscardHandle(__returnValue__);
+	return __error;
+}
+
+int CVIFUNC Alv_CAN_SoftingCan_Get_BusMode(
+	Alv_CAN_SoftingCan __instance,
+	Alv_CAN_CanBusModes * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	CDotNetHandle __returnValue__ = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_ENUM;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.CAN.SoftingCan", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"BusMode", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		&__returnValue__, 
+		__exception));
+
+	// Post-process return value
+	if (__returnValue)
+		__errChk(CDotNetGetEnumValue(
+			__returnValue__, 
+			__returnValue));
+
+
+__Error:
+	if (__returnValue__)
+		CDotNetDiscardHandle(__returnValue__);
+	return __error;
+}
+
+int CVIFUNC Alv_CAN_SoftingCan_Set_BusMode(
+	Alv_CAN_SoftingCan __instance,
+	Alv_CAN_CanBusModes value,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[1];
+	unsigned int __parameterTypes[1];
+	void * __parameters[1];
+	CDotNetHandle value__ = 0;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process parameter: value
+	__errChk(Alv_CAN_CanBusModes__Create(
+		&value, 
+		&value__, 
+		__exception));
+	__parameterTypeNames[0] = "Alv.CAN.CanBusModes";
+	__parameterTypes[0] = (CDOTNET_ENUM);
+	__parameters[0] = &value__;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.CAN.SoftingCan", 
+		__instance, 
+		CDOTNET_SET_PROPERTY, 
+		"BusMode", 
+		0, 
+		0, 
+		1, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		0, 
+		0, 
+		__exception));
+
+
+__Error:
+	if (value__)
+		CDotNetDiscardHandle(value__);
+	return __error;
+}
+
+int CVIFUNC Alv_CAN_SoftingCan_Get_WakeupMode(
+	Alv_CAN_SoftingCan __instance,
+	Alv_CAN_CanWakeupModes * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	CDotNetHandle __returnValue__ = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_ENUM;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.CAN.SoftingCan", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"WakeupMode", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		&__returnValue__, 
+		__exception));
+
+	// Post-process return value
+	if (__returnValue)
+		__errChk(CDotNetGetEnumValue(
+			__returnValue__, 
+			__returnValue));
+
+
+__Error:
+	if (__returnValue__)
+		CDotNetDiscardHandle(__returnValue__);
+	return __error;
+}
+
+int CVIFUNC Alv_CAN_SoftingCan_Set_WakeupMode(
+	Alv_CAN_SoftingCan __instance,
+	Alv_CAN_CanWakeupModes value,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[1];
+	unsigned int __parameterTypes[1];
+	void * __parameters[1];
+	CDotNetHandle value__ = 0;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process parameter: value
+	__errChk(Alv_CAN_CanWakeupModes__Create(
+		&value, 
+		&value__, 
+		__exception));
+	__parameterTypeNames[0] = "Alv.CAN.CanWakeupModes";
+	__parameterTypes[0] = (CDOTNET_ENUM);
+	__parameters[0] = &value__;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.CAN.SoftingCan", 
+		__instance, 
+		CDOTNET_SET_PROPERTY, 
+		"WakeupMode", 
+		0, 
+		0, 
+		1, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		0, 
+		0, 
+		__exception));
+
+
+__Error:
+	if (value__)
+		CDotNetDiscardHandle(value__);
+	return __error;
+}
+
+int CVIFUNC Alv_CAN_SoftingCan_Get_BaudRate(
+	Alv_CAN_SoftingCan __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_INT32;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.CAN.SoftingCan", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"BaudRate", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_CAN_SoftingCan_Set_BaudRate(
+	Alv_CAN_SoftingCan __instance,
+	int value,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[1];
+	unsigned int __parameterTypes[1];
+	void * __parameters[1];
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process parameter: value
+	__parameterTypeNames[0] = "System.Int32";
+	__parameterTypes[0] = (CDOTNET_INT32);
+	__parameters[0] = &value;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.CAN.SoftingCan", 
+		__instance, 
+		CDOTNET_SET_PROPERTY, 
+		"BaudRate", 
+		0, 
+		0, 
+		1, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		0, 
+		0, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_CAN_SoftingCan_Get_DriverID(
+	Alv_CAN_SoftingCan __instance,
+	char ** __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+	if (__returnValue)
+		*__returnValue = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_STRING;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.CAN.SoftingCan", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"DriverID", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	if (__error < 0) {
+		_CDotNetGenDisposeScalar(
+			__returnValue, 
+			CDOTNET_STRING);
+	}
+	return __error;
+}
+
+int CVIFUNC Alv_CAN_SoftingCan_Set_DriverID(
+	Alv_CAN_SoftingCan __instance,
+	char * value,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[1];
+	unsigned int __parameterTypes[1];
+	void * __parameters[1];
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process parameter: value
+	__parameterTypeNames[0] = "System.String";
+	__parameterTypes[0] = (CDOTNET_STRING);
+	__parameters[0] = &value;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.CAN.SoftingCan", 
+		__instance, 
+		CDOTNET_SET_PROPERTY, 
+		"DriverID", 
+		0, 
+		0, 
+		1, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		0, 
+		0, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_CAN_SoftingCan_Get_ClientID(
+	Alv_CAN_SoftingCan __instance,
+	char ** __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+	if (__returnValue)
+		*__returnValue = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_STRING;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.CAN.SoftingCan", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"ClientID", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	if (__error < 0) {
+		_CDotNetGenDisposeScalar(
+			__returnValue, 
+			CDOTNET_STRING);
+	}
+	return __error;
+}
+
+int CVIFUNC Alv_CAN_SoftingCan_Set_ClientID(
+	Alv_CAN_SoftingCan __instance,
+	char * value,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[1];
+	unsigned int __parameterTypes[1];
+	void * __parameters[1];
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process parameter: value
+	__parameterTypeNames[0] = "System.String";
+	__parameterTypes[0] = (CDOTNET_STRING);
+	__parameters[0] = &value;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.CAN.SoftingCan", 
+		__instance, 
+		CDOTNET_SET_PROPERTY, 
+		"ClientID", 
+		0, 
+		0, 
+		1, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		0, 
+		0, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_CAN_SoftingCan_Get_ReadTimeout(
+	Alv_CAN_SoftingCan __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_INT32;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.CAN.SoftingCan", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"ReadTimeout", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_CAN_SoftingCan_Set_ReadTimeout(
+	Alv_CAN_SoftingCan __instance,
+	int value,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[1];
+	unsigned int __parameterTypes[1];
+	void * __parameters[1];
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process parameter: value
+	__parameterTypeNames[0] = "System.Int32";
+	__parameterTypes[0] = (CDOTNET_INT32);
+	__parameters[0] = &value;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.CAN.SoftingCan", 
+		__instance, 
+		CDOTNET_SET_PROPERTY, 
+		"ReadTimeout", 
+		0, 
+		0, 
+		1, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		0, 
+		0, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_CAN_SoftingCan_Get_WriteTimeout(
+	Alv_CAN_SoftingCan __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_INT32;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.CAN.SoftingCan", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"WriteTimeout", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_CAN_SoftingCan_Set_WriteTimeout(
+	Alv_CAN_SoftingCan __instance,
+	int value,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[1];
+	unsigned int __parameterTypes[1];
+	void * __parameters[1];
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process parameter: value
+	__parameterTypeNames[0] = "System.Int32";
+	__parameterTypes[0] = (CDOTNET_INT32);
+	__parameters[0] = &value;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.CAN.SoftingCan", 
+		__instance, 
+		CDOTNET_SET_PROPERTY, 
+		"WriteTimeout", 
+		0, 
+		0, 
+		1, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		0, 
+		0, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_CAN_SoftingCan_Get_Error(
+	Alv_CAN_SoftingCan __instance,
+	char ** __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+	if (__returnValue)
+		*__returnValue = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_STRING;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.CAN.SoftingCan", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Error", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	if (__error < 0) {
+		_CDotNetGenDisposeScalar(
+			__returnValue, 
+			CDOTNET_STRING);
+	}
+	return __error;
+}
+
+int CVIFUNC Alv_CAN_SoftingCan_Connect(
+	Alv_CAN_SoftingCan __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.CAN.SoftingCan", 
+		__instance, 
+		CDOTNET_CALL_METHOD, 
+		"Connect", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_CAN_SoftingCan_Connect_1(
+	Alv_CAN_SoftingCan __instance,
+	Alv_CAN_CanSettings s,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[1];
+	unsigned int __parameterTypes[1];
+	void * __parameters[1];
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process parameter: s
+	__parameterTypeNames[0] = "Alv.CAN.CanSettings";
+	__parameterTypes[0] = (CDOTNET_OBJECT);
+	__parameters[0] = &s;
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.CAN.SoftingCan", 
+		__instance, 
+		CDOTNET_CALL_METHOD, 
+		"Connect", 
+		0, 
+		0, 
+		1, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_CAN_SoftingCan_Disconnect(
+	Alv_CAN_SoftingCan __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.CAN.SoftingCan", 
+		__instance, 
+		CDOTNET_CALL_METHOD, 
+		"Disconnect", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_CAN_SoftingCan_Clear(
+	Alv_CAN_SoftingCan __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.CAN.SoftingCan", 
+		__instance, 
+		CDOTNET_CALL_METHOD, 
+		"Clear", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_CAN_SoftingCan_Read(
+	Alv_CAN_SoftingCan __instance,
+	Alv_CAN_CanMsg * msg,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[1];
+	unsigned int __parameterTypes[1];
+	void * __parameters[1];
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process parameter: msg
+	__parameterTypeNames[0] = "Alv.CAN.CanMsg&";
+	__parameterTypes[0] = (CDOTNET_STRUCT | CDOTNET_REF);
+	__parameters[0] = msg;
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.CAN.SoftingCan", 
+		__instance, 
+		CDOTNET_CALL_METHOD, 
+		"Read", 
+		0, 
+		0, 
+		1, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	if (__error < 0) {
+		_CDotNetGenDisposeScalar(
+			msg, 
+			CDOTNET_STRUCT);
+	}
+	return __error;
+}
+
+int CVIFUNC Alv_CAN_SoftingCan_Write(
+	Alv_CAN_SoftingCan __instance,
+	Alv_CAN_CanMsg * msg,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[1];
+	unsigned int __parameterTypes[1];
+	void * __parameters[1];
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process parameter: msg
+	__parameterTypeNames[0] = "Alv.CAN.CanMsg&";
+	__parameterTypes[0] = (CDOTNET_STRUCT | CDOTNET_REF);
+	__parameters[0] = msg;
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.CAN.SoftingCan", 
+		__instance, 
+		CDOTNET_CALL_METHOD, 
+		"Write", 
+		0, 
+		0, 
+		1, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	if (__error < 0) {
+		_CDotNetGenDisposeScalar(
+			msg, 
+			CDOTNET_STRUCT);
+	}
+	return __error;
+}
+
+
+// Type: Alv.NarrowBand.Enumeration
+int CVIFUNC Alv_NarrowBand_Enumeration__Create(
+	Alv_NarrowBand_Enumeration * __instance,
+	char * type,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[1];
+	unsigned int __parameterTypes[1];
+	void * __parameters[1];
+
+	if (__exception)
+		*__exception = 0;
+
+
+	*__instance = 0;
+
+	// Pre-process parameter: type
+	__parameterTypeNames[0] = "System.String";
+	__parameterTypes[0] = (CDOTNET_STRING);
+	__parameters[0] = &type;
+
+	// Call constructor
+	__errChk(CDotNetCreateGenericInstance(
+		__assemblyHandle, 
+		"Alv.NarrowBand.Enumeration", 
+		0, 
+		0, 
+		__instance, 
+		1, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_Enumeration_Get_Type(
+	Alv_NarrowBand_Enumeration __instance,
+	char ** __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+	if (__returnValue)
+		*__returnValue = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_STRING;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.Enumeration", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Type", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	if (__error < 0) {
+		_CDotNetGenDisposeScalar(
+			__returnValue, 
+			CDOTNET_STRING);
+	}
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_Enumeration_Add(
+	Alv_NarrowBand_Enumeration __instance,
+	char * value,
+	char * name,
+	char * display,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[3];
+	unsigned int __parameterTypes[3];
+	void * __parameters[3];
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process parameter: value
+	__parameterTypeNames[0] = "System.String";
+	__parameterTypes[0] = (CDOTNET_STRING);
+	__parameters[0] = &value;
+
+	// Pre-process parameter: name
+	__parameterTypeNames[1] = "System.String";
+	__parameterTypes[1] = (CDOTNET_STRING);
+	__parameters[1] = &name;
+
+	// Pre-process parameter: display
+	__parameterTypeNames[2] = "System.String";
+	__parameterTypes[2] = (CDOTNET_STRING);
+	__parameters[2] = &display;
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.Enumeration", 
+		__instance, 
+		CDOTNET_CALL_METHOD, 
+		"Add", 
+		0, 
+		0, 
+		3, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_Enumeration_FindDisplay(
+	Alv_NarrowBand_Enumeration __instance,
+	int value,
+	char ** __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[1];
+	unsigned int __parameterTypes[1];
+	void * __parameters[1];
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+	if (__returnValue)
+		*__returnValue = 0;
+
+
+	// Pre-process parameter: value
+	__parameterTypeNames[0] = "System.Int32";
+	__parameterTypes[0] = (CDOTNET_INT32);
+	__parameters[0] = &value;
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_STRING;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.Enumeration", 
+		__instance, 
+		CDOTNET_CALL_METHOD, 
+		"FindDisplay", 
+		0, 
+		0, 
+		1, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	if (__error < 0) {
+		_CDotNetGenDisposeScalar(
+			__returnValue, 
+			CDOTNET_STRING);
+	}
+	return __error;
+}
+
+
+// Type: Alv.NarrowBand.NbMsg
+int CVIFUNC Alv_NarrowBand_NbMsg__Create(
+	Alv_NarrowBand_NbMsg * __instance,
+	Alv_CAN_CanMsg message,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[1];
+	unsigned int __parameterTypes[1];
+	void * __parameters[1];
+
+	if (__exception)
+		*__exception = 0;
+
+
+	*__instance = 0;
+
+	// Pre-process parameter: message
+	__parameterTypeNames[0] = "Alv.CAN.CanMsg";
+	__parameterTypes[0] = (CDOTNET_STRUCT);
+	__parameters[0] = &message;
+
+	// Call constructor
+	__errChk(CDotNetCreateGenericInstance(
+		__assemblyHandle, 
+		"Alv.NarrowBand.NbMsg", 
+		0, 
+		0, 
+		__instance, 
+		1, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_NbMsg_Get_Data(
+	Alv_NarrowBand_NbMsg __instance,
+	unsigned char ** __returnValue,
+	ssize_t * ____returnValueLength,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	CDotNetHandle __returnValue__ = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+	if (__returnValue)
+		*__returnValue = 0;
+	if (__returnValue)
+		*____returnValueLength = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BYTE | CDOTNET_ARRAY;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.NbMsg", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Data", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		&__returnValue__, 
+		__exception));
+
+	// Post-process return value
+	if (__returnValue__) {
+		if (__returnValue)
+			__errChk(CDotNetGetArrayElements(
+				__returnValue__, 
+				CDOTNET_BYTE, 
+				0, 
+				__returnValue));
+		if (__returnValue)
+			__errChk(CDotNetGetArrayLength(
+				__returnValue__, 
+				0, 
+				____returnValueLength));
+	}
+
+
+__Error:
+	if (__returnValue__)
+		CDotNetDiscardHandle(__returnValue__);
+	if (__error < 0) {
+		_CDotNetGenDisposeArray(
+			__returnValue, 
+			CDOTNET_BYTE, 
+			1, 
+			____returnValueLength);
+	}
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_NbMsg_Get_Len(
+	Alv_NarrowBand_NbMsg __instance,
+	unsigned char * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BYTE;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.NbMsg", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Len", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_NbMsg_Get_ID(
+	Alv_NarrowBand_NbMsg __instance,
+	unsigned int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_UINT32;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.NbMsg", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"ID", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+
+// Type: Alv.NarrowBand.DSP_DIAG
+int CVIFUNC Alv_NarrowBand_DSP_DIAG__Create(
+	Alv_NarrowBand_DSP_DIAG * __instance,
+	Alv_CAN_CanMsg message,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[1];
+	unsigned int __parameterTypes[1];
+	void * __parameters[1];
+
+	if (__exception)
+		*__exception = 0;
+
+
+	*__instance = 0;
+
+	// Pre-process parameter: message
+	__parameterTypeNames[0] = "Alv.CAN.CanMsg";
+	__parameterTypes[0] = (CDOTNET_STRUCT);
+	__parameters[0] = &message;
+
+	// Call constructor
+	__errChk(CDotNetCreateGenericInstance(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		0, 
+		0, 
+		__instance, 
+		1, 
+		__parameterTypeNames, 
+		__parameterTypes, 
+		__parameters, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Sensor_Position(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	Alv_NarrowBand_NBProtocol_Position * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	CDotNetHandle __returnValue__ = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_ENUM;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Sensor_Position", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		&__returnValue__, 
+		__exception));
+
+	// Post-process return value
+	if (__returnValue)
+		__errChk(CDotNetGetEnumValue(
+			__returnValue__, 
+			__returnValue));
+
+
+__Error:
+	if (__returnValue__)
+		CDotNetDiscardHandle(__returnValue__);
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Sensor_Fault(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Sensor_Fault", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Diagnostics_Summary(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Diagnostics_Summary", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_RAM_Fault(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"RAM_Fault", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Flash_Fault(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Flash_Fault", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_EEPROM_Fault(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"EEPROM_Fault", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Power_Fault(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Power_Fault", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Watchdog_Tripped_Warning(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Watchdog_Tripped_Warning", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_A_D_Trigger_Fault(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"A_D_Trigger_Fault", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_PLL_Unable_To_Lock_Fault(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"PLL_Unable_To_Lock_Fault", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Initialization_Fault(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Initialization_Fault", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Radar_Start_Fault(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Radar_Start_Fault", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Stack_Overflow_Warning(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Stack_Overflow_Warning", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Sensor_Over_Temperature_Warning(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Sensor_Over_Temperature_Warning", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_RX_MMIC_Fault(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"RX_MMIC_Fault", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_TX_MMIC_Fault(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"TX_MMIC_Fault", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Busy_Sending_DAQ_Data_Warning(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Busy_Sending_DAQ_Data_Warning", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Bias_Check_Warning(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Bias_Check_Warning", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_A_D_Out_Of_Range_Warning(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"A_D_Out_Of_Range_Warning", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_HP_Not_Responding_Fault(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"HP_Not_Responding_Fault", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_High_Rx_Noise_Warning(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"High_Rx_Noise_Warning", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Phase_Shifter_Warning(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Phase_Shifter_Warning", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_DC_Offset_Out_Of_Range_Warning(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"DC_Offset_Out_Of_Range_Warning", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Slow_Signal_Processing_Warning(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Slow_Signal_Processing_Warning", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Parameters_Warning(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Parameters_Warning", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_I_CAN_Tx_Queue_Full_Warning(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"I_CAN_Tx_Queue_Full_Warning", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Sweep_Discarded_Warning(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Sweep_Discarded_Warning", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Sensor_Blockage_Fault(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Sensor_Blockage_Fault", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Sensor_Interference_Fault(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Sensor_Interference_Fault", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Sensor_Misalignment_Fault(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Sensor_Misalignment_Fault", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Vehicle_Data_Stagnant_Warning(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Vehicle_Data_Stagnant_Warning", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_E_CAN_Tx_Queue_Full_Warning(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"E_CAN_Tx_Queue_Full_Warning", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Config_Block_8_Invalid_Warning(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Config_Block_8_Invalid_Warning", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Config_Block_7_Invalid_Warning(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Config_Block_7_Invalid_Warning", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Config_Block_6_Invalid_Warning(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Config_Block_6_Invalid_Warning", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Config_Block_5_Invalid_Warning(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Config_Block_5_Invalid_Warning", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Config_Block_4_Invalid_Warning(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Config_Block_4_Invalid_Warning", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Config_Block_3_Invalid_Warning(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Config_Block_3_Invalid_Warning", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Config_Block_2_Invalid_Warning(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Config_Block_2_Invalid_Warning", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Config_Block_1_Invalid_Warning(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Config_Block_1_Invalid_Warning", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Blockage_Warning(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Blockage_Warning", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Incompatible_Hardware_Fault(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BOOLEAN;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Incompatible_Hardware_Fault", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Data(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	unsigned char ** __returnValue,
+	ssize_t * ____returnValueLength,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	CDotNetHandle __returnValue__ = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+	if (__returnValue)
+		*__returnValue = 0;
+	if (__returnValue)
+		*____returnValueLength = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BYTE | CDOTNET_ARRAY;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Data", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		&__returnValue__, 
+		__exception));
+
+	// Post-process return value
+	if (__returnValue__) {
+		if (__returnValue)
+			__errChk(CDotNetGetArrayElements(
+				__returnValue__, 
+				CDOTNET_BYTE, 
+				0, 
+				__returnValue));
+		if (__returnValue)
+			__errChk(CDotNetGetArrayLength(
+				__returnValue__, 
+				0, 
+				____returnValueLength));
+	}
+
+
+__Error:
+	if (__returnValue__)
+		CDotNetDiscardHandle(__returnValue__);
+	if (__error < 0) {
+		_CDotNetGenDisposeArray(
+			__returnValue, 
+			CDOTNET_BYTE, 
+			1, 
+			____returnValueLength);
+	}
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Len(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	unsigned char * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BYTE;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Len", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_ID(
+	Alv_NarrowBand_DSP_DIAG __instance,
+	unsigned int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_UINT32;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.DSP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"ID", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+
+// Type: Alv.NarrowBand.HP_DIAG
+int CVIFUNC Alv_NarrowBand_HP_DIAG__Create(
+	Alv_NarrowBand_HP_DIAG * __instance,
+	Alv_CAN_CanMsg message,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	char * __parameterTypeNames[1];
+	unsigned int __parameterTypes[1];
+	void * __parameters[1];
+
+	if (__exception)
+		*__exception = 0;
+
+
+	*__instance = 0;
+
+	// Pre-process parameter: message
+	__parameterTypeNames[0] = "Alv.CAN.CanMsg";
+	__parameterTypes[0] = (CDOTNET_STRUCT);
+	__parameters[0] = &message;
 
 	// Call constructor
 	__errChk(CDotNetCreateGenericInstance(
@@ -8304,15 +14690,13 @@ int CVIFUNC Alv_NarrowBand_HP_DIAG__Create(
 		0, 
 		__instance, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		__exception));
 
 
 __Error:
-	if (Data__)
-		CDotNetDiscardHandle(Data__);
 	return __error;
 }
 
@@ -9971,19 +16355,158 @@ __Error:
 	return __error;
 }
 
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_Data(
+	Alv_NarrowBand_HP_DIAG __instance,
+	unsigned char ** __returnValue,
+	ssize_t * ____returnValueLength,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	CDotNetHandle __returnValue__ = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+	if (__returnValue)
+		*__returnValue = 0;
+	if (__returnValue)
+		*____returnValueLength = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BYTE | CDOTNET_ARRAY;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.HP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Data", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		&__returnValue__, 
+		__exception));
+
+	// Post-process return value
+	if (__returnValue__) {
+		if (__returnValue)
+			__errChk(CDotNetGetArrayElements(
+				__returnValue__, 
+				CDOTNET_BYTE, 
+				0, 
+				__returnValue));
+		if (__returnValue)
+			__errChk(CDotNetGetArrayLength(
+				__returnValue__, 
+				0, 
+				____returnValueLength));
+	}
+
+
+__Error:
+	if (__returnValue__)
+		CDotNetDiscardHandle(__returnValue__);
+	if (__error < 0) {
+		_CDotNetGenDisposeArray(
+			__returnValue, 
+			CDOTNET_BYTE, 
+			1, 
+			____returnValueLength);
+	}
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_Len(
+	Alv_NarrowBand_HP_DIAG __instance,
+	unsigned char * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BYTE;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.HP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Len", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_HP_DIAG_Get_ID(
+	Alv_NarrowBand_HP_DIAG __instance,
+	unsigned int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_UINT32;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.HP_DIAG", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"ID", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
 
 // Type: Alv.NarrowBand.UNT_DAT
 int CVIFUNC Alv_NarrowBand_UNT_DAT__Create(
 	Alv_NarrowBand_UNT_DAT * __instance,
-	unsigned char * Data,
-	ssize_t __DataLength,
+	Alv_CAN_CanMsg message,
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
-	CDotNetHandle Data__ = 0;
 
 	if (__exception)
 		*__exception = 0;
@@ -9991,18 +16514,10 @@ int CVIFUNC Alv_NarrowBand_UNT_DAT__Create(
 
 	*__instance = 0;
 
-	// Pre-process parameter: Data
-	if (Data)
-		__errChk(CDotNetCreateArray(
-			CDOTNET_BYTE, 
-			1, 
-			0, 
-			&__DataLength, 
-			Data, 
-			&Data__));
-	__parameterTypeNames[0] = "System.Byte[]";
-	__parameterTypes[0] = (CDOTNET_BYTE | CDOTNET_ARRAY);
-	__parameters[0] = &Data__;
+	// Pre-process parameter: message
+	__parameterTypeNames[0] = "Alv.CAN.CanMsg";
+	__parameterTypes[0] = (CDOTNET_STRUCT);
+	__parameters[0] = &message;
 
 	// Call constructor
 	__errChk(CDotNetCreateGenericInstance(
@@ -10012,15 +16527,13 @@ int CVIFUNC Alv_NarrowBand_UNT_DAT__Create(
 		0, 
 		__instance, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		__exception));
 
 
 __Error:
-	if (Data__)
-		CDotNetDiscardHandle(Data__);
 	return __error;
 }
 
@@ -10366,6 +16879,147 @@ __Error:
 	return __error;
 }
 
+int CVIFUNC Alv_NarrowBand_UNT_DAT_Get_Data(
+	Alv_NarrowBand_UNT_DAT __instance,
+	unsigned char ** __returnValue,
+	ssize_t * ____returnValueLength,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	CDotNetHandle __returnValue__ = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+	if (__returnValue)
+		*__returnValue = 0;
+	if (__returnValue)
+		*____returnValueLength = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BYTE | CDOTNET_ARRAY;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.UNT_DAT", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Data", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		&__returnValue__, 
+		__exception));
+
+	// Post-process return value
+	if (__returnValue__) {
+		if (__returnValue)
+			__errChk(CDotNetGetArrayElements(
+				__returnValue__, 
+				CDOTNET_BYTE, 
+				0, 
+				__returnValue));
+		if (__returnValue)
+			__errChk(CDotNetGetArrayLength(
+				__returnValue__, 
+				0, 
+				____returnValueLength));
+	}
+
+
+__Error:
+	if (__returnValue__)
+		CDotNetDiscardHandle(__returnValue__);
+	if (__error < 0) {
+		_CDotNetGenDisposeArray(
+			__returnValue, 
+			CDOTNET_BYTE, 
+			1, 
+			____returnValueLength);
+	}
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_UNT_DAT_Get_Len(
+	Alv_NarrowBand_UNT_DAT __instance,
+	unsigned char * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_BYTE;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.UNT_DAT", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"Len", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
+int CVIFUNC Alv_NarrowBand_UNT_DAT_Get_ID(
+	Alv_NarrowBand_UNT_DAT __instance,
+	unsigned int * __returnValue,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int __returnValueTypeId;
+
+	if (__exception)
+		*__exception = 0;
+
+
+	// Pre-process return value
+	__returnValueTypeId = CDOTNET_UINT32;
+
+	// Call instance member
+	__errChk(CDotNetInvokeGenericMember(
+		__assemblyHandle, 
+		"Alv.NarrowBand.UNT_DAT", 
+		__instance, 
+		CDOTNET_GET_PROPERTY, 
+		"ID", 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		0, 
+		&__returnValueTypeId, 
+		__returnValue, 
+		__exception));
+
+
+__Error:
+	return __error;
+}
+
 int CVIFUNC Alv_NarrowBand_UNT_DAT_ToString(
 	Alv_NarrowBand_UNT_DAT __instance,
 	char * delim,
@@ -10373,7 +17027,7 @@ int CVIFUNC Alv_NarrowBand_UNT_DAT_ToString(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	unsigned int __returnValueTypeId;
@@ -10402,7 +17056,7 @@ int CVIFUNC Alv_NarrowBand_UNT_DAT_ToString(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -10425,7 +17079,7 @@ int CVIFUNC Alv_NarrowBand_UNT_DAT_Header(
 	CDotNetHandle * __exception)
 {
 	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
+	char * __parameterTypeNames[1];
 	unsigned int __parameterTypes[1];
 	void * __parameters[1];
 	unsigned int __returnValueTypeId;
@@ -10455,7 +17109,7 @@ int CVIFUNC Alv_NarrowBand_UNT_DAT_Header(
 		0, 
 		0, 
 		1, 
-		(const char **)__parameterTypeNames, 
+		__parameterTypeNames, 
 		__parameterTypes, 
 		__parameters, 
 		&__returnValueTypeId, 
@@ -10469,5281 +17123,6 @@ __Error:
 			__returnValue, 
 			CDOTNET_STRING);
 	}
-	return __error;
-}
-
-
-// Type: Alv.NarrowBand.NBProtocol
-int CVIFUNC Alv_NarrowBand_NBProtocol__Get__UNDEF(
-	unsigned short * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_UINT16;
-
-	// Call static member
-	__errChk(CDotNetInvokeGenericStaticMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.NBProtocol", 
-		0, 
-		0, 
-		CDOTNET_GET_FIELD, 
-		"UNDEF", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_NBProtocol__Set__UNDEF(
-	unsigned short UNDEF,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
-	unsigned int __parameterTypes[1];
-	void * __parameters[1];
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process parameter: UNDEF
-	__parameterTypeNames[0] = "System.UInt16";
-	__parameterTypes[0] = (CDOTNET_UINT16);
-	__parameters[0] = &UNDEF;
-
-	// Call static member
-	__errChk(CDotNetInvokeGenericStaticMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.NBProtocol", 
-		0, 
-		0, 
-		CDOTNET_SET_FIELD, 
-		"UNDEF", 
-		0, 
-		0, 
-		1, 
-		(const char **)__parameterTypeNames, 
-		__parameterTypes, 
-		__parameters, 
-		0, 
-		0, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_NBProtocol__Get__RX_CAN_ID(
-	unsigned short ** __returnValue,
-	ssize_t * ____returnValueLength1,
-	ssize_t * ____returnValueLength2,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	CDotNetHandle __returnValue__ = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-	if (__returnValue)
-		*__returnValue = 0;
-	if (__returnValue)
-		*____returnValueLength1 = 0;
-	if (__returnValue)
-		*____returnValueLength2 = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_UINT16 | CDOTNET_ARRAY;
-
-	// Call static member
-	__errChk(CDotNetInvokeGenericStaticMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.NBProtocol", 
-		0, 
-		0, 
-		CDOTNET_GET_FIELD, 
-		"RX_CAN_ID", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		&__returnValue__, 
-		__exception));
-
-	// Post-process return value
-	if (__returnValue__) {
-		if (__returnValue)
-			__errChk(CDotNetGetArrayElements(
-				__returnValue__, 
-				CDOTNET_UINT16, 
-				0, 
-				__returnValue));
-		if (__returnValue)
-			__errChk(CDotNetGetArrayLength(
-				__returnValue__, 
-				0, 
-				____returnValueLength1));
-		if (__returnValue)
-			__errChk(CDotNetGetArrayLength(
-				__returnValue__, 
-				1, 
-				____returnValueLength2));
-	}
-
-
-__Error:
-	if (__returnValue__)
-		CDotNetDiscardHandle(__returnValue__);
-	if (__error < 0) {
-		_CDotNetGenDisposeArray(
-			__returnValue, 
-			CDOTNET_UINT16, 
-			2, 
-			____returnValueLength1, 
-			____returnValueLength2);
-	}
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_NBProtocol__Set__RX_CAN_ID(
-	unsigned short * RX_CAN_ID,
-	ssize_t __RX_CAN_IDLength1,
-	ssize_t __RX_CAN_IDLength2,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
-	unsigned int __parameterTypes[1];
-	void * __parameters[1];
-	CDotNetHandle RX_CAN_ID__ = 0;
-	ssize_t __RX_CAN_IDLengths[2];
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process parameter: RX_CAN_ID
-	__RX_CAN_IDLengths[0] = __RX_CAN_IDLength1;
-	__RX_CAN_IDLengths[1] = __RX_CAN_IDLength2;
-	if (RX_CAN_ID)
-		__errChk(CDotNetCreateArray(
-			CDOTNET_UINT16, 
-			2, 
-			0, 
-			__RX_CAN_IDLengths, 
-			RX_CAN_ID, 
-			&RX_CAN_ID__));
-	__parameterTypeNames[0] = "System.UInt16[,]";
-	__parameterTypes[0] = (CDOTNET_UINT16 | CDOTNET_ARRAY);
-	__parameters[0] = &RX_CAN_ID__;
-
-	// Call static member
-	__errChk(CDotNetInvokeGenericStaticMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.NBProtocol", 
-		0, 
-		0, 
-		CDOTNET_SET_FIELD, 
-		"RX_CAN_ID", 
-		0, 
-		0, 
-		1, 
-		(const char **)__parameterTypeNames, 
-		__parameterTypes, 
-		__parameters, 
-		0, 
-		0, 
-		__exception));
-
-
-__Error:
-	if (RX_CAN_ID__)
-		CDotNetDiscardHandle(RX_CAN_ID__);
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_NBProtocol__Get__TX_CAN_ID(
-	unsigned short ** __returnValue,
-	ssize_t * ____returnValueLength1,
-	ssize_t * ____returnValueLength2,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	CDotNetHandle __returnValue__ = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-	if (__returnValue)
-		*__returnValue = 0;
-	if (__returnValue)
-		*____returnValueLength1 = 0;
-	if (__returnValue)
-		*____returnValueLength2 = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_UINT16 | CDOTNET_ARRAY;
-
-	// Call static member
-	__errChk(CDotNetInvokeGenericStaticMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.NBProtocol", 
-		0, 
-		0, 
-		CDOTNET_GET_FIELD, 
-		"TX_CAN_ID", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		&__returnValue__, 
-		__exception));
-
-	// Post-process return value
-	if (__returnValue__) {
-		if (__returnValue)
-			__errChk(CDotNetGetArrayElements(
-				__returnValue__, 
-				CDOTNET_UINT16, 
-				0, 
-				__returnValue));
-		if (__returnValue)
-			__errChk(CDotNetGetArrayLength(
-				__returnValue__, 
-				0, 
-				____returnValueLength1));
-		if (__returnValue)
-			__errChk(CDotNetGetArrayLength(
-				__returnValue__, 
-				1, 
-				____returnValueLength2));
-	}
-
-
-__Error:
-	if (__returnValue__)
-		CDotNetDiscardHandle(__returnValue__);
-	if (__error < 0) {
-		_CDotNetGenDisposeArray(
-			__returnValue, 
-			CDOTNET_UINT16, 
-			2, 
-			____returnValueLength1, 
-			____returnValueLength2);
-	}
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_NBProtocol__Set__TX_CAN_ID(
-	unsigned short * TX_CAN_ID,
-	ssize_t __TX_CAN_IDLength1,
-	ssize_t __TX_CAN_IDLength2,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
-	unsigned int __parameterTypes[1];
-	void * __parameters[1];
-	CDotNetHandle TX_CAN_ID__ = 0;
-	ssize_t __TX_CAN_IDLengths[2];
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process parameter: TX_CAN_ID
-	__TX_CAN_IDLengths[0] = __TX_CAN_IDLength1;
-	__TX_CAN_IDLengths[1] = __TX_CAN_IDLength2;
-	if (TX_CAN_ID)
-		__errChk(CDotNetCreateArray(
-			CDOTNET_UINT16, 
-			2, 
-			0, 
-			__TX_CAN_IDLengths, 
-			TX_CAN_ID, 
-			&TX_CAN_ID__));
-	__parameterTypeNames[0] = "System.UInt16[,]";
-	__parameterTypes[0] = (CDOTNET_UINT16 | CDOTNET_ARRAY);
-	__parameters[0] = &TX_CAN_ID__;
-
-	// Call static member
-	__errChk(CDotNetInvokeGenericStaticMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.NBProtocol", 
-		0, 
-		0, 
-		CDOTNET_SET_FIELD, 
-		"TX_CAN_ID", 
-		0, 
-		0, 
-		1, 
-		(const char **)__parameterTypeNames, 
-		__parameterTypes, 
-		__parameters, 
-		0, 
-		0, 
-		__exception));
-
-
-__Error:
-	if (TX_CAN_ID__)
-		CDotNetDiscardHandle(TX_CAN_ID__);
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_NBProtocol__Get__U(
-	unsigned char * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BYTE;
-
-	// Call static member
-	__errChk(CDotNetInvokeGenericStaticMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.NBProtocol", 
-		0, 
-		0, 
-		CDOTNET_GET_FIELD, 
-		"U", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_NBProtocol__Set__U(
-	unsigned char U,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
-	unsigned int __parameterTypes[1];
-	void * __parameters[1];
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process parameter: U
-	__parameterTypeNames[0] = "System.Byte";
-	__parameterTypes[0] = (CDOTNET_BYTE);
-	__parameters[0] = &U;
-
-	// Call static member
-	__errChk(CDotNetInvokeGenericStaticMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.NBProtocol", 
-		0, 
-		0, 
-		CDOTNET_SET_FIELD, 
-		"U", 
-		0, 
-		0, 
-		1, 
-		(const char **)__parameterTypeNames, 
-		__parameterTypes, 
-		__parameters, 
-		0, 
-		0, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_NBProtocol__Get__RX_CAN_LEN(
-	unsigned char ** __returnValue,
-	ssize_t * ____returnValueLength,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	CDotNetHandle __returnValue__ = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-	if (__returnValue)
-		*__returnValue = 0;
-	if (__returnValue)
-		*____returnValueLength = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BYTE | CDOTNET_ARRAY;
-
-	// Call static member
-	__errChk(CDotNetInvokeGenericStaticMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.NBProtocol", 
-		0, 
-		0, 
-		CDOTNET_GET_FIELD, 
-		"RX_CAN_LEN", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		&__returnValue__, 
-		__exception));
-
-	// Post-process return value
-	if (__returnValue__) {
-		if (__returnValue)
-			__errChk(CDotNetGetArrayElements(
-				__returnValue__, 
-				CDOTNET_BYTE, 
-				0, 
-				__returnValue));
-		if (__returnValue)
-			__errChk(CDotNetGetArrayLength(
-				__returnValue__, 
-				0, 
-				____returnValueLength));
-	}
-
-
-__Error:
-	if (__returnValue__)
-		CDotNetDiscardHandle(__returnValue__);
-	if (__error < 0) {
-		_CDotNetGenDisposeArray(
-			__returnValue, 
-			CDOTNET_BYTE, 
-			1, 
-			____returnValueLength);
-	}
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_NBProtocol__Set__RX_CAN_LEN(
-	unsigned char * RX_CAN_LEN,
-	ssize_t __RX_CAN_LENLength,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
-	unsigned int __parameterTypes[1];
-	void * __parameters[1];
-	CDotNetHandle RX_CAN_LEN__ = 0;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process parameter: RX_CAN_LEN
-	if (RX_CAN_LEN)
-		__errChk(CDotNetCreateArray(
-			CDOTNET_BYTE, 
-			1, 
-			0, 
-			&__RX_CAN_LENLength, 
-			RX_CAN_LEN, 
-			&RX_CAN_LEN__));
-	__parameterTypeNames[0] = "System.Byte[]";
-	__parameterTypes[0] = (CDOTNET_BYTE | CDOTNET_ARRAY);
-	__parameters[0] = &RX_CAN_LEN__;
-
-	// Call static member
-	__errChk(CDotNetInvokeGenericStaticMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.NBProtocol", 
-		0, 
-		0, 
-		CDOTNET_SET_FIELD, 
-		"RX_CAN_LEN", 
-		0, 
-		0, 
-		1, 
-		(const char **)__parameterTypeNames, 
-		__parameterTypes, 
-		__parameters, 
-		0, 
-		0, 
-		__exception));
-
-
-__Error:
-	if (RX_CAN_LEN__)
-		CDotNetDiscardHandle(RX_CAN_LEN__);
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_NBProtocol__Get__TX_CAN_LEN(
-	unsigned char ** __returnValue,
-	ssize_t * ____returnValueLength,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	CDotNetHandle __returnValue__ = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-	if (__returnValue)
-		*__returnValue = 0;
-	if (__returnValue)
-		*____returnValueLength = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BYTE | CDOTNET_ARRAY;
-
-	// Call static member
-	__errChk(CDotNetInvokeGenericStaticMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.NBProtocol", 
-		0, 
-		0, 
-		CDOTNET_GET_FIELD, 
-		"TX_CAN_LEN", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		&__returnValue__, 
-		__exception));
-
-	// Post-process return value
-	if (__returnValue__) {
-		if (__returnValue)
-			__errChk(CDotNetGetArrayElements(
-				__returnValue__, 
-				CDOTNET_BYTE, 
-				0, 
-				__returnValue));
-		if (__returnValue)
-			__errChk(CDotNetGetArrayLength(
-				__returnValue__, 
-				0, 
-				____returnValueLength));
-	}
-
-
-__Error:
-	if (__returnValue__)
-		CDotNetDiscardHandle(__returnValue__);
-	if (__error < 0) {
-		_CDotNetGenDisposeArray(
-			__returnValue, 
-			CDOTNET_BYTE, 
-			1, 
-			____returnValueLength);
-	}
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_NBProtocol__Set__TX_CAN_LEN(
-	unsigned char * TX_CAN_LEN,
-	ssize_t __TX_CAN_LENLength,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
-	unsigned int __parameterTypes[1];
-	void * __parameters[1];
-	CDotNetHandle TX_CAN_LEN__ = 0;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process parameter: TX_CAN_LEN
-	if (TX_CAN_LEN)
-		__errChk(CDotNetCreateArray(
-			CDOTNET_BYTE, 
-			1, 
-			0, 
-			&__TX_CAN_LENLength, 
-			TX_CAN_LEN, 
-			&TX_CAN_LEN__));
-	__parameterTypeNames[0] = "System.Byte[]";
-	__parameterTypes[0] = (CDOTNET_BYTE | CDOTNET_ARRAY);
-	__parameters[0] = &TX_CAN_LEN__;
-
-	// Call static member
-	__errChk(CDotNetInvokeGenericStaticMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.NBProtocol", 
-		0, 
-		0, 
-		CDOTNET_SET_FIELD, 
-		"TX_CAN_LEN", 
-		0, 
-		0, 
-		1, 
-		(const char **)__parameterTypeNames, 
-		__parameterTypes, 
-		__parameters, 
-		0, 
-		0, 
-		__exception));
-
-
-__Error:
-	if (TX_CAN_LEN__)
-		CDotNetDiscardHandle(TX_CAN_LEN__);
-	return __error;
-}
-
-
-// Type: Alv.NarrowBand.DataPoint
-int CVIFUNC Alv_NarrowBand_DataPoint__Create(
-	Alv_NarrowBand_DataPoint * __instance,
-	char * name,
-	unsigned short point,
-	Alv_NarrowBand_PointTypes type,
-	unsigned short associated,
-	float scaling,
-	char * category,
-	int readOnly,
-	int secure,
-	float lower,
-	float upper,
-	int dynamic,
-	char * units,
-	char * enumtype,
-	Alv_NarrowBand_PointFormats format,
-	char * description,
-	char * calibration,
-	unsigned short securitygroup,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	char * __parameterTypeNames[17] = {0};
-	unsigned int __parameterTypes[17];
-	void * __parameters[17];
-	CDotNetHandle type__ = 0;
-	CDotNetHandle format__ = 0;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	*__instance = 0;
-
-	// Pre-process parameter: name
-	__parameterTypeNames[0] = "System.String";
-	__parameterTypes[0] = (CDOTNET_STRING);
-	__parameters[0] = &name;
-
-	// Pre-process parameter: point
-	__parameterTypeNames[1] = "System.UInt16";
-	__parameterTypes[1] = (CDOTNET_UINT16);
-	__parameters[1] = &point;
-
-	// Pre-process parameter: type
-	__errChk(Alv_NarrowBand_PointTypes__Create(
-		&type, 
-		&type__, 
-		__exception));
-	__parameterTypeNames[2] = "Alv.NarrowBand.PointTypes";
-	__parameterTypes[2] = (CDOTNET_ENUM);
-	__parameters[2] = &type__;
-
-	// Pre-process parameter: associated
-	__parameterTypeNames[3] = "System.UInt16";
-	__parameterTypes[3] = (CDOTNET_UINT16);
-	__parameters[3] = &associated;
-
-	// Pre-process parameter: scaling
-	__parameterTypeNames[4] = "System.Single";
-	__parameterTypes[4] = (CDOTNET_SINGLE);
-	__parameters[4] = &scaling;
-
-	// Pre-process parameter: category
-	__parameterTypeNames[5] = "System.String";
-	__parameterTypes[5] = (CDOTNET_STRING);
-	__parameters[5] = &category;
-
-	// Pre-process parameter: readOnly
-	__parameterTypeNames[6] = "System.Boolean";
-	__parameterTypes[6] = (CDOTNET_BOOLEAN);
-	__parameters[6] = &readOnly;
-
-	// Pre-process parameter: secure
-	__parameterTypeNames[7] = "System.Boolean";
-	__parameterTypes[7] = (CDOTNET_BOOLEAN);
-	__parameters[7] = &secure;
-
-	// Pre-process parameter: lower
-	__parameterTypeNames[8] = "System.Single";
-	__parameterTypes[8] = (CDOTNET_SINGLE);
-	__parameters[8] = &lower;
-
-	// Pre-process parameter: upper
-	__parameterTypeNames[9] = "System.Single";
-	__parameterTypes[9] = (CDOTNET_SINGLE);
-	__parameters[9] = &upper;
-
-	// Pre-process parameter: dynamic
-	__parameterTypeNames[10] = "System.Boolean";
-	__parameterTypes[10] = (CDOTNET_BOOLEAN);
-	__parameters[10] = &dynamic;
-
-	// Pre-process parameter: units
-	__parameterTypeNames[11] = "System.String";
-	__parameterTypes[11] = (CDOTNET_STRING);
-	__parameters[11] = &units;
-
-	// Pre-process parameter: enumtype
-	__parameterTypeNames[12] = "System.String";
-	__parameterTypes[12] = (CDOTNET_STRING);
-	__parameters[12] = &enumtype;
-
-	// Pre-process parameter: format
-	__errChk(Alv_NarrowBand_PointFormats__Create(
-		&format, 
-		&format__, 
-		__exception));
-	__parameterTypeNames[13] = "Alv.NarrowBand.PointFormats";
-	__parameterTypes[13] = (CDOTNET_ENUM);
-	__parameters[13] = &format__;
-
-	// Pre-process parameter: description
-	__parameterTypeNames[14] = "System.String";
-	__parameterTypes[14] = (CDOTNET_STRING);
-	__parameters[14] = &description;
-
-	// Pre-process parameter: calibration
-	__parameterTypeNames[15] = "System.String";
-	__parameterTypes[15] = (CDOTNET_STRING);
-	__parameters[15] = &calibration;
-
-	// Pre-process parameter: securitygroup
-	__parameterTypeNames[16] = "System.UInt16";
-	__parameterTypes[16] = (CDOTNET_UINT16);
-	__parameters[16] = &securitygroup;
-
-	// Call constructor
-	__errChk(CDotNetCreateGenericInstance(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DataPoint", 
-		0, 
-		0, 
-		__instance, 
-		17, 
-		(const char **)__parameterTypeNames, 
-		__parameterTypes, 
-		__parameters, 
-		__exception));
-
-
-__Error:
-	if (type__)
-		CDotNetDiscardHandle(type__);
-	if (format__)
-		CDotNetDiscardHandle(format__);
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DataPoint_Get_Length(
-	Alv_NarrowBand_DataPoint __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_INT32;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DataPoint", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Length", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DataPoint_Get_Name(
-	Alv_NarrowBand_DataPoint __instance,
-	char ** __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-	if (__returnValue)
-		*__returnValue = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_STRING;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DataPoint", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Name", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	if (__error < 0) {
-		_CDotNetGenDisposeScalar(
-			__returnValue, 
-			CDOTNET_STRING);
-	}
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DataPoint_Get_Point(
-	Alv_NarrowBand_DataPoint __instance,
-	unsigned short * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_UINT16;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DataPoint", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Point", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DataPoint_Get_Type(
-	Alv_NarrowBand_DataPoint __instance,
-	Alv_NarrowBand_PointTypes * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	CDotNetHandle __returnValue__ = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_ENUM;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DataPoint", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Type", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		&__returnValue__, 
-		__exception));
-
-	// Post-process return value
-	if (__returnValue)
-		__errChk(CDotNetGetEnumValue(
-			__returnValue__, 
-			__returnValue));
-
-
-__Error:
-	if (__returnValue__)
-		CDotNetDiscardHandle(__returnValue__);
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DataPoint_Get_Associated(
-	Alv_NarrowBand_DataPoint __instance,
-	unsigned short * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_UINT16;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DataPoint", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Associated", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DataPoint_Get_Scaling(
-	Alv_NarrowBand_DataPoint __instance,
-	float * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_SINGLE;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DataPoint", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Scaling", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DataPoint_Get_Category(
-	Alv_NarrowBand_DataPoint __instance,
-	char ** __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-	if (__returnValue)
-		*__returnValue = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_STRING;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DataPoint", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Category", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	if (__error < 0) {
-		_CDotNetGenDisposeScalar(
-			__returnValue, 
-			CDOTNET_STRING);
-	}
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DataPoint_Get_ReadOnly(
-	Alv_NarrowBand_DataPoint __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DataPoint", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"ReadOnly", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DataPoint_Get_Secure(
-	Alv_NarrowBand_DataPoint __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DataPoint", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Secure", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DataPoint_Get_StillSecure(
-	Alv_NarrowBand_DataPoint __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DataPoint", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"StillSecure", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DataPoint_Set_StillSecure(
-	Alv_NarrowBand_DataPoint __instance,
-	int value,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
-	unsigned int __parameterTypes[1];
-	void * __parameters[1];
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process parameter: value
-	__parameterTypeNames[0] = "System.Boolean";
-	__parameterTypes[0] = (CDOTNET_BOOLEAN);
-	__parameters[0] = &value;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DataPoint", 
-		__instance, 
-		CDOTNET_SET_PROPERTY, 
-		"StillSecure", 
-		0, 
-		0, 
-		1, 
-		(const char **)__parameterTypeNames, 
-		__parameterTypes, 
-		__parameters, 
-		0, 
-		0, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DataPoint_Get_Lower(
-	Alv_NarrowBand_DataPoint __instance,
-	float * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_SINGLE;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DataPoint", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Lower", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DataPoint_Get_Upper(
-	Alv_NarrowBand_DataPoint __instance,
-	float * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_SINGLE;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DataPoint", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Upper", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DataPoint_Get_Dynamic(
-	Alv_NarrowBand_DataPoint __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DataPoint", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Dynamic", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DataPoint_Set_Dynamic(
-	Alv_NarrowBand_DataPoint __instance,
-	int value,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
-	unsigned int __parameterTypes[1];
-	void * __parameters[1];
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process parameter: value
-	__parameterTypeNames[0] = "System.Boolean";
-	__parameterTypes[0] = (CDOTNET_BOOLEAN);
-	__parameters[0] = &value;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DataPoint", 
-		__instance, 
-		CDOTNET_SET_PROPERTY, 
-		"Dynamic", 
-		0, 
-		0, 
-		1, 
-		(const char **)__parameterTypeNames, 
-		__parameterTypes, 
-		__parameters, 
-		0, 
-		0, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DataPoint_Get_Units(
-	Alv_NarrowBand_DataPoint __instance,
-	char ** __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-	if (__returnValue)
-		*__returnValue = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_STRING;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DataPoint", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Units", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	if (__error < 0) {
-		_CDotNetGenDisposeScalar(
-			__returnValue, 
-			CDOTNET_STRING);
-	}
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DataPoint_Get_Format(
-	Alv_NarrowBand_DataPoint __instance,
-	Alv_NarrowBand_PointFormats * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	CDotNetHandle __returnValue__ = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_ENUM;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DataPoint", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Format", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		&__returnValue__, 
-		__exception));
-
-	// Post-process return value
-	if (__returnValue)
-		__errChk(CDotNetGetEnumValue(
-			__returnValue__, 
-			__returnValue));
-
-
-__Error:
-	if (__returnValue__)
-		CDotNetDiscardHandle(__returnValue__);
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DataPoint_Set_Format(
-	Alv_NarrowBand_DataPoint __instance,
-	Alv_NarrowBand_PointFormats value,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
-	unsigned int __parameterTypes[1];
-	void * __parameters[1];
-	CDotNetHandle value__ = 0;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process parameter: value
-	__errChk(Alv_NarrowBand_PointFormats__Create(
-		&value, 
-		&value__, 
-		__exception));
-	__parameterTypeNames[0] = "Alv.NarrowBand.PointFormats";
-	__parameterTypes[0] = (CDOTNET_ENUM);
-	__parameters[0] = &value__;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DataPoint", 
-		__instance, 
-		CDOTNET_SET_PROPERTY, 
-		"Format", 
-		0, 
-		0, 
-		1, 
-		(const char **)__parameterTypeNames, 
-		__parameterTypes, 
-		__parameters, 
-		0, 
-		0, 
-		__exception));
-
-
-__Error:
-	if (value__)
-		CDotNetDiscardHandle(value__);
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DataPoint_Get_FormatOriginal(
-	Alv_NarrowBand_DataPoint __instance,
-	Alv_NarrowBand_PointFormats * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	CDotNetHandle __returnValue__ = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_ENUM;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DataPoint", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"FormatOriginal", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		&__returnValue__, 
-		__exception));
-
-	// Post-process return value
-	if (__returnValue)
-		__errChk(CDotNetGetEnumValue(
-			__returnValue__, 
-			__returnValue));
-
-
-__Error:
-	if (__returnValue__)
-		CDotNetDiscardHandle(__returnValue__);
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DataPoint_Get_Description(
-	Alv_NarrowBand_DataPoint __instance,
-	char ** __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-	if (__returnValue)
-		*__returnValue = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_STRING;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DataPoint", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Description", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	if (__error < 0) {
-		_CDotNetGenDisposeScalar(
-			__returnValue, 
-			CDOTNET_STRING);
-	}
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DataPoint_Get_Calibration(
-	Alv_NarrowBand_DataPoint __instance,
-	char ** __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-	if (__returnValue)
-		*__returnValue = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_STRING;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DataPoint", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Calibration", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	if (__error < 0) {
-		_CDotNetGenDisposeScalar(
-			__returnValue, 
-			CDOTNET_STRING);
-	}
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DataPoint_Get_SecurityGroup(
-	Alv_NarrowBand_DataPoint __instance,
-	unsigned short * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_UINT16;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DataPoint", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"SecurityGroup", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DataPoint_Get_Enum(
-	Alv_NarrowBand_DataPoint __instance,
-	char ** __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-	if (__returnValue)
-		*__returnValue = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_STRING;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DataPoint", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Enum", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	if (__error < 0) {
-		_CDotNetGenDisposeScalar(
-			__returnValue, 
-			CDOTNET_STRING);
-	}
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DataPoint_Get_Bytes(
-	Alv_NarrowBand_DataPoint __instance,
-	unsigned char ** __returnValue,
-	ssize_t * ____returnValueLength,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	CDotNetHandle __returnValue__ = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-	if (__returnValue)
-		*__returnValue = 0;
-	if (__returnValue)
-		*____returnValueLength = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BYTE | CDOTNET_ARRAY;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DataPoint", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Bytes", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		&__returnValue__, 
-		__exception));
-
-	// Post-process return value
-	if (__returnValue__) {
-		if (__returnValue)
-			__errChk(CDotNetGetArrayElements(
-				__returnValue__, 
-				CDOTNET_BYTE, 
-				0, 
-				__returnValue));
-		if (__returnValue)
-			__errChk(CDotNetGetArrayLength(
-				__returnValue__, 
-				0, 
-				____returnValueLength));
-	}
-
-
-__Error:
-	if (__returnValue__)
-		CDotNetDiscardHandle(__returnValue__);
-	if (__error < 0) {
-		_CDotNetGenDisposeArray(
-			__returnValue, 
-			CDOTNET_BYTE, 
-			1, 
-			____returnValueLength);
-	}
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DataPoint_Set_Bytes(
-	Alv_NarrowBand_DataPoint __instance,
-	unsigned char * value,
-	ssize_t __valueLength,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
-	unsigned int __parameterTypes[1];
-	void * __parameters[1];
-	CDotNetHandle value__ = 0;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process parameter: value
-	if (value)
-		__errChk(CDotNetCreateArray(
-			CDOTNET_BYTE, 
-			1, 
-			0, 
-			&__valueLength, 
-			value, 
-			&value__));
-	__parameterTypeNames[0] = "System.Byte[]";
-	__parameterTypes[0] = (CDOTNET_BYTE | CDOTNET_ARRAY);
-	__parameters[0] = &value__;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DataPoint", 
-		__instance, 
-		CDOTNET_SET_PROPERTY, 
-		"Bytes", 
-		0, 
-		0, 
-		1, 
-		(const char **)__parameterTypeNames, 
-		__parameterTypes, 
-		__parameters, 
-		0, 
-		0, 
-		__exception));
-
-
-__Error:
-	if (value__)
-		CDotNetDiscardHandle(value__);
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DataPoint_Get_DataDisplayStandard(
-	Alv_NarrowBand_DataPoint __instance,
-	char ** __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-	if (__returnValue)
-		*__returnValue = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_STRING;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DataPoint", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"DataDisplayStandard", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	if (__error < 0) {
-		_CDotNetGenDisposeScalar(
-			__returnValue, 
-			CDOTNET_STRING);
-	}
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DataPoint_Get_Data(
-	Alv_NarrowBand_DataPoint __instance,
-	char ** __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-	if (__returnValue)
-		*__returnValue = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_STRING;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DataPoint", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Data", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	if (__error < 0) {
-		_CDotNetGenDisposeScalar(
-			__returnValue, 
-			CDOTNET_STRING);
-	}
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DataPoint_Set_Data(
-	Alv_NarrowBand_DataPoint __instance,
-	char * value,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
-	unsigned int __parameterTypes[1];
-	void * __parameters[1];
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process parameter: value
-	__parameterTypeNames[0] = "System.String";
-	__parameterTypes[0] = (CDOTNET_STRING);
-	__parameters[0] = &value;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DataPoint", 
-		__instance, 
-		CDOTNET_SET_PROPERTY, 
-		"Data", 
-		0, 
-		0, 
-		1, 
-		(const char **)__parameterTypeNames, 
-		__parameterTypes, 
-		__parameters, 
-		0, 
-		0, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DataPoint_Get_Changed(
-	Alv_NarrowBand_DataPoint __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DataPoint", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Changed", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DataPoint_Set_Changed(
-	Alv_NarrowBand_DataPoint __instance,
-	int value,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
-	unsigned int __parameterTypes[1];
-	void * __parameters[1];
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process parameter: value
-	__parameterTypeNames[0] = "System.Boolean";
-	__parameterTypes[0] = (CDOTNET_BOOLEAN);
-	__parameters[0] = &value;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DataPoint", 
-		__instance, 
-		CDOTNET_SET_PROPERTY, 
-		"Changed", 
-		0, 
-		0, 
-		1, 
-		(const char **)__parameterTypeNames, 
-		__parameterTypes, 
-		__parameters, 
-		0, 
-		0, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DataPoint_Get_Status(
-	Alv_NarrowBand_DataPoint __instance,
-	Alv_NarrowBand_NBProtocol_Status * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	CDotNetHandle __returnValue__ = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_ENUM;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DataPoint", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Status", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		&__returnValue__, 
-		__exception));
-
-	// Post-process return value
-	if (__returnValue)
-		__errChk(CDotNetGetEnumValue(
-			__returnValue__, 
-			__returnValue));
-
-
-__Error:
-	if (__returnValue__)
-		CDotNetDiscardHandle(__returnValue__);
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DataPoint_Set_Status(
-	Alv_NarrowBand_DataPoint __instance,
-	Alv_NarrowBand_NBProtocol_Status value,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
-	unsigned int __parameterTypes[1];
-	void * __parameters[1];
-	CDotNetHandle value__ = 0;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process parameter: value
-	__errChk(Alv_NarrowBand_NBProtocol_Status__Create(
-		&value, 
-		&value__, 
-		__exception));
-	__parameterTypeNames[0] = "Alv.NarrowBand.NBProtocol+Status";
-	__parameterTypes[0] = (CDOTNET_ENUM);
-	__parameters[0] = &value__;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DataPoint", 
-		__instance, 
-		CDOTNET_SET_PROPERTY, 
-		"Status", 
-		0, 
-		0, 
-		1, 
-		(const char **)__parameterTypeNames, 
-		__parameterTypes, 
-		__parameters, 
-		0, 
-		0, 
-		__exception));
-
-
-__Error:
-	if (value__)
-		CDotNetDiscardHandle(value__);
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DataPoint_Get_EnumList(
-	Alv_NarrowBand_DataPoint __instance,
-	Alv_NarrowBand_Enumeration * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-	if (__returnValue)
-		*__returnValue = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_OBJECT;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DataPoint", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"EnumList", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	if (__error < 0) {
-		_CDotNetGenDisposeScalar(
-			__returnValue, 
-			CDOTNET_OBJECT);
-	}
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DataPoint_Set_EnumList(
-	Alv_NarrowBand_DataPoint __instance,
-	Alv_NarrowBand_Enumeration value,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
-	unsigned int __parameterTypes[1];
-	void * __parameters[1];
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process parameter: value
-	__parameterTypeNames[0] = "Alv.NarrowBand.Enumeration";
-	__parameterTypes[0] = (CDOTNET_OBJECT);
-	__parameters[0] = &value;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DataPoint", 
-		__instance, 
-		CDOTNET_SET_PROPERTY, 
-		"EnumList", 
-		0, 
-		0, 
-		1, 
-		(const char **)__parameterTypeNames, 
-		__parameterTypes, 
-		__parameters, 
-		0, 
-		0, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DataPoint_Get_Row(
-	Alv_NarrowBand_DataPoint __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_INT32;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DataPoint", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Row", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DataPoint_Set_Row(
-	Alv_NarrowBand_DataPoint __instance,
-	int value,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
-	unsigned int __parameterTypes[1];
-	void * __parameters[1];
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process parameter: value
-	__parameterTypeNames[0] = "System.Int32";
-	__parameterTypes[0] = (CDOTNET_INT32);
-	__parameters[0] = &value;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DataPoint", 
-		__instance, 
-		CDOTNET_SET_PROPERTY, 
-		"Row", 
-		0, 
-		0, 
-		1, 
-		(const char **)__parameterTypeNames, 
-		__parameterTypes, 
-		__parameters, 
-		0, 
-		0, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DataPoint_Get_Valid(
-	Alv_NarrowBand_DataPoint __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DataPoint", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Valid", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DataPoint_Set_Valid(
-	Alv_NarrowBand_DataPoint __instance,
-	int value,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
-	unsigned int __parameterTypes[1];
-	void * __parameters[1];
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process parameter: value
-	__parameterTypeNames[0] = "System.Boolean";
-	__parameterTypes[0] = (CDOTNET_BOOLEAN);
-	__parameters[0] = &value;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DataPoint", 
-		__instance, 
-		CDOTNET_SET_PROPERTY, 
-		"Valid", 
-		0, 
-		0, 
-		1, 
-		(const char **)__parameterTypeNames, 
-		__parameterTypes, 
-		__parameters, 
-		0, 
-		0, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DataPoint_DataBytes(
-	Alv_NarrowBand_DataPoint __instance,
-	char * newdata,
-	unsigned char ** __returnValue,
-	ssize_t * ____returnValueLength,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
-	unsigned int __parameterTypes[1];
-	void * __parameters[1];
-	CDotNetHandle __returnValue__ = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-	if (__returnValue)
-		*__returnValue = 0;
-	if (__returnValue)
-		*____returnValueLength = 0;
-
-
-	// Pre-process parameter: newdata
-	__parameterTypeNames[0] = "System.String";
-	__parameterTypes[0] = (CDOTNET_STRING);
-	__parameters[0] = &newdata;
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BYTE | CDOTNET_ARRAY;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DataPoint", 
-		__instance, 
-		CDOTNET_CALL_METHOD, 
-		"DataBytes", 
-		0, 
-		0, 
-		1, 
-		(const char **)__parameterTypeNames, 
-		__parameterTypes, 
-		__parameters, 
-		&__returnValueTypeId, 
-		&__returnValue__, 
-		__exception));
-
-	// Post-process return value
-	if (__returnValue__) {
-		if (__returnValue)
-			__errChk(CDotNetGetArrayElements(
-				__returnValue__, 
-				CDOTNET_BYTE, 
-				0, 
-				__returnValue));
-		if (__returnValue)
-			__errChk(CDotNetGetArrayLength(
-				__returnValue__, 
-				0, 
-				____returnValueLength));
-	}
-
-
-__Error:
-	if (__returnValue__)
-		CDotNetDiscardHandle(__returnValue__);
-	if (__error < 0) {
-		_CDotNetGenDisposeArray(
-			__returnValue, 
-			CDOTNET_BYTE, 
-			1, 
-			____returnValueLength);
-	}
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DataPoint_ToString(
-	Alv_NarrowBand_DataPoint __instance,
-	char ** __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-	if (__returnValue)
-		*__returnValue = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_STRING;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DataPoint", 
-		__instance, 
-		CDOTNET_CALL_METHOD, 
-		"ToString", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	if (__error < 0) {
-		_CDotNetGenDisposeScalar(
-			__returnValue, 
-			CDOTNET_STRING);
-	}
-	return __error;
-}
-
-
-// Type: Alv.CAN.SoftingCan
-int CVIFUNC Alv_CAN_SoftingCan__Create(
-	Alv_CAN_SoftingCan * __instance,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	*__instance = 0;
-
-	// Call constructor
-	__errChk(CDotNetCreateGenericInstance(
-		__assemblyHandle, 
-		"Alv.CAN.SoftingCan", 
-		0, 
-		0, 
-		__instance, 
-		0, 
-		0, 
-		0, 
-		0, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_CAN_SoftingCan_Get_DeviceType(
-	Alv_CAN_SoftingCan __instance,
-	Alv_CAN_CanDevices * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	CDotNetHandle __returnValue__ = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_ENUM;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.CAN.SoftingCan", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"DeviceType", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		&__returnValue__, 
-		__exception));
-
-	// Post-process return value
-	if (__returnValue)
-		__errChk(CDotNetGetEnumValue(
-			__returnValue__, 
-			__returnValue));
-
-
-__Error:
-	if (__returnValue__)
-		CDotNetDiscardHandle(__returnValue__);
-	return __error;
-}
-
-int CVIFUNC Alv_CAN_SoftingCan_Get_BusMode(
-	Alv_CAN_SoftingCan __instance,
-	Alv_CAN_CanBusModes * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	CDotNetHandle __returnValue__ = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_ENUM;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.CAN.SoftingCan", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"BusMode", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		&__returnValue__, 
-		__exception));
-
-	// Post-process return value
-	if (__returnValue)
-		__errChk(CDotNetGetEnumValue(
-			__returnValue__, 
-			__returnValue));
-
-
-__Error:
-	if (__returnValue__)
-		CDotNetDiscardHandle(__returnValue__);
-	return __error;
-}
-
-int CVIFUNC Alv_CAN_SoftingCan_Set_BusMode(
-	Alv_CAN_SoftingCan __instance,
-	Alv_CAN_CanBusModes value,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
-	unsigned int __parameterTypes[1];
-	void * __parameters[1];
-	CDotNetHandle value__ = 0;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process parameter: value
-	__errChk(Alv_CAN_CanBusModes__Create(
-		&value, 
-		&value__, 
-		__exception));
-	__parameterTypeNames[0] = "Alv.CAN.CanBusModes";
-	__parameterTypes[0] = (CDOTNET_ENUM);
-	__parameters[0] = &value__;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.CAN.SoftingCan", 
-		__instance, 
-		CDOTNET_SET_PROPERTY, 
-		"BusMode", 
-		0, 
-		0, 
-		1, 
-		(const char **)__parameterTypeNames, 
-		__parameterTypes, 
-		__parameters, 
-		0, 
-		0, 
-		__exception));
-
-
-__Error:
-	if (value__)
-		CDotNetDiscardHandle(value__);
-	return __error;
-}
-
-int CVIFUNC Alv_CAN_SoftingCan_Get_WakeupMode(
-	Alv_CAN_SoftingCan __instance,
-	Alv_CAN_CanWakeupModes * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	CDotNetHandle __returnValue__ = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_ENUM;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.CAN.SoftingCan", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"WakeupMode", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		&__returnValue__, 
-		__exception));
-
-	// Post-process return value
-	if (__returnValue)
-		__errChk(CDotNetGetEnumValue(
-			__returnValue__, 
-			__returnValue));
-
-
-__Error:
-	if (__returnValue__)
-		CDotNetDiscardHandle(__returnValue__);
-	return __error;
-}
-
-int CVIFUNC Alv_CAN_SoftingCan_Set_WakeupMode(
-	Alv_CAN_SoftingCan __instance,
-	Alv_CAN_CanWakeupModes value,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
-	unsigned int __parameterTypes[1];
-	void * __parameters[1];
-	CDotNetHandle value__ = 0;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process parameter: value
-	__errChk(Alv_CAN_CanWakeupModes__Create(
-		&value, 
-		&value__, 
-		__exception));
-	__parameterTypeNames[0] = "Alv.CAN.CanWakeupModes";
-	__parameterTypes[0] = (CDOTNET_ENUM);
-	__parameters[0] = &value__;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.CAN.SoftingCan", 
-		__instance, 
-		CDOTNET_SET_PROPERTY, 
-		"WakeupMode", 
-		0, 
-		0, 
-		1, 
-		(const char **)__parameterTypeNames, 
-		__parameterTypes, 
-		__parameters, 
-		0, 
-		0, 
-		__exception));
-
-
-__Error:
-	if (value__)
-		CDotNetDiscardHandle(value__);
-	return __error;
-}
-
-int CVIFUNC Alv_CAN_SoftingCan_Get_BaudRate(
-	Alv_CAN_SoftingCan __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_INT32;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.CAN.SoftingCan", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"BaudRate", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_CAN_SoftingCan_Set_BaudRate(
-	Alv_CAN_SoftingCan __instance,
-	int value,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
-	unsigned int __parameterTypes[1];
-	void * __parameters[1];
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process parameter: value
-	__parameterTypeNames[0] = "System.Int32";
-	__parameterTypes[0] = (CDOTNET_INT32);
-	__parameters[0] = &value;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.CAN.SoftingCan", 
-		__instance, 
-		CDOTNET_SET_PROPERTY, 
-		"BaudRate", 
-		0, 
-		0, 
-		1, 
-		(const char **)__parameterTypeNames, 
-		__parameterTypes, 
-		__parameters, 
-		0, 
-		0, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_CAN_SoftingCan_Get_DriverID(
-	Alv_CAN_SoftingCan __instance,
-	char ** __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-	if (__returnValue)
-		*__returnValue = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_STRING;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.CAN.SoftingCan", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"DriverID", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	if (__error < 0) {
-		_CDotNetGenDisposeScalar(
-			__returnValue, 
-			CDOTNET_STRING);
-	}
-	return __error;
-}
-
-int CVIFUNC Alv_CAN_SoftingCan_Set_DriverID(
-	Alv_CAN_SoftingCan __instance,
-	char * value,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
-	unsigned int __parameterTypes[1];
-	void * __parameters[1];
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process parameter: value
-	__parameterTypeNames[0] = "System.String";
-	__parameterTypes[0] = (CDOTNET_STRING);
-	__parameters[0] = &value;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.CAN.SoftingCan", 
-		__instance, 
-		CDOTNET_SET_PROPERTY, 
-		"DriverID", 
-		0, 
-		0, 
-		1, 
-		(const char **)__parameterTypeNames, 
-		__parameterTypes, 
-		__parameters, 
-		0, 
-		0, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_CAN_SoftingCan_Get_ClientID(
-	Alv_CAN_SoftingCan __instance,
-	char ** __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-	if (__returnValue)
-		*__returnValue = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_STRING;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.CAN.SoftingCan", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"ClientID", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	if (__error < 0) {
-		_CDotNetGenDisposeScalar(
-			__returnValue, 
-			CDOTNET_STRING);
-	}
-	return __error;
-}
-
-int CVIFUNC Alv_CAN_SoftingCan_Set_ClientID(
-	Alv_CAN_SoftingCan __instance,
-	char * value,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
-	unsigned int __parameterTypes[1];
-	void * __parameters[1];
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process parameter: value
-	__parameterTypeNames[0] = "System.String";
-	__parameterTypes[0] = (CDOTNET_STRING);
-	__parameters[0] = &value;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.CAN.SoftingCan", 
-		__instance, 
-		CDOTNET_SET_PROPERTY, 
-		"ClientID", 
-		0, 
-		0, 
-		1, 
-		(const char **)__parameterTypeNames, 
-		__parameterTypes, 
-		__parameters, 
-		0, 
-		0, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_CAN_SoftingCan_Get_ReadTimeout(
-	Alv_CAN_SoftingCan __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_INT32;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.CAN.SoftingCan", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"ReadTimeout", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_CAN_SoftingCan_Set_ReadTimeout(
-	Alv_CAN_SoftingCan __instance,
-	int value,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
-	unsigned int __parameterTypes[1];
-	void * __parameters[1];
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process parameter: value
-	__parameterTypeNames[0] = "System.Int32";
-	__parameterTypes[0] = (CDOTNET_INT32);
-	__parameters[0] = &value;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.CAN.SoftingCan", 
-		__instance, 
-		CDOTNET_SET_PROPERTY, 
-		"ReadTimeout", 
-		0, 
-		0, 
-		1, 
-		(const char **)__parameterTypeNames, 
-		__parameterTypes, 
-		__parameters, 
-		0, 
-		0, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_CAN_SoftingCan_Get_WriteTimeout(
-	Alv_CAN_SoftingCan __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_INT32;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.CAN.SoftingCan", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"WriteTimeout", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_CAN_SoftingCan_Set_WriteTimeout(
-	Alv_CAN_SoftingCan __instance,
-	int value,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
-	unsigned int __parameterTypes[1];
-	void * __parameters[1];
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process parameter: value
-	__parameterTypeNames[0] = "System.Int32";
-	__parameterTypes[0] = (CDOTNET_INT32);
-	__parameters[0] = &value;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.CAN.SoftingCan", 
-		__instance, 
-		CDOTNET_SET_PROPERTY, 
-		"WriteTimeout", 
-		0, 
-		0, 
-		1, 
-		(const char **)__parameterTypeNames, 
-		__parameterTypes, 
-		__parameters, 
-		0, 
-		0, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_CAN_SoftingCan_Get_Error(
-	Alv_CAN_SoftingCan __instance,
-	char ** __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-	if (__returnValue)
-		*__returnValue = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_STRING;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.CAN.SoftingCan", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Error", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	if (__error < 0) {
-		_CDotNetGenDisposeScalar(
-			__returnValue, 
-			CDOTNET_STRING);
-	}
-	return __error;
-}
-
-int CVIFUNC Alv_CAN_SoftingCan_Connect(
-	Alv_CAN_SoftingCan __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.CAN.SoftingCan", 
-		__instance, 
-		CDOTNET_CALL_METHOD, 
-		"Connect", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_CAN_SoftingCan_Disconnect(
-	Alv_CAN_SoftingCan __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.CAN.SoftingCan", 
-		__instance, 
-		CDOTNET_CALL_METHOD, 
-		"Disconnect", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_CAN_SoftingCan_Clear(
-	Alv_CAN_SoftingCan __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.CAN.SoftingCan", 
-		__instance, 
-		CDOTNET_CALL_METHOD, 
-		"Clear", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_CAN_SoftingCan_Read(
-	Alv_CAN_SoftingCan __instance,
-	Alv_CAN_CanMsg * msg,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
-	unsigned int __parameterTypes[1];
-	void * __parameters[1];
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process parameter: msg
-	__parameterTypeNames[0] = "Alv.CAN.CanMsg&";
-	__parameterTypes[0] = (CDOTNET_STRUCT | CDOTNET_REF);
-	__parameters[0] = msg;
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.CAN.SoftingCan", 
-		__instance, 
-		CDOTNET_CALL_METHOD, 
-		"Read", 
-		0, 
-		0, 
-		1, 
-		(const char **)__parameterTypeNames, 
-		__parameterTypes, 
-		__parameters, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	if (__error < 0) {
-		_CDotNetGenDisposeScalar(
-			msg, 
-			CDOTNET_STRUCT);
-	}
-	return __error;
-}
-
-int CVIFUNC Alv_CAN_SoftingCan_Write(
-	Alv_CAN_SoftingCan __instance,
-	Alv_CAN_CanMsg * msg,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
-	unsigned int __parameterTypes[1];
-	void * __parameters[1];
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process parameter: msg
-	__parameterTypeNames[0] = "Alv.CAN.CanMsg&";
-	__parameterTypes[0] = (CDOTNET_STRUCT | CDOTNET_REF);
-	__parameters[0] = msg;
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.CAN.SoftingCan", 
-		__instance, 
-		CDOTNET_CALL_METHOD, 
-		"Write", 
-		0, 
-		0, 
-		1, 
-		(const char **)__parameterTypeNames, 
-		__parameterTypes, 
-		__parameters, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	if (__error < 0) {
-		_CDotNetGenDisposeScalar(
-			msg, 
-			CDOTNET_STRUCT);
-	}
-	return __error;
-}
-
-
-// Type: Alv.NarrowBand.Enumeration
-int CVIFUNC Alv_NarrowBand_Enumeration__Create(
-	Alv_NarrowBand_Enumeration * __instance,
-	char * type,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
-	unsigned int __parameterTypes[1];
-	void * __parameters[1];
-
-	if (__exception)
-		*__exception = 0;
-
-
-	*__instance = 0;
-
-	// Pre-process parameter: type
-	__parameterTypeNames[0] = "System.String";
-	__parameterTypes[0] = (CDOTNET_STRING);
-	__parameters[0] = &type;
-
-	// Call constructor
-	__errChk(CDotNetCreateGenericInstance(
-		__assemblyHandle, 
-		"Alv.NarrowBand.Enumeration", 
-		0, 
-		0, 
-		__instance, 
-		1, 
-		(const char **)__parameterTypeNames, 
-		__parameterTypes, 
-		__parameters, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_Enumeration_Get_Type(
-	Alv_NarrowBand_Enumeration __instance,
-	char ** __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-	if (__returnValue)
-		*__returnValue = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_STRING;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.Enumeration", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Type", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	if (__error < 0) {
-		_CDotNetGenDisposeScalar(
-			__returnValue, 
-			CDOTNET_STRING);
-	}
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_Enumeration_Add(
-	Alv_NarrowBand_Enumeration __instance,
-	char * value,
-	char * name,
-	char * display,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	char * __parameterTypeNames[3] = {0};
-	unsigned int __parameterTypes[3];
-	void * __parameters[3];
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process parameter: value
-	__parameterTypeNames[0] = "System.String";
-	__parameterTypes[0] = (CDOTNET_STRING);
-	__parameters[0] = &value;
-
-	// Pre-process parameter: name
-	__parameterTypeNames[1] = "System.String";
-	__parameterTypes[1] = (CDOTNET_STRING);
-	__parameters[1] = &name;
-
-	// Pre-process parameter: display
-	__parameterTypeNames[2] = "System.String";
-	__parameterTypes[2] = (CDOTNET_STRING);
-	__parameters[2] = &display;
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.Enumeration", 
-		__instance, 
-		CDOTNET_CALL_METHOD, 
-		"Add", 
-		0, 
-		0, 
-		3, 
-		(const char **)__parameterTypeNames, 
-		__parameterTypes, 
-		__parameters, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_Enumeration_FindDisplay(
-	Alv_NarrowBand_Enumeration __instance,
-	int value,
-	char ** __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
-	unsigned int __parameterTypes[1];
-	void * __parameters[1];
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-	if (__returnValue)
-		*__returnValue = 0;
-
-
-	// Pre-process parameter: value
-	__parameterTypeNames[0] = "System.Int32";
-	__parameterTypes[0] = (CDOTNET_INT32);
-	__parameters[0] = &value;
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_STRING;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.Enumeration", 
-		__instance, 
-		CDOTNET_CALL_METHOD, 
-		"FindDisplay", 
-		0, 
-		0, 
-		1, 
-		(const char **)__parameterTypeNames, 
-		__parameterTypes, 
-		__parameters, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	if (__error < 0) {
-		_CDotNetGenDisposeScalar(
-			__returnValue, 
-			CDOTNET_STRING);
-	}
-	return __error;
-}
-
-
-// Type: Alv.NarrowBand.DSP_DIAG
-int CVIFUNC Alv_NarrowBand_DSP_DIAG__Create(
-	Alv_NarrowBand_DSP_DIAG * __instance,
-	unsigned char * Data,
-	ssize_t __DataLength,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	char * __parameterTypeNames[1] = {0};
-	unsigned int __parameterTypes[1];
-	void * __parameters[1];
-	CDotNetHandle Data__ = 0;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	*__instance = 0;
-
-	// Pre-process parameter: Data
-	if (Data)
-		__errChk(CDotNetCreateArray(
-			CDOTNET_BYTE, 
-			1, 
-			0, 
-			&__DataLength, 
-			Data, 
-			&Data__));
-	__parameterTypeNames[0] = "System.Byte[]";
-	__parameterTypes[0] = (CDOTNET_BYTE | CDOTNET_ARRAY);
-	__parameters[0] = &Data__;
-
-	// Call constructor
-	__errChk(CDotNetCreateGenericInstance(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DSP_DIAG", 
-		0, 
-		0, 
-		__instance, 
-		1, 
-		(const char **)__parameterTypeNames, 
-		__parameterTypes, 
-		__parameters, 
-		__exception));
-
-
-__Error:
-	if (Data__)
-		CDotNetDiscardHandle(Data__);
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Sensor_Position(
-	Alv_NarrowBand_DSP_DIAG __instance,
-	Alv_NarrowBand_NBProtocol_Position * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	CDotNetHandle __returnValue__ = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_ENUM;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DSP_DIAG", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Sensor_Position", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		&__returnValue__, 
-		__exception));
-
-	// Post-process return value
-	if (__returnValue)
-		__errChk(CDotNetGetEnumValue(
-			__returnValue__, 
-			__returnValue));
-
-
-__Error:
-	if (__returnValue__)
-		CDotNetDiscardHandle(__returnValue__);
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Sensor_Fault(
-	Alv_NarrowBand_DSP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DSP_DIAG", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Sensor_Fault", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Diagnostics_Summary(
-	Alv_NarrowBand_DSP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DSP_DIAG", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Diagnostics_Summary", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_RAM_Fault(
-	Alv_NarrowBand_DSP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DSP_DIAG", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"RAM_Fault", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Flash_Fault(
-	Alv_NarrowBand_DSP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DSP_DIAG", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Flash_Fault", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_EEPROM_Fault(
-	Alv_NarrowBand_DSP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DSP_DIAG", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"EEPROM_Fault", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Power_Fault(
-	Alv_NarrowBand_DSP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DSP_DIAG", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Power_Fault", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Watchdog_Tripped_Warning(
-	Alv_NarrowBand_DSP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DSP_DIAG", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Watchdog_Tripped_Warning", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_A_D_Trigger_Fault(
-	Alv_NarrowBand_DSP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DSP_DIAG", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"A_D_Trigger_Fault", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_PLL_Unable_To_Lock_Fault(
-	Alv_NarrowBand_DSP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DSP_DIAG", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"PLL_Unable_To_Lock_Fault", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Initialization_Fault(
-	Alv_NarrowBand_DSP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DSP_DIAG", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Initialization_Fault", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Radar_Start_Fault(
-	Alv_NarrowBand_DSP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DSP_DIAG", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Radar_Start_Fault", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Stack_Overflow_Warning(
-	Alv_NarrowBand_DSP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DSP_DIAG", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Stack_Overflow_Warning", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Sensor_Over_Temperature_Warning(
-	Alv_NarrowBand_DSP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DSP_DIAG", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Sensor_Over_Temperature_Warning", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_RX_MMIC_Fault(
-	Alv_NarrowBand_DSP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DSP_DIAG", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"RX_MMIC_Fault", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_TX_MMIC_Fault(
-	Alv_NarrowBand_DSP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DSP_DIAG", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"TX_MMIC_Fault", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Busy_Sending_DAQ_Data_Warning(
-	Alv_NarrowBand_DSP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DSP_DIAG", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Busy_Sending_DAQ_Data_Warning", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Bias_Check_Warning(
-	Alv_NarrowBand_DSP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DSP_DIAG", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Bias_Check_Warning", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_A_D_Out_Of_Range_Warning(
-	Alv_NarrowBand_DSP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DSP_DIAG", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"A_D_Out_Of_Range_Warning", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_HP_Not_Responding_Fault(
-	Alv_NarrowBand_DSP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DSP_DIAG", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"HP_Not_Responding_Fault", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_High_Rx_Noise_Warning(
-	Alv_NarrowBand_DSP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DSP_DIAG", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"High_Rx_Noise_Warning", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Phase_Shifter_Warning(
-	Alv_NarrowBand_DSP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DSP_DIAG", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Phase_Shifter_Warning", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_DC_Offset_Out_Of_Range_Warning(
-	Alv_NarrowBand_DSP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DSP_DIAG", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"DC_Offset_Out_Of_Range_Warning", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Slow_Signal_Processing_Warning(
-	Alv_NarrowBand_DSP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DSP_DIAG", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Slow_Signal_Processing_Warning", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Parameters_Warning(
-	Alv_NarrowBand_DSP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DSP_DIAG", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Parameters_Warning", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_I_CAN_Tx_Queue_Full_Warning(
-	Alv_NarrowBand_DSP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DSP_DIAG", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"I_CAN_Tx_Queue_Full_Warning", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Sweep_Discarded_Warning(
-	Alv_NarrowBand_DSP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DSP_DIAG", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Sweep_Discarded_Warning", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Sensor_Blockage_Fault(
-	Alv_NarrowBand_DSP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DSP_DIAG", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Sensor_Blockage_Fault", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Sensor_Interference_Fault(
-	Alv_NarrowBand_DSP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DSP_DIAG", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Sensor_Interference_Fault", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Sensor_Misalignment_Fault(
-	Alv_NarrowBand_DSP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DSP_DIAG", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Sensor_Misalignment_Fault", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Vehicle_Data_Stagnant_Warning(
-	Alv_NarrowBand_DSP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DSP_DIAG", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Vehicle_Data_Stagnant_Warning", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_E_CAN_Tx_Queue_Full_Warning(
-	Alv_NarrowBand_DSP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DSP_DIAG", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"E_CAN_Tx_Queue_Full_Warning", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Config_Block_8_Invalid_Warning(
-	Alv_NarrowBand_DSP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DSP_DIAG", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Config_Block_8_Invalid_Warning", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Config_Block_7_Invalid_Warning(
-	Alv_NarrowBand_DSP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DSP_DIAG", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Config_Block_7_Invalid_Warning", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Config_Block_6_Invalid_Warning(
-	Alv_NarrowBand_DSP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DSP_DIAG", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Config_Block_6_Invalid_Warning", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Config_Block_5_Invalid_Warning(
-	Alv_NarrowBand_DSP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DSP_DIAG", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Config_Block_5_Invalid_Warning", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Config_Block_4_Invalid_Warning(
-	Alv_NarrowBand_DSP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DSP_DIAG", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Config_Block_4_Invalid_Warning", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Config_Block_3_Invalid_Warning(
-	Alv_NarrowBand_DSP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DSP_DIAG", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Config_Block_3_Invalid_Warning", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Config_Block_2_Invalid_Warning(
-	Alv_NarrowBand_DSP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DSP_DIAG", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Config_Block_2_Invalid_Warning", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Config_Block_1_Invalid_Warning(
-	Alv_NarrowBand_DSP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DSP_DIAG", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Config_Block_1_Invalid_Warning", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Blockage_Warning(
-	Alv_NarrowBand_DSP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DSP_DIAG", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Blockage_Warning", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
-	return __error;
-}
-
-int CVIFUNC Alv_NarrowBand_DSP_DIAG_Get_Incompatible_Hardware_Fault(
-	Alv_NarrowBand_DSP_DIAG __instance,
-	int * __returnValue,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int __returnValueTypeId;
-
-	if (__exception)
-		*__exception = 0;
-
-
-	// Pre-process return value
-	__returnValueTypeId = CDOTNET_BOOLEAN;
-
-	// Call instance member
-	__errChk(CDotNetInvokeGenericMember(
-		__assemblyHandle, 
-		"Alv.NarrowBand.DSP_DIAG", 
-		__instance, 
-		CDOTNET_GET_PROPERTY, 
-		"Incompatible_Hardware_Fault", 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		0, 
-		&__returnValueTypeId, 
-		__returnValue, 
-		__exception));
-
-
-__Error:
 	return __error;
 }
 
@@ -15796,6 +17175,74 @@ __Error:
 
 
 // Internal functions
+static int CVIFUNC Alv_NarrowBand_PointTypes__Create(
+	Alv_NarrowBand_PointTypes * value,
+	CDotNetHandle * handle,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int enumType = CDOTNET_INT32;
+	CDotNetAssemblyHandle assembly = 0;
+
+	if (__exception)
+		*__exception = 0;
+
+	*handle = 0;
+
+	__errChk(CDotNetLoadAssembly(
+		__assemblyName, 
+		&assembly));
+
+	__errChk(CDotNetCreateInstance(
+		assembly, 
+		"Alv.NarrowBand.PointTypes", 
+		handle, 
+		1, 
+		&enumType, 
+		(void **)&value, 
+		__exception));
+
+
+__Error:
+	if (assembly)
+		CDotNetDiscardAssemblyHandle(assembly);
+	return __error;
+}
+
+static int CVIFUNC Alv_NarrowBand_PointFormats__Create(
+	Alv_NarrowBand_PointFormats * value,
+	CDotNetHandle * handle,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int enumType = CDOTNET_INT32;
+	CDotNetAssemblyHandle assembly = 0;
+
+	if (__exception)
+		*__exception = 0;
+
+	*handle = 0;
+
+	__errChk(CDotNetLoadAssembly(
+		__assemblyName, 
+		&assembly));
+
+	__errChk(CDotNetCreateInstance(
+		assembly, 
+		"Alv.NarrowBand.PointFormats", 
+		handle, 
+		1, 
+		&enumType, 
+		(void **)&value, 
+		__exception));
+
+
+__Error:
+	if (assembly)
+		CDotNetDiscardAssemblyHandle(assembly);
+	return __error;
+}
+
 static int CVIFUNC Alv_NarrowBand_NBProtocol_Status__Create(
 	Alv_NarrowBand_NBProtocol_Status * value,
 	CDotNetHandle * handle,
@@ -15885,6 +17332,40 @@ static int CVIFUNC Alv_CAN_CanWakeupModes__Create(
 	__errChk(CDotNetCreateInstance(
 		assembly, 
 		"Alv.CAN.CanWakeupModes", 
+		handle, 
+		1, 
+		&enumType, 
+		(void **)&value, 
+		__exception));
+
+
+__Error:
+	if (assembly)
+		CDotNetDiscardAssemblyHandle(assembly);
+	return __error;
+}
+
+static int CVIFUNC Alv_NarrowBand_NBProtocol_GearPosition__Create(
+	Alv_NarrowBand_NBProtocol_GearPosition * value,
+	CDotNetHandle * handle,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int enumType = CDOTNET_INT32;
+	CDotNetAssemblyHandle assembly = 0;
+
+	if (__exception)
+		*__exception = 0;
+
+	*handle = 0;
+
+	__errChk(CDotNetLoadAssembly(
+		__assemblyName, 
+		&assembly));
+
+	__errChk(CDotNetCreateInstance(
+		assembly, 
+		"Alv.NarrowBand.NBProtocol+GearPosition", 
 		handle, 
 		1, 
 		&enumType, 
@@ -16272,40 +17753,6 @@ __Error:
 	return __error;
 }
 
-static int CVIFUNC Alv_NarrowBand_NBProtocol_GearPosition__Create(
-	Alv_NarrowBand_NBProtocol_GearPosition * value,
-	CDotNetHandle * handle,
-	CDotNetHandle * __exception)
-{
-	int __error = 0;
-	unsigned int enumType = CDOTNET_INT32;
-	CDotNetAssemblyHandle assembly = 0;
-
-	if (__exception)
-		*__exception = 0;
-
-	*handle = 0;
-
-	__errChk(CDotNetLoadAssembly(
-		__assemblyName, 
-		&assembly));
-
-	__errChk(CDotNetCreateInstance(
-		assembly, 
-		"Alv.NarrowBand.NBProtocol+GearPosition", 
-		handle, 
-		1, 
-		&enumType, 
-		(void **)&value, 
-		__exception));
-
-
-__Error:
-	if (assembly)
-		CDotNetDiscardAssemblyHandle(assembly);
-	return __error;
-}
-
 static int CVIFUNC Alv_NarrowBand_NBProtocol_ExecuteFunctions__Create(
 	Alv_NarrowBand_NBProtocol_ExecuteFunctions * value,
 	CDotNetHandle * handle,
@@ -16340,8 +17787,8 @@ __Error:
 	return __error;
 }
 
-static int CVIFUNC Alv_NarrowBand_PointTypes__Create(
-	Alv_NarrowBand_PointTypes * value,
+static int CVIFUNC Alv_CAN_CanDevices__Create(
+	Alv_CAN_CanDevices * value,
 	CDotNetHandle * handle,
 	CDotNetHandle * __exception)
 {
@@ -16360,7 +17807,7 @@ static int CVIFUNC Alv_NarrowBand_PointTypes__Create(
 
 	__errChk(CDotNetCreateInstance(
 		assembly, 
-		"Alv.NarrowBand.PointTypes", 
+		"Alv.CAN.CanDevices", 
 		handle, 
 		1, 
 		&enumType, 
@@ -16374,8 +17821,8 @@ __Error:
 	return __error;
 }
 
-static int CVIFUNC Alv_NarrowBand_PointFormats__Create(
-	Alv_NarrowBand_PointFormats * value,
+static int CVIFUNC Alv_NarrowBand_NBProtocol_SensorRx__Create(
+	Alv_NarrowBand_NBProtocol_SensorRx * value,
 	CDotNetHandle * handle,
 	CDotNetHandle * __exception)
 {
@@ -16394,7 +17841,211 @@ static int CVIFUNC Alv_NarrowBand_PointFormats__Create(
 
 	__errChk(CDotNetCreateInstance(
 		assembly, 
-		"Alv.NarrowBand.PointFormats", 
+		"Alv.NarrowBand.NBProtocol+SensorRx", 
+		handle, 
+		1, 
+		&enumType, 
+		(void **)&value, 
+		__exception));
+
+
+__Error:
+	if (assembly)
+		CDotNetDiscardAssemblyHandle(assembly);
+	return __error;
+}
+
+static int CVIFUNC Alv_NarrowBand_NBProtocol_SensorTx__Create(
+	Alv_NarrowBand_NBProtocol_SensorTx * value,
+	CDotNetHandle * handle,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int enumType = CDOTNET_INT32;
+	CDotNetAssemblyHandle assembly = 0;
+
+	if (__exception)
+		*__exception = 0;
+
+	*handle = 0;
+
+	__errChk(CDotNetLoadAssembly(
+		__assemblyName, 
+		&assembly));
+
+	__errChk(CDotNetCreateInstance(
+		assembly, 
+		"Alv.NarrowBand.NBProtocol+SensorTx", 
+		handle, 
+		1, 
+		&enumType, 
+		(void **)&value, 
+		__exception));
+
+
+__Error:
+	if (assembly)
+		CDotNetDiscardAssemblyHandle(assembly);
+	return __error;
+}
+
+static int CVIFUNC Alv_NarrowBand_NBProtocol_Key__Create(
+	Alv_NarrowBand_NBProtocol_Key * value,
+	CDotNetHandle * handle,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int enumType = CDOTNET_UINT32;
+	CDotNetAssemblyHandle assembly = 0;
+
+	if (__exception)
+		*__exception = 0;
+
+	*handle = 0;
+
+	__errChk(CDotNetLoadAssembly(
+		__assemblyName, 
+		&assembly));
+
+	__errChk(CDotNetCreateInstance(
+		assembly, 
+		"Alv.NarrowBand.NBProtocol+Key", 
+		handle, 
+		1, 
+		&enumType, 
+		(void **)&value, 
+		__exception));
+
+
+__Error:
+	if (assembly)
+		CDotNetDiscardAssemblyHandle(assembly);
+	return __error;
+}
+
+static int CVIFUNC Alv_NarrowBand_NBProtocol_EngineeringMode__Create(
+	Alv_NarrowBand_NBProtocol_EngineeringMode * value,
+	CDotNetHandle * handle,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int enumType = CDOTNET_INT32;
+	CDotNetAssemblyHandle assembly = 0;
+
+	if (__exception)
+		*__exception = 0;
+
+	*handle = 0;
+
+	__errChk(CDotNetLoadAssembly(
+		__assemblyName, 
+		&assembly));
+
+	__errChk(CDotNetCreateInstance(
+		assembly, 
+		"Alv.NarrowBand.NBProtocol+EngineeringMode", 
+		handle, 
+		1, 
+		&enumType, 
+		(void **)&value, 
+		__exception));
+
+
+__Error:
+	if (assembly)
+		CDotNetDiscardAssemblyHandle(assembly);
+	return __error;
+}
+
+static int CVIFUNC Alv_NarrowBand_HP_DIAG_HP_States__Create(
+	Alv_NarrowBand_HP_DIAG_HP_States * value,
+	CDotNetHandle * handle,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int enumType = CDOTNET_UINT32;
+	CDotNetAssemblyHandle assembly = 0;
+
+	if (__exception)
+		*__exception = 0;
+
+	*handle = 0;
+
+	__errChk(CDotNetLoadAssembly(
+		__assemblyName, 
+		&assembly));
+
+	__errChk(CDotNetCreateInstance(
+		assembly, 
+		"Alv.NarrowBand.HP_DIAG+HP_States", 
+		handle, 
+		1, 
+		&enumType, 
+		(void **)&value, 
+		__exception));
+
+
+__Error:
+	if (assembly)
+		CDotNetDiscardAssemblyHandle(assembly);
+	return __error;
+}
+
+static int CVIFUNC Alv_NarrowBand_HP_DIAG_HP_Run_Modes__Create(
+	Alv_NarrowBand_HP_DIAG_HP_Run_Modes * value,
+	CDotNetHandle * handle,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int enumType = CDOTNET_UINT32;
+	CDotNetAssemblyHandle assembly = 0;
+
+	if (__exception)
+		*__exception = 0;
+
+	*handle = 0;
+
+	__errChk(CDotNetLoadAssembly(
+		__assemblyName, 
+		&assembly));
+
+	__errChk(CDotNetCreateInstance(
+		assembly, 
+		"Alv.NarrowBand.HP_DIAG+HP_Run_Modes", 
+		handle, 
+		1, 
+		&enumType, 
+		(void **)&value, 
+		__exception));
+
+
+__Error:
+	if (assembly)
+		CDotNetDiscardAssemblyHandle(assembly);
+	return __error;
+}
+
+static int CVIFUNC Alv_NarrowBand_HP_DIAG_DSP_States__Create(
+	Alv_NarrowBand_HP_DIAG_DSP_States * value,
+	CDotNetHandle * handle,
+	CDotNetHandle * __exception)
+{
+	int __error = 0;
+	unsigned int enumType = CDOTNET_UINT32;
+	CDotNetAssemblyHandle assembly = 0;
+
+	if (__exception)
+		*__exception = 0;
+
+	*handle = 0;
+
+	__errChk(CDotNetLoadAssembly(
+		__assemblyName, 
+		&assembly));
+
+	__errChk(CDotNetCreateInstance(
+		assembly, 
+		"Alv.NarrowBand.HP_DIAG+DSP_States", 
 		handle, 
 		1, 
 		&enumType, 

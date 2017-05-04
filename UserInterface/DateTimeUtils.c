@@ -130,8 +130,8 @@ void GetDayOfYear(void)
 void GetWeekOfYear(void)
 {
 	int numWeeks;
-	numWeeks = floor(dt.DDD/7);
-	sprintf(dt.WXX,"W%2i",numWeeks);
+	numWeeks = floor(dt.DDD/7)+1;
+	sprintf(dt.WXX,"W%02i",numWeeks);
 	dt.WW=numWeeks;
 } // end GetWeekOfYear
 

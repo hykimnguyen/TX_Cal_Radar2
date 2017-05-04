@@ -330,6 +330,7 @@ struct SMiscellaneous
 	char ITACSystemID[100];
 	char ITACStationID[100]; 
 	char ITACEnable[100];
+	char CalInitDacHonda[100];
 	char TableRow[100];
 	char TableColumn[100];
 }	Miscellaneous, tempMiscellaneous;

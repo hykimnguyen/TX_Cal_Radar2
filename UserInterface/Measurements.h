@@ -49,7 +49,7 @@ typedef struct
 {
 	int CalNum;
 	int FlavorId;
-	char PartNum[11];
+	char PartNum[256];  //was 11
 	char Recipe[11]; 
 	char Customer[80];
 	char Variant[20];
@@ -72,11 +72,20 @@ char testFirmwareVersion[20];
 #define  NUMBER_OF_TEST_INSTRUMENTS  	3			
 #define  NUMBER_OF_TEST_UNITS			6
 
+
+#define MAX_LENGHT_MEDIAN_ARRAY 	50
+#define INITIAL_DAC_AMP_HONDA		22
+#define INITIAL_DAC_SW_HONDA		4  		
+
+
 RSSpecAn specAn[NUMBER_OF_TEST_INSTRUMENTS];
 
 //static double PathLossdB[NUMBER_OF_TEST_UNITS];
 static double UwbPathLossdB[NUMBER_OF_TEST_UNITS]; 
 static double IsmPathLossdB[NUMBER_OF_TEST_UNITS]; 
+
+double initialDAC_amp[MAX_LENGHT_MEDIAN_ARRAY];
+double initialDAC_sw[MAX_LENGHT_MEDIAN_ARRAY];
 
 
 double CurrentLowLimit;
@@ -156,6 +165,7 @@ int LoadCableLossCompensationFile(void);
 int GetCalibratedTxUwbPower(int phase, ViSession session, int testUnit, int uwbDac, double *power, double *frequency, int *calIsSuccessful, int *calIsCompleted);
 
 int init_eeprom_and_cpld(char *MIS, char *E2P_file, double cpld_timeout_s, int CANport);
+int ArrMedian(double arr[],int NumElements,double *Median);
 
 #ifdef __cplusplus
     }

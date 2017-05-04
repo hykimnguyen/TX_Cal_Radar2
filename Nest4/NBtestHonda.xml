@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Settings>
+  <Test enabled="true">
+    <LogFile value="C:\NB_Project\Main\Nest4\TestLog.txt"></LogFile>
+    <FirPath value="C:\NB_Project\Main\FIR.txt"></FirPath>
+    <StateControl value="false"></StateControl>
+    <LogEngData value="false"></LogEngData>
+    <CommAttempts value="4"></CommAttempts>
+    <KaiserAlpha value="108.5"></KaiserAlpha>
+  </Test>
+  <Coffin enabled="false">
+    <GPIBInterface value="0"></GPIBInterface>
+    <PowerSupplyGPIB value="10"></PowerSupplyGPIB>
+    <ControlPower value="false"></ControlPower>
+    <SensorVoltage value="12.00"></SensorVoltage>
+    <WarmupDelay value="4000"></WarmupDelay>
+    <UsePowerMeter value="false"></UsePowerMeter>
+    <PowerMeterGPIB value="11"></PowerMeterGPIB>
+    <PowerMeterOffset value="0"></PowerMeterOffset>
+    <PowerSamples value="8"></PowerSamples>
+    <RfLength value="11.2"></RfLength>
+    <RangeWindow value="0.4"></RangeWindow>
+    <RangeBin value="3"></RangeBin>
+    <LoadAngle value="90"></LoadAngle>
+    <LinearRange value="-2.0"></LinearRange>
+    <RehomeVelmex value="false"></RehomeVelmex>
+  </Coffin>
+  <TxCal enabled="true">
+    <GPIBInterface value="1"></GPIBInterface>
+    <PowerSupplyGPIB value="12"></PowerSupplyGPIB>
+    <ControlPower value="false"></ControlPower>
+    <SensorVoltage value="12.00"></SensorVoltage>
+    <WarmupDelay value="4000"></WarmupDelay>
+    <AnalyzerGPIB value="22"></AnalyzerGPIB>
+    <Nest1Offset value="0"></Nest1Offset>
+    <Nest2Offset value="0"></Nest2Offset>
+    <Nest3Offset value="0"></Nest3Offset>
+    <Nest4Offset value="0"></Nest4Offset>
+    <PowerOffset value="13.73"></PowerOffset>
+    <Attenuation value="20"></Attenuation>
+    <ReferenceLevel value="16"></ReferenceLevel>
+    <UseSwitch value="false"></UseSwitch>
+    <SwitchGPIB value="27" />
+    <HornDistance value="3.0"></HornDistance>
+  </TxCal>
+</Settings>

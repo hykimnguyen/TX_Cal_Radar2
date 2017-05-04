@@ -1,0 +1,38 @@
+,,,,,6234734 EF A,
+Requirement,Parameter,Unit,Points,SC/CC,Min,Max
+TYPE,,,,,nonGM,
+FILTER_FILE,,,,,long,
+Tx_H_CAL_01,Tx1 BSD Mode Peak CW EIRP,dBm,NA,SC,11.5,12.5
+Tx_H_CAL_02,Tx2 BSD Mode Peak CW EIRP,dBm,NA,SC,None,12.5
+Tx_H_CAL_03,Tx1 RCTA Mode Peak CW EIRP,dBm,NA,SC,11.5,12.5
+Tx_H_CAL_04,Tx2 RCTA Mode Peak CW EIRP,dBm,NA,SC,None,12.5
+Tx_H_CAL_05,Thermistor Cal value,UInt12,1481,SC,0,4095
+Tx_H_CAL_06,Tx1 MMIC Power at Cal,UInt6,1482,SC,NA,NA
+Tx_H_CAL_07,Tx1 MMIC Amp Cal,UInt6,1666,SC,4,27
+Tx_H_CAL_08,Tx1 MMIC Switch Cal,UInt6,1667,SC,4,27
+Tx_H_CAL_09,Tx2 MMIC Amp Cal,UInt6,1668,SC,4,27
+Tx_H_CAL_10,Tx2 MMIC Switch Cal,UInt6,1669,SC,4,27
+Tx_H_CAL_11,Tx2 MMIC Power at Cal,UInt6,1792,SC,NA,NA
+Tx_H_CAL_12,BSD Tx1 MMIC Power at Cal,UInt6,1883,SC,NA,NA
+Tx_H_CAL_13,BSD Tx2 MMIC Power at Cal,UInt6,1884,SC,NA,NA
+Tx_H_CAL_14,BSD Tx1 MMIC Amp Cal,UInt6,1885,SC,NA,NA
+Tx_H_CAL_15,BSD Tx1 MMIC Switch Cal,UInt6,1886,SC,NA,NA
+Tx_H_CAL_16,BSD Tx2 MMIC Amp Cal,UInt6,1887,SC,NA,NA
+Tx_H_CAL_17,BSD Tx2 MMIC Switch Cal,UInt6,1888,SC,NA,NA
+Tx_H_CAL_18,Tx1 Absolute Peak CW EIRP,dBm,NA,CC,None,16
+Tx_H_CAL_19,Tx2 Absolute Peak CW EIRP,dBm,NA,CC,None,16
+Tx_H_CAL_20,LO Switch Gain,UInt6,812-815,CC,NA,NA
+Tx_H_MEAS_01,"Current 13.5V, LED off",mA,NA,SC,250,325
+Tx_H_MEAS_02,Board Temperature,UInt12,Point 46,SC,0,4095
+Tx_H_MEAS_05,BSD Occupied Bandwidth,MHz,NA,CC,None,200
+Tx_H_MEAS_06,RCTA Occupied Bandwidth,MHz,NA,CC,None,200
+Tx_H_MEAS_07,Tx1 CW Leakage,bB,NA,SC,20,None
+Tx_H_MEAS_08,Tx2 CW Leakage,dB,NA,SC,20,None
+Tx_H_MEAS_09,Tx1 Center Frequency,GHz,NA,SC,24.2,24.202
+Tx_H_MEAS_10,Tx2 Center Frequency,GHz,NA,SC,24.2,24.202
+Tx_H_MEAS_11,Squint Beam Peak CW EIRP,dBm,NA,SC,None,12.5
+Tx_H_MEAS_12,Squint Beam Peak CW EIRP,dBm,NA,SC,None,13.5
+HP_APP,,,,,8.12.0.27.1,None
+HP_BOOT,,,,,8.3.0.27.1,None
+DSP_APP,,,,,2.2.3.0.1,None
+DSP_BOOT,,,,,2.1.0.0.1,None

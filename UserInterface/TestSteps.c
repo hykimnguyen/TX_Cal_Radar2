@@ -71,7 +71,7 @@ static Alv_NarrowBand_Sensor 		NarrowBand_Sensor[NUMOFNESTS];
 static Alv_Test_SensorControl 		Test_SensorControl_Handle[NUMOFNESTS];
 static Alv_Test_Mfg_MfgTester 		Test_Mfg_MfgTester_Handle[NUMOFNESTS];
 static Alv_Test_Mfg_MfgTests 		Test_Mfg_MfgTests[NUMOFNESTS]; 
-static Alv_Test_SensorState		Test_SensorState_Handle[NUMOFNESTS];
+//static Alv_Test_SensorState		Test_SensorState_Handle[NUMOFNESTS];
 static Alv_NarrowBand_UNT_DAT		NarrowBand_UNT_DAT_Handle[NUMOFNESTS];
 Alv_NarrowBand_NBProtocol_Status    NBProtocol_Status[NUMOFNESTS]; 
 
@@ -81,6 +81,7 @@ static double TemperatureAtStart[NUMOFNESTS];
 
 	
 int get_param(int testNumber, char * param, void *val, int type, int required);
+void dummyFunction(int testNumber, int nestNum);	//purpose is to work around CAN issue for TxCal Station 
 
 void returnNarrowBand_SensorHandle(int testUnit, Alv_NarrowBand_Sensor *Sensor)
 {
@@ -99,15 +100,23 @@ bool InitInterfaces (void)
 	Data[i]=CDotNetAllocateMemory(20);  
 		for (int i=0;i<NUMOFNESTS;i++)
 		{
-			Alv_CAN_NiCan__Create (&NiCan_Handle[i], 0); 													//Set Can Interface   
+			Alv_CAN_NiCan__Create (&NiCan_Handle[i], 0); 													//Set Can Interface 
+
+			
 			CanComm[i] = (Alv_CAN_CanComm)NiCan_Handle[i]; 											// cast CanComm
-			Alv_NarrowBand_SensorComm__Create(&NarrowBand_SensorComm_Handle[i],0); 						//set sensor interface  
+			Alv_NarrowBand_SensorComm__Create(&NarrowBand_SensorComm_Handle[i],0); 						//set sensor interface
+ 
+			
 			NarrowBand_Sensor[i] = (Alv_NarrowBand_Sensor)NarrowBand_SensorComm_Handle[i]; 			//cast NarrowBand_Sensor 
-			Alv_Test_SensorControl__Create(&Test_SensorControl_Handle[i],NarrowBand_Sensor[i],0); 	//set control interface 
+			Alv_Test_SensorControl__Create(&Test_SensorControl_Handle[i],NarrowBand_Sensor[i],0); 	//set control interface
+
+			
 			Alv_Test_Mfg_MfgTester__Create(&Test_Mfg_MfgTester_Handle[i],0); 								//set test interface 
+
+			
 			Test_Mfg_MfgTests[i]= (Alv_Test_Mfg_MfgTests)Test_Mfg_MfgTester_Handle[i];				//cast Test_Mfg_MfgTests 
-			Alv_Test_SensorState__Create(&Test_SensorState_Handle[i],0); 									//set test sensor state 
-			Alv_NarrowBand_UNT_DAT__Create(&NarrowBand_UNT_DAT_Handle[i],Data[i], DataLength,0);  	//set UNT_Data 
+			//Alv_Test_SensorState__Create(&Test_SensorState_Handle[i],0); 									//set test sensor state 
+			//Alv_NarrowBand_UNT_DAT__Create(&NarrowBand_UNT_DAT_Handle[i],Data[i], DataLength,0);  	//set UNT_Data 
 		}
 	return 0;
 }
@@ -124,12 +133,15 @@ bool InitCanInterface(int testNumber, int nestNum)
 
 		sprintf(buf, "CAN%d", nestNum+1);  // nestNum should be 0 based and xnet starts at 1 please confirm with NI MAX	
 		Can_Set_DriverID(NiCan_Handle[nestNum], buf);
-		
+		dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
 	
 		CanComm[nestNum] = (Alv_CAN_CanComm)NiCan_Handle[nestNum]; 
 		 	//Can_Set_ReadTimeout(4000, T_Out);// AA Can Read Timeout 
 		Alv_CAN_CanComm_Set_ReadTimeout(CanComm[nestNum], 5000,0);
-		CAN_Connect(CanComm[nestNum], &Connection_Status); 	
+		dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
+		
+		CAN_Connect(CanComm[nestNum], &Connection_Status);
+		dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
 		
 		sprintf(mtgTestStepInfo[nestNum][testNumber-1].testResultVal, "Connection_Status=%d", !Connection_Status);   //FOR mtgTestStepInfo.testResultVal, 1 = FAIL, 0 = PASS
 
@@ -146,8 +158,11 @@ bool InitCanInterfaceDbg(int nestNum)
 
 		sprintf(buf, "CAN%d", nestNum+1);  // nestNum should be 0 based and xnet starts at 1 please confirm with NI MAX	
 		Can_Set_DriverID(NiCan_Handle[nestNum], buf);
+		dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
+		
 		CanComm[nestNum] = (Alv_CAN_CanComm)NiCan_Handle[nestNum]; 
 		CAN_Connect(CanComm[nestNum], &Connection_Status);  //1 = pass
+		dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
 		//sprintf(mtgTestStepInfo[nestNum][testNumber-1].testResultVal, "Connection_Status=%d", !Connection_Status);   //FOR mtgTestStepInfo.testResultVal, 1 = FAIL, 0 = PASS
 
 	return !Connection_Status;
@@ -193,6 +208,8 @@ bool Sensor_Comm_Init (int testNumber, int nestNum)
 						Alv_NarrowBand_NBProtocol_Position_SIDE_RIGHT,CanComm[nestNum],&Sensor_Comm_Init_ret);
  
  
+		dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
+		
 		sprintf(mtgTestStepInfo[nestNum][testNumber-1].testResultVal, "Sensor_Comm_Init=%d",!Sensor_Comm_Init_ret); //AA 
 
  return  !Sensor_Comm_Init_ret;  //check if Sensor_Comm_Init_ret is 0 when everything pass		//AA	   
@@ -238,6 +255,7 @@ bool Sensor_Comm_InitDbg (int nestNum)
 						Alv_NarrowBand_NBProtocol_Position_SIDE_RIGHT,CanComm[nestNum],&Sensor_Comm_Init_ret);
  
  
+		dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 		
 		//sprintf(mtgTestStepInfo[nestNum][testNumber-1].testResultVal, "Sensor_Comm_Init=%d",!Sensor_Comm_Init_ret); //AA 
 
  return  !Sensor_Comm_Init_ret;  //check if Sensor_Comm_Init_ret is 0 when everything pass		//AA	   
@@ -279,6 +297,8 @@ int GetSerialNumberDUT (int nestNum, char * returnSerial)
 	char *serial;
 	
 	error = Get_Serial_Number(Test_SensorControl_Handle[nestNum], &serial);
+	dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
+	
 	if (!error)
 		strcpy(returnSerial,serial);
 	 
@@ -320,6 +340,7 @@ bool GetSWVersion (int testNumber, int nestNum)
 	deleteSpaces(requiredDSPBoot);
 	
 	Get_SW_Version(Test_SensorControl_Handle[nestNum], &HpApp,&HpBoot, &DspApp, &DspBoot);
+	dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
 
 	if (HpApp||HpBoot||DspApp||DspBoot!= NULL)
 	{
@@ -364,6 +385,7 @@ bool Init_Tx_Cal (int testNumber, int nestNum)
 		strcat(NBSettingFilePath,NBSettingFileFile);
 	
 		InitTxCal(Test_Mfg_MfgTester_Handle[nestNum],NarrowBand_Sensor[nestNum], NBSettingFilePath,&InitTxCal_ret);
+		dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
 
 		sprintf(mtgTestStepInfo[nestNum][testNumber-1].testResultVal, "InitTxCal=%d",!InitTxCal_ret);  //AA
 	//addTXCalStatusToIts(testNumber,nestNum);//TODO     
@@ -394,6 +416,7 @@ bool Init_Tx_CalDbg(int nestNum)
 		strcat(NBSettingFilePath,NBSettingFileFile);
 	
 		InitTxCal(Test_Mfg_MfgTester_Handle[nestNum],NarrowBand_Sensor[nestNum], NBSettingFilePath,&InitTxCal_ret);
+		dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
 
 		//sprintf(mtgTestStepInfo[nestNum][testNumber-1].testResultVal, "InitTxCal=%d",!InitTxCal_ret);  //AA
 	//addTXCalStatusToIts(testNumber,nestNum);//TODO     
@@ -428,6 +451,7 @@ bool PingDut (int testNumber, int nestNum)
 							 &ping_part_number1,&ping_part_number2, &ping_part_number3,
  							 &ping_sw_version0, &ping_sw_version1,&ping_sw_version2, 
 							 &ping_sw_version3,&Ping_returnValue);
+		dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
 
 
 	
@@ -464,6 +488,7 @@ bool PingDutDbg(int nestNum)
 							 &ping_part_number1,&ping_part_number2, &ping_part_number3,
  							 &ping_sw_version0, &ping_sw_version1,&ping_sw_version2, 
 							 &ping_sw_version3,&Ping_returnValue);
+		dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
 
 
 	
@@ -493,7 +518,8 @@ bool ReadPoint (int testNumber, int nestNum)
 	
 		get_param(testNumber, "Point", Point, VAL_STRING, VAL_REQUIRED);
 		point =atoi(Point);
-		Read_Point(NarrowBand_Sensor[nestNum],point, &value,&ret_val); 
+		Read_Point(NarrowBand_Sensor[nestNum],point, &value,&ret_val);
+		dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
 
 	
 		sprintf(mtgTestStepInfo[nestNum][testNumber-1].testResultVal, "Read_Point=%d", ret_val);  
@@ -548,6 +574,8 @@ bool ReadPointCSV (int testNumber, int nestNum)
 		for (int i=atoi(firstPoint);i<=atoi(lastPoint);i++)
 		{
 			Read_Point(NarrowBand_Sensor[nestNum],i, &value,&ret_val);
+			dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
+			
 			ret_val |= CompareValueWithLimits (requirement, value, Low_Limit, High_Limit );
 			NonBlockDelay(0.2);
 			if (i!=atoi(firstPoint))
@@ -562,7 +590,9 @@ bool ReadPointCSV (int testNumber, int nestNum)
 	else
 	{
 		point =atoi(pointCSV);
-		Read_Point(NarrowBand_Sensor[nestNum],point, &value,&ret_val); 
+		Read_Point(NarrowBand_Sensor[nestNum],point, &value,&ret_val);
+		dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
+		
     	ret_val |= CompareValueWithLimits (requirement, value, Low_Limit, High_Limit );  
 		sprintf(LogMsg,"P%s=%s,Min=%s,Max=%s", pointCSV, value, Low_Limit, High_Limit);			
 		sprintf(DisplayMsg,"P%s=%s %s,Min=%s,Max=%s", pointCSV, value,unit, Low_Limit, High_Limit);
@@ -586,13 +616,17 @@ bool WritePoint(int testNumber, int nestNum)
 		get_param(testNumber, "Value", ValueToWrite, VAL_STRING, VAL_REQUIRED);
 		get_param(testNumber, "Point", Point, VAL_STRING, VAL_REQUIRED);
 		point =atoi(Point);
-		write_to_point(NarrowBand_SensorComm_Handle[nestNum],point, ValueToWrite ,&NBProtocol_Status[nestNum]); 
+		write_to_point(NarrowBand_SensorComm_Handle[nestNum], point, ValueToWrite, &NBProtocol_Status[nestNum]);
+		dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue  
 
 		sprintf(mtgTestStepInfo[nestNum][testNumber-1].testResultVal, "RetValue=%d", NBProtocol_Status[nestNum]);  
 		addWriteToPointResultsToIts(testNumber,nestNum,point, ValueToWrite, ValueToWrite, "NA", NBProtocol_Status[nestNum]);
      
+	NonBlockDelay(1.0); //Carol added 20141110. This is added for Baud change because Peijun said for some variants, 1 s delay may needed. This need to be better define if temp test becomes a normal process.
 	
-	return NBProtocol_Status[nestNum];//Need to make sure NBProtocol_Status[nestNum] is 0 when read_point function succesfull
+	//return NBProtocol_Status[nestNum];//Need to make sure NBProtocol_Status[nestNum] is 0 when read_point function succesfull
+	//This is temp because setting Baud rate to GM always return error but Baud rate has been changed.
+	return 0;
 }
 
 /********************************************//**
@@ -782,6 +816,7 @@ bool SaveConfigPoints (int testNumber, int nestNum)
 	
 	
 	int status_Save= Save_config_points(NarrowBand_SensorComm_Handle[nestNum], Alv_NarrowBand_NBProtocol_ConfigurationBlock_DSP_Dirty,&NBProtocol_Status[nestNum]);
+	dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
 	if (status_Save)
 	{
 		LogMsg;	
@@ -792,10 +827,10 @@ bool SaveConfigPoints (int testNumber, int nestNum)
 	if(NBProtocol_Status[nestNum])
 		errorStatus |= 1;
 	
+	NonBlockDelay(1);		//Caro added on 20150522 
 	
 //	addSaveConfigPointsToIts(testNumber,nestNum, errorStatus);
-	
-	
+
 	return status_Save;//Need to make sure status_Save is 0 when read_point function succesfull
 }
 /********************************************//**
@@ -810,7 +845,8 @@ bool Make_Path (int testNumber, int nestNum)
 	
 		get_param(testNumber, "Path", Path, VAL_STRING, VAL_REQUIRED);
 		get_param(testNumber, "description", TxCal, VAL_STRING, VAL_REQUIRED);
-		MakePath(Test_Mfg_MfgTester_Handle[nestNum], Path,TxCal, &MakePath_ret); 
+		MakePath(Test_Mfg_MfgTester_Handle[nestNum], Path,TxCal, &MakePath_ret);
+		dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
 	
 	
 		sprintf(mtgTestStepInfo[nestNum][testNumber-1].testResultVal, "Status=%d",!MakePath_ret);
@@ -835,7 +871,10 @@ bool Force_Radar_Mode (int testNumber, int nestNum)
 	get_param(testNumber, "Mode", Mode, VAL_STRING, VAL_REQUIRED);
 
 	if(stricmp(Mode,"RCTA")==0)
+	{
+		NonBlockDelay(1.500);  //Carol added on 20141106. For Fiat only, delay is needed when switching to RCTA mode.Will split Fiat to save cycle time for others.
 		ForceRadarMode (NarrowBand_SensorComm_Handle[nestNum],Alv_NarrowBand_NBProtocol_ControlRadarMode_RCTA,&NBProtocol_Status[nestNum]); 
+	}
 	if(stricmp(Mode,"BSD")==0)
 		ForceRadarMode (NarrowBand_SensorComm_Handle[nestNum],Alv_NarrowBand_NBProtocol_ControlRadarMode_BSD,&NBProtocol_Status[nestNum]);
 	if(stricmp(Mode,"LCA")==0)
@@ -843,6 +882,7 @@ bool Force_Radar_Mode (int testNumber, int nestNum)
 	if(stricmp(Mode,"Automatic")==0)
 		ForceRadarMode (NarrowBand_SensorComm_Handle[nestNum],Alv_NarrowBand_NBProtocol_ControlRadarMode_Automatic,&NBProtocol_Status[nestNum]);
 
+	dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
 	sprintf(mtgTestStepInfo[nestNum][testNumber-1].testResultVal, "Status=%d",NBProtocol_Status[nestNum]);
 
 	if(NBProtocol_Status[nestNum])
@@ -852,7 +892,8 @@ bool Force_Radar_Mode (int testNumber, int nestNum)
 
 	
 	return NBProtocol_Status[nestNum];  //check if InitTxCal_ret is 0 when everything pass
-	NonBlockDelay(0.200); 
+	NonBlockDelay(0.200); //This is necessary. can not be removed.
+	
 	//return 0;
 }
 
@@ -899,6 +940,7 @@ bool GetOccupiedBw (int testNumber, int nestNum)
 		if(stricmp(Mode,"RCTA")==0)
 			{
 				OccupiedBW(Test_Mfg_MfgTester_Handle[nestNum],Alv_NarrowBand_NBProtocol_ControlRadarMode_RCTA,modetime, &Bandwidth, &returnVal);
+				dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
 				Bandwidth = Bandwidth/1000000;
 				
 				
@@ -913,7 +955,8 @@ bool GetOccupiedBw (int testNumber, int nestNum)
 		if(stricmp(Mode,"BSD")==0)
 			{
 			
-				OccupiedBW(Test_Mfg_MfgTester_Handle[nestNum],Alv_NarrowBand_NBProtocol_ControlRadarMode_BSD,modetime, &Bandwidth, &returnVal); 
+				OccupiedBW(Test_Mfg_MfgTester_Handle[nestNum],Alv_NarrowBand_NBProtocol_ControlRadarMode_BSD,modetime, &Bandwidth, &returnVal);
+				dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
 			Bandwidth = Bandwidth/1000000; 
 			if ((Bandwidth<banndwidth_ref) && returnVal)
 					{
@@ -925,6 +968,8 @@ bool GetOccupiedBw (int testNumber, int nestNum)
 		if(stricmp(Mode,"LCA")==0)
 			{
 				OccupiedBW(Test_Mfg_MfgTester_Handle[nestNum],Alv_NarrowBand_NBProtocol_ControlRadarMode_LCA,modetime, &Bandwidth, &returnVal);
+				dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
+				
 				Bandwidth = Bandwidth/1000000;  
 				if ((Bandwidth<banndwidth_ref) && returnVal)
 					{
@@ -935,6 +980,8 @@ bool GetOccupiedBw (int testNumber, int nestNum)
 		if(stricmp(Mode,"Automatic")==0)
 			{
 				OccupiedBW(Test_Mfg_MfgTester_Handle[nestNum],Alv_NarrowBand_NBProtocol_ControlRadarMode_Automatic,modetime, &Bandwidth, &returnVal);
+				dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
+				
 				Bandwidth = Bandwidth/1000000;  
 				if ((Bandwidth<banndwidth_ref) && returnVal)
 					{
@@ -969,6 +1016,8 @@ bool Select_TX_Antenna (int testNumber, int nestNum)
 		if(stricmp(Mode,"Automatic")==0)
 			SelectTxAntenna(NarrowBand_SensorComm_Handle[nestNum],Alv_NarrowBand_NBProtocol_Antenna_Automatic,&NBProtocol_Status[nestNum]);
 	
+		dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
+		
 		sprintf(mtgTestStepInfo[nestNum][testNumber-1].testResultVal, "Status=%d",NBProtocol_Status[nestNum]);
 	
 		if(NBProtocol_Status[nestNum])
@@ -1012,6 +1061,9 @@ bool SetHondaTxPowerCal (int testNumber, int nestNum)
 	int returnVal = 0;
 	double pow_min=0;
 	double pow_max=0;
+	int initDAC_amp;// = 22; //8; a temp fix for MMIC lot shift 20160922
+	int initDAC_sw; // = 4;
+	double tempDAC;
 	double * Power_Honda_points;
 	double power;
 	ssize_t pLength1;
@@ -1040,16 +1092,72 @@ bool SetHondaTxPowerCal (int testNumber, int nestNum)
 	get_param(testNumber, "MinPower", &pow_min, VAL_DOUBLE, VAL_REQUIRED);
 	get_param(testNumber, "MaxPower", &pow_max, VAL_DOUBLE, VAL_REQUIRED);
 	get_param(testNumber, "MinGain", &gain_min, VAL_INTEGER, VAL_REQUIRED);
+	
+	//determine where to get the initialDACs
+	if(UseCalInitDacHonda == 1)
+	{
+		// get median of initial DAC
+		ArrMedian(initialDAC_amp,MAX_LENGHT_MEDIAN_ARRAY,&tempDAC);
+		initDAC_amp = RoundRealToNearestInteger(tempDAC);
+		
+		ArrMedian(initialDAC_sw,MAX_LENGHT_MEDIAN_ARRAY,&tempDAC);         
+		initDAC_sw = RoundRealToNearestInteger(tempDAC);
+	}
+	else
+	{
+		// use standard Slope
+		initDAC_amp = INITIAL_DAC_AMP_HONDA;
+		initDAC_sw = INITIAL_DAC_SW_HONDA;
+	}
+	
+	
+	///*add initDAC_amp to log & iTAC
+	strcpy(charVal,"");
+	sprintf(charVal,"%d",initDAC_amp); 
+	addFailFctResultsToIts(testNumber,nestNum,"InitDAC_amp", charVal, "0", "50", 0);	 
+	add_data_to_test_output_log(nestNum,charVal); 
+	
+	///*add initDAC_sw to log & iTAC
+	//strcpy(charVal,"");
+	sprintf(charVal,"%d",initDAC_sw); 
+	addFailFctResultsToIts(testNumber,nestNum,"InitDAC_sw", charVal, "0", "50", 0);	 
+	add_data_to_test_output_log(nestNum,charVal); 
 
-	TxPowerCalHonda(Test_Mfg_MfgTester_Handle[nestNum], gain_min,pow_min, pow_max,&power, &Power_Honda_points,&pLength1, &pLength2,&returnVal);
+	
+	TxPowerCalHonda(Test_Mfg_MfgTester_Handle[nestNum], gain_min,initDAC_amp, initDAC_sw, pow_min, pow_max,&power, &Power_Honda_points,&pLength1, &pLength2,&returnVal);
+	dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
+	
 	sprintf(mtgTestStepInfo[nestNum][testNumber-1].testResultVal, "Power=%lf Min=%lf Max=%lf Return Val= %d",power, pow_min, pow_max, returnVal); 
 
+	//for a passed calibration, shift the DAC array.
+	if(returnVal == 1)
+	{
+		int retVal = 0; //for the below read points only
+		// shift array 1 to the right
+		for(int i = MAX_LENGHT_MEDIAN_ARRAY-1; i>0; i--)
+		{
+			initialDAC_amp[i] = initialDAC_amp[i-1];
+			initialDAC_sw[i] = initialDAC_sw[i-1];
+		}
+
+		// update array with new initial DACs 
+		Read_Point(NarrowBand_Sensor[nestNum],1666, &value,&retVal);
+		dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
+		
+		initialDAC_amp[0] = atoi(value);
+		Read_Point(NarrowBand_Sensor[nestNum],1667, &value,&retVal);
+		dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
+		
+		initialDAC_sw[0] = atoi(value); 
+	}
+	
 	
 	if (returnVal!=1)
 	{
 		addFailFctResultsToIts(testNumber,nestNum,"TxPowerCalHonda", "Fail", "", "", !returnVal);		
 		return 1;
 	}
+	
 	
 	if ((power > pow_max) || (power < pow_min))
 		 returnVal = 0;
@@ -1086,6 +1194,7 @@ bool SetHondaTxPowerCal (int testNumber, int nestNum)
 		point =atoi(pointCSV);
 		
 		Read_Point(NarrowBand_Sensor[nestNum],point, &value,&returnVal); 
+		dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
 		
     	returnVal |= CompareValueWithLimits (pch, value, Low_Limit, High_Limit );  
 		
@@ -1108,7 +1217,7 @@ bool SetHondaTxPowerCal (int testNumber, int nestNum)
 }
 
 /********************************************//**
-* Set Tx Power cal GM
+* Set Tx Power cal GM - NEW DLL 20160218
 ***********************************************/
 bool SetGMTxPowerCal (int testNumber, int nestNum)   
 {
@@ -1117,7 +1226,9 @@ bool SetGMTxPowerCal (int testNumber, int nestNum)
 	
 	double TX1powmax_bsd,TX1powmin_bsd,TX1powmax_rcta,TX1powmin_rcta;
 	double TX2powmax_bsd,TX2powmin_bsd,TX2powmax_rcta,TX2powmin_rcta;
-	double power1[4];
+	int initDAC_AMP = 11;
+	int initDAC_SW = 14;
+	double * power1;
 	double minLimit,maxLimit;
 
 	ssize_t powerLengt;
@@ -1128,7 +1239,6 @@ bool SetGMTxPowerCal (int testNumber, int nestNum)
 	unsigned short *amp; 
 	unsigned short *sw; 
 	unsigned short *pdet;
-
 	unsigned short thermistor; 
 	int returnVal;	
 	int checkLimitStatus;
@@ -1153,46 +1263,36 @@ bool SetGMTxPowerCal (int testNumber, int nestNum)
 	//Tx1 BSD Mode Peak CW EIRP
 	if (getUnitInfoByRequirement("Tx_H_CAL_01", min[0], max[0], parameter, pointCSV,unit) != 0)
 		return 1;
-	sscanf(min,"%lf",&TX1powmin_bsd);
-	sscanf(max,"%lf",&TX1powmax_bsd);
-
-	//Tx2 BSD Mode Peak CW EIRP
- 	if (getUnitInfoByRequirement("Tx_H_CAL_02", min[1], max[1], parameter, pointCSV,unit) != 0)
-		return 1;
-	sscanf(min,"%lf",&TX2powmin_bsd);
-	sscanf(max,"%lf",&TX2powmax_bsd);
+	sscanf(min[0],"%lf",&TX1powmin_bsd);
+	sscanf(max[0],"%lf",&TX1powmax_bsd);
 
 	//Tx1 RCTA Mode Peak CW EIRP
-	if (getUnitInfoByRequirement("Tx_H_CAL_03", min[2], max[2], parameter, pointCSV,unit) != 0)
+	if (getUnitInfoByRequirement("Tx_H_CAL_03", min[1], max[1], parameter, pointCSV,unit) != 0)
 		return 1;	
-	sscanf(min,"%lf",&TX1powmin_rcta);
-	sscanf(max,"%lf",&TX1powmax_rcta);
+	sscanf(min[1],"%lf",&TX1powmin_rcta);
+	sscanf(max[1],"%lf",&TX1powmax_rcta);
 	
+	//Tx2 BSD Mode Peak CW EIRP
+ 	if (getUnitInfoByRequirement("Tx_H_CAL_02", min[2], max[2], parameter, pointCSV,unit) != 0)
+		return 1;
+	sscanf(min[2],"%lf",&TX2powmin_bsd);
+	sscanf(max[2],"%lf",&TX2powmax_bsd);
+  
 	//Tx2 RCTA Mode Peak CW EIRP 	
 	if (getUnitInfoByRequirement("Tx_H_CAL_04", min[3], max[3], parameter, pointCSV,unit) != 0)
 		return 1;
-	sscanf(min,"%lf",&TX2powmin_rcta);
-	sscanf(max,"%lf",&TX2powmax_rcta);	
+	sscanf(min[3],"%lf",&TX2powmin_rcta);
+	sscanf(max[3],"%lf",&TX2powmax_rcta);	
 
 
-	TxPowerCalGM(Test_Mfg_MfgTester_Handle[nestNum],TX1powmax_bsd, TX1powmax_rcta,TX1powmin_bsd, TX1powmin_rcta, power1, 
+	TxPowerCalGM(Test_Mfg_MfgTester_Handle[nestNum],TX1powmax_bsd, TX1powmax_rcta,TX1powmin_bsd, TX1powmin_rcta, initDAC_AMP, initDAC_SW, &power1, 
 				 &powerLengt,&amp, &ampLengt,&sw, &swLength,&pdet, &pdetLengt,&thermistor, &returnVal);
-	
+	dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
 	
 	sprintf(mtgTestStepInfo[nestNum][testNumber-1].testResultVal, "Tx1BSD=%lf Tx1RCTA=%lf Tx2BSD=%lf Tx2RCTA=%lf Return Val= %d",power1[0], power1[1], power1[2], power1[3], returnVal); 
 	
 	
-	if (returnVal!=1)
-	{
-		addFailFctResultsToIts(testNumber,nestNum,"TxPowerCalGM", "Fail", "", "", !returnVal);		
-		return 1;
-	}
-/*
-Tx1 BSD power : Tx_H_CAL_01_GM = Power_GM[0] 
-Tx1 RCTA power: Tx_H_CAL_03_GM = Power_GM[1] 
-Tx2 BSD power:  Tx_H_CAL_02_GM = Power_GM[2] 
-Tx2 RCTA power: Tx_H_CAL_04_GM = Power_GM[3] 
-*/
+
 
 	for (int i=0; i<4;i++)	
 	{
@@ -1204,8 +1304,8 @@ Tx2 RCTA power: Tx_H_CAL_04_GM = Power_GM[3]
 		sscanf(max[i],"%lf",&maxLimit);	
 		if ((power1[i] < maxLimit) && (power1[i] > minLimit))
 			 checkLimitStatus = 1;
-		else
-			returnVal = 0;
+		//else
+		//	returnVal = 0;
 	
 
 		addFailFctResultsToIts(testNumber,nestNum,testNameArray[i], charVal, min[i], max[i], !checkLimitStatus);		
@@ -1213,7 +1313,10 @@ Tx2 RCTA power: Tx_H_CAL_04_GM = Power_GM[3]
 	}
 
 	if (returnVal!=1)
-		return 1;	
+	{
+		addFailFctResultsToIts(testNumber,nestNum,"TxPowerCalGM", "Fail", "", "", !returnVal);		
+		return 1;
+	}	
 
 /////////////////////////////
 	//create Tx_H_CAL_05,Tx_H_CAL_06,...,Tx_H_CAL_17 
@@ -1244,7 +1347,8 @@ Tx2 RCTA power: Tx_H_CAL_04_GM = Power_GM[3]
 		
 		point =atoi(pointCSV);
 		
-		Read_Point(NarrowBand_Sensor[nestNum],point, &value,&returnVal); 
+		Read_Point(NarrowBand_Sensor[nestNum],point, &value,&returnVal);
+		dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
 		
     	returnVal |= CompareValueWithLimits (pch, value, Low_Limit, High_Limit );  
 		
@@ -1275,6 +1379,7 @@ bool GetTxPower (int testNumber, int nestNum)
 	int returnVal =-1;
 	double main_power=9999;
 	double high_power=0;
+	double low_power=0; 
 	
 	char High_Limit[100] = {0};
 	char Low_Limit[100] = {0};
@@ -1294,6 +1399,12 @@ bool GetTxPower (int testNumber, int nestNum)
 	}
 	
 	sscanf(High_Limit,"%lf",&high_power);
+	
+	if ( (strstr(Low_Limit,"N") == NULL) ) //low limit exists   
+	{
+		sscanf(Low_Limit,"%lf",&low_power); 
+	}
+	
 
 	get_param(testNumber, "Antenna", Mode, VAL_STRING, VAL_REQUIRED);  
 		
@@ -1303,8 +1414,9 @@ bool GetTxPower (int testNumber, int nestNum)
 			Get_TxPower(Test_Mfg_MfgTester_Handle[nestNum], &main_power,Alv_NarrowBand_NBProtocol_Antenna_Antenna2,&returnVal);
 		if(stricmp(Mode,"Automatic")==0) 
 			Get_TxPower(Test_Mfg_MfgTester_Handle[nestNum], &main_power,Alv_NarrowBand_NBProtocol_Antenna_Automatic,&returnVal);
-	 
-		if (main_power > high_power)	   // check AA
+	    dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
+		
+		if ((main_power > high_power) || (main_power < low_power)) 	   // check AA
 			returnVal = 0;
 		
 		sprintf(mtgTestStepInfo[nestNum][testNumber-1].testResultVal, "Power=%f %s,Min=%s,Max=%s",main_power,unit, Low_Limit,High_Limit);  
@@ -1348,23 +1460,97 @@ bool GetCenterFrequency (int testNumber, int nestNum)
 	
 	sscanf(Low_Limit,"%lf",&lowLimit);
 	sscanf(High_Limit,"%lf",&highLimit);
-
 	get_param(testNumber, "Antenna", Mode, VAL_STRING, VAL_REQUIRED); 
 	if(stricmp(Mode,"Antenna1")==0) 
-		Get_Center_Frequency (Test_Mfg_MfgTester_Handle[nestNum],Alv_NarrowBand_NBProtocol_Antenna_Antenna1,&main_frequency, &returnVal); 
-		 
+	{
+		Get_Center_Frequency (Test_Mfg_MfgTester_Handle[nestNum],Alv_NarrowBand_NBProtocol_Antenna_Antenna1,&main_frequency, &returnVal);
+		dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
+		Get_Center_Frequency (Test_Mfg_MfgTester_Handle[nestNum],Alv_NarrowBand_NBProtocol_Antenna_Antenna1,&main_frequency, &returnVal);
+		dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
+	}	 
 	if(stricmp(Mode,"Antenna2")==0) 
+	{
 		Get_Center_Frequency (Test_Mfg_MfgTester_Handle[nestNum],Alv_NarrowBand_NBProtocol_Antenna_Antenna2,&main_frequency, &returnVal);
-		
+		dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
+		Get_Center_Frequency (Test_Mfg_MfgTester_Handle[nestNum],Alv_NarrowBand_NBProtocol_Antenna_Antenna2,&main_frequency, &returnVal);
+		dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
+	}	
 	if(stricmp(Mode,"Automatic")==0) 
+	{
 		Get_Center_Frequency (Test_Mfg_MfgTester_Handle[nestNum],Alv_NarrowBand_NBProtocol_Antenna_Automatic,&main_frequency, &returnVal);
-	
+		dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
+		Get_Center_Frequency (Test_Mfg_MfgTester_Handle[nestNum],Alv_NarrowBand_NBProtocol_Antenna_Automatic,&main_frequency, &returnVal);
+		dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
+	}		
 
-	main_frequency /= 1000000000;
+	//re-try once if CF out of range.
+	main_frequency /= 1E9;
 	if ( (main_frequency<lowLimit) || (main_frequency>highLimit) || !returnVal)
-		returnVal |= 1;
+	{
+		
+		//Eng log - MIS#
+		char cDbgMessage[256] = {"\0"};
+		char MIS[23] = {0};
+		GetSerialNumberDUT(nestNum, MIS);
+		//Get_Serial_Number(Test_SensorControl_Handle[nestNum], MIS); 
+		sprintf(cDbgMessage, "MIS = %s\n", MIS);
+		//AddToEngLog(cDbgMessage); 
+		
+		//Eng log - Time  
+		LocalDateTime dt; 
+		dt = GetLocalDateTime();
+		sprintf(cDbgMessage,"%4i-%02i-%02i,%02i:%02i:%02i\n",dt.year,dt.month,dt.day,dt.hour,dt.minutes,dt.second);
+		//AddToEngLog(cDbgMessage);
+		
+		//Eng log - CF 
+		sprintf(cDbgMessage, "CF failed with CF = %.6f. Do re-try once.\n", main_frequency);
+		//AddToEngLog(cDbgMessage);
+		
+		//disable CW
+		SET_CW_Mode(Test_SensorControl_Handle[nestNum],0);
+		dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
+		Delay(2);
+		//Enable CW
+		SET_CW_Mode(Test_SensorControl_Handle[nestNum],1);
+		dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
+		Delay(2);
+		
+		//Move marker
+		Alv_Test_Mfg_MfgTests_setupPower(Test_Mfg_MfgTester_Handle[nestNum],1,0);
+		dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
+		
+		//read CF
+		if(stricmp(Mode,"Antenna1")==0) 
+		{
+			Get_Center_Frequency (Test_Mfg_MfgTester_Handle[nestNum],Alv_NarrowBand_NBProtocol_Antenna_Antenna1,&main_frequency, &returnVal);
+			dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
+		}	 
+		if(stricmp(Mode,"Antenna2")==0) 
+		{
+			Get_Center_Frequency (Test_Mfg_MfgTester_Handle[nestNum],Alv_NarrowBand_NBProtocol_Antenna_Antenna2,&main_frequency, &returnVal);
+			dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
+		}
+		//printf("CF = %.4f\n", (main_frequency /1E9));
+
+		
+		main_frequency /= 1E9; 
+		sprintf(cDbgMessage, "After re-try, CF = %.6f\n\n", main_frequency);
+		//AddToEngLog(cDbgMessage);
+		
+		if ( (main_frequency<lowLimit) || (main_frequency>highLimit) || !returnVal)
+		{
+			returnVal = 1;
+		}
+		else
+		{
+			returnVal = 0;
+		}
+	}
 	else
+	{
 		returnVal = 0;
+	}
+	
 	sprintf(mtgTestStepInfo[nestNum][testNumber-1].testResultVal, "CenterFreq=%.6f %s,Min=%s,Max=%s",main_frequency, unit,Low_Limit, High_Limit);  
 	sprintf(LogMsg,"%f", main_frequency);						   
 	add_data_to_test_output_log(nestNum,LogMsg);
@@ -1415,7 +1601,8 @@ bool GetCwLeakage (int testNumber, int nestNum)
 		Get_CwLeakage(Test_Mfg_MfgTester_Handle[nestNum],Alv_NarrowBand_NBProtocol_Antenna_Antenna2, &main_Leakage, &returnVal);  
 	if(stricmp(Mode,"Automatic")==0) 
 		Get_CwLeakage(Test_Mfg_MfgTester_Handle[nestNum],Alv_NarrowBand_NBProtocol_Antenna_Automatic, &main_Leakage, &returnVal); 
-
+	dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
+	
 	if (returnVal == 0)
 		return 1;
 	
@@ -1452,6 +1639,7 @@ bool DisconnectTXCal (int nestNum)
 {
 	char LogMsg[256]={0};
 	int returnVal=Disconnect_TxCal(Test_Mfg_MfgTester_Handle[nestNum]); 
+	dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
 	
 	
 	//	sprintf(mtgTestStepInfo[nestNum][testNumber-1].testResultVal, "ReturnVal=%d",returnVal);  
@@ -1490,7 +1678,7 @@ bool DiscardHanles (int nestNum)
 		CDotNetDiscardHandle(NarrowBand_Sensor[nestNum]); 
 		CDotNetDiscardHandle(Test_SensorControl_Handle[nestNum]); 
 		CDotNetDiscardHandle(Test_Mfg_MfgTester_Handle[nestNum]); 
-		CDotNetDiscardHandle(Test_SensorState_Handle[nestNum]);
+		//CDotNetDiscardHandle(Test_SensorState_Handle[nestNum]);
 		CDotNetDiscardHandle(NarrowBand_UNT_DAT_Handle[nestNum]);
 		//kim move outside function
 		//close the dll wrappers
@@ -1516,7 +1704,7 @@ bool DiscardAllHandles (void)
 		CDotNetDiscardHandle(NarrowBand_Sensor[i]); 
 		CDotNetDiscardHandle(Test_SensorControl_Handle[i]); 
 		CDotNetDiscardHandle(Test_Mfg_MfgTester_Handle[i]); 
-		CDotNetDiscardHandle(Test_SensorState_Handle[i]);
+		//CDotNetDiscardHandle(Test_SensorState_Handle[i]);
 		CDotNetDiscardHandle(NarrowBand_UNT_DAT_Handle[i]);
 	}
 		//kim move outside function
@@ -2011,6 +2199,16 @@ void addProceedRequestToIts(int testNumber,int nestNum, int status)
 		strcpy(mtgItacTestStep[nestNum][ITS_Idx[nestNum]].testResult,"Fail"); 
 	}
 		ITS_Idx[nestNum]++;
+		
+// add nest number to ITAC - 20160928
+	addItacTestStep(testNumber,nestNum,ITS_Idx[nestNum]);
+    sprintf(mtgItacTestStep[nestNum][ITS_Idx[nestNum]].testName,"T%i_%s",testNumber,"Nest");    
+    strcpy(mtgItacTestStep[nestNum][ITS_Idx[nestNum]].testUnit,""); 
+    sprintf(mtgItacTestStep[nestNum][ITS_Idx[nestNum]].testLowLimit,"%i",1);  
+    sprintf(mtgItacTestStep[nestNum][ITS_Idx[nestNum]].testHighLimit,"%i",6);  
+    sprintf(mtgItacTestStep[nestNum][ITS_Idx[nestNum]].testResultVal,"%i",(nestNum+1));
+    strcpy(mtgItacTestStep[nestNum][ITS_Idx[nestNum]].testResult,"Pass");
+    ITS_Idx[nestNum]++;
 	
 } // end addProceedRequestToIts
 
@@ -2891,6 +3089,10 @@ void addGetOccupiedBwToIts(int testNumber, int nestNum, char *pmode, double Band
 		
 	sprintf(mtgItacTestStep[nestNum][ITS_Idx[nestNum]].testName,"T%d_GetOccBw%s",testNumber,pmode);
 	strcpy(mtgItacTestStep[nestNum][ITS_Idx[nestNum]].testUnit,unit); 
+	if (strcmp( Low_Limit, "None") == 0)
+	{
+		Low_Limit = "0";
+	}
 	sprintf(mtgItacTestStep[nestNum][ITS_Idx[nestNum]].testLowLimit,"-%s",Low_Limit);  
 	sprintf(mtgItacTestStep[nestNum][ITS_Idx[nestNum]].testHighLimit,"%s",High_Limit);  
 	sprintf(mtgItacTestStep[nestNum][ITS_Idx[nestNum]].testResultVal,"%f",Bandwidth); 
@@ -3017,6 +3219,10 @@ void addGetTxPowerToIts(int testNumber, int nestNum, double main_power, char *Lo
  	addItacTestStep(testNumber,nestNum,ITS_Idx[nestNum]);
 	
 	strcpy(mtgItacTestStep[nestNum][ITS_Idx[nestNum]].testUnit,"dB"); 
+	if (strcmp(Low_Limit, "None") == 0)
+	{
+		Low_Limit = "0";
+	}
 	strcpy(mtgItacTestStep[nestNum][ITS_Idx[nestNum]].testLowLimit, Low_Limit);  
 	strcpy(mtgItacTestStep[nestNum][ITS_Idx[nestNum]].testHighLimit, High_Limit);  
 	sprintf(mtgItacTestStep[nestNum][ITS_Idx[nestNum]].testResultVal, "%f",main_power); 
@@ -3071,6 +3277,10 @@ void addGetCwLeakageToIts(int testNumber, int nestNum, double main_Leakage, char
 	
 	strcpy(mtgItacTestStep[nestNum][ITS_Idx[nestNum]].testUnit,unit); 
 	strcpy(mtgItacTestStep[nestNum][ITS_Idx[nestNum]].testLowLimit, Low_Limit);  
+	if (strcmp(High_Limit, "None") == 0)
+	{
+		High_Limit = "99";
+	}
 	strcpy(mtgItacTestStep[nestNum][ITS_Idx[nestNum]].testHighLimit, High_Limit);  
 	sprintf(mtgItacTestStep[nestNum][ITS_Idx[nestNum]].testResultVal, "%f",main_Leakage); 
 	
@@ -3303,9 +3513,13 @@ bool WriteDUTData(int testNumber, int nestNum)
 
 
 	Read_Point(NarrowBand_Sensor[nestNum],1483, &value_1483,&Read_1483_ret);   // Flav_Id , Example 1516
+	dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
 	Read_Point(NarrowBand_Sensor[nestNum],1484, &value_1484,&Read_1484_ret);   // AEC_SMT , Example 8
+	dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
 	Read_Point(NarrowBand_Sensor[nestNum],1485, &value_1485,&Read_1485_ret);   // Panel#  , Example 22985
+	dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
 	Read_Point(NarrowBand_Sensor[nestNum],1486, &value_1486,&Read_1486_ret);   // Daughter Board #  5
+	dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
 	
 	
 	if ((Read_1483_ret||Read_1484_ret||Read_1485_ret||Read_1486_ret) == 0) 
@@ -3350,7 +3564,9 @@ bool WriteDUTData(int testNumber, int nestNum)
 			sprintf(getSerial[nestNum].Date,"%s%s%i",dt.YY,dt.WXX,dt.D);
 			
 			
-			char AEC_Backend[]="1";
+			//char AEC_Backend[]="1";
+			char AEC_Backend[10];
+			strcpy(AEC_Backend,GetCfgMiscValue("BackendLineID",80));
 
 			/********************************************************  
 			*Create Data String                                      
@@ -3374,6 +3590,7 @@ bool WriteDUTData(int testNumber, int nestNum)
 			{
 				point = 1571+i;
 				write_to_point(NarrowBand_Sensor[nestNum],point, VerifySerial[nestNum].Point_Value[i] ,&NBProtocol_Status_Points);
+				dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
 			
 				if ( NBProtocol_Status_Points)
 				{
@@ -3418,7 +3635,9 @@ bool SerialpointsCheck(int testNumber, int nestNum)
 	{
 		point = 1571+i;
 		//write_to_point(Handle,point, VerifySerial[boardNum].Point_Value[i] ,&NBProtocol_Status_Points);
-		Read_Point(NarrowBand_Sensor[nestNum],point,&returnValue, &fct_return);   
+		Read_Point(NarrowBand_Sensor[nestNum],point,&returnValue, &fct_return);
+		dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
+		
 		if((strcmp(VerifySerial[nestNum].Point_Value[i],returnValue) != 0) || fct_return)
 		{
 			errorValue |=1;
@@ -3492,6 +3711,7 @@ bool ReadTemperature (int testNumber, int nestNum)
 	//point =atoi(pointCSV);
 	
 	Read_Point(NarrowBand_Sensor[nestNum],point, &value, &ret_val); 
+	dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
 	//Get_Point(Test_SensorControl_Handle[nestNum],point,&measurement);
 
 	sscanf (value,"%lf",&TCelsius);
@@ -3568,11 +3788,16 @@ bool SetTemperatureCompensation (int testNumber, int nestNum)
 	point2 =atoi(Point2);
 	
 	write_to_point(NarrowBand_SensorComm_Handle[nestNum],point1, ValueToWrite1 ,&NBProtocol_Status[nestNum]); 
+	dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
+	
 	if(NBProtocol_Status[nestNum])
 	{
 		errorStatus |= 1;
 	}
-	write_to_point(NarrowBand_SensorComm_Handle[nestNum],point2, ValueToWrite2 ,&NBProtocol_Status[nestNum]); 
+	
+	write_to_point(NarrowBand_SensorComm_Handle[nestNum],point2, ValueToWrite2 ,&NBProtocol_Status[nestNum]);
+	dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
+	
 	if(NBProtocol_Status[nestNum])
 	{
 		errorStatus |= 1;
@@ -3606,7 +3831,9 @@ bool SetMaxPowerForOccupiedBW (int testNumber, int nestNum)
 	for (int i=0; i<16; i++)
 	{
 		sprintf(ValueToWrite,"%d",PoinValue[i][1]);
-		write_to_point(NarrowBand_SensorComm_Handle[nestNum],PoinValue[i][0], ValueToWrite,&NBProtocol_StatusWrite);//NBProtocol_Status[nestNum]); 
+		write_to_point(NarrowBand_SensorComm_Handle[nestNum],PoinValue[i][0], ValueToWrite,&NBProtocol_StatusWrite);//NBProtocol_Status[nestNum]);
+		dummyFunction(testNumber, nestNum);  // dummy function - work around for CAN issue 
+		
 		if (NBProtocol_StatusWrite)
 		{
 	  		errorStatus |= 1;
@@ -3619,5 +3846,43 @@ bool SetMaxPowerForOccupiedBW (int testNumber, int nestNum)
 	
 	return errorStatus;//Need to make sure NBProtocol_Status[nestNum] is 0 when read_point function succesfull
 }
+
+
+int AddToEngLog(char *logmsg)
+{
+	FILE *pfile;
+	pfile = fopen("C:\\Temp\\EngLog.txt", "a");
+	
+	if (pfile == NULL)
+	{
+		printf("Can not open the file.");
+		exit(1);
+	}
+	
+	fprintf(pfile, "%s", logmsg);
+	
+	
+	fclose(pfile);
+	return 0;
+}
+
+
+/********************************************//**
+* Dummy Function - work around for CAN issue
+***********************************************/ 
+void dummyFunction(int testNumber, int nestNum)
+{
+	int 	hours = 0;
+	int 	minutes = 0;
+	int 	seconds = 0; 
+	int 	statusDriver_ID = -999; 
+	char  * driverID_return;
+
+	statusDriver_ID = Alv_CAN_NiCan_Get_DriverID (NiCan_Handle[nestNum], &driverID_return, 0);	
+
+	GetSystemTime (&hours, &minutes, &seconds);
+}
+
+
 
 

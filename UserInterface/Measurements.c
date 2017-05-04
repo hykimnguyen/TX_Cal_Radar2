@@ -2347,3 +2347,45 @@ int init_eeprom_and_cpld(char *SN, char *E2P_file, double cpld_timeout_s, int CA
 	DisableSICMsgs(CANport);
 	return(0);
  } // end init_eeprom_and_cpld
+
+
+
+// Sort array and calculate median
+int ArrMedian(double arr[],int NumElements,double *Median)
+{
+	double t = 0;
+	double tempArray[NumElements];
+	
+	memcpy(tempArray,arr,sizeof(tempArray));
+	
+	/* Sorting begins */
+	for (int i = 1 ; i <= NumElements-1 ; i++)
+	{
+		/* Trip-i begins  */
+		for (int j = 1 ; j <= NumElements-i ; j++)
+		{
+			if (tempArray[j] <= tempArray[j+1])
+			{
+				/* Interchanging values */
+
+				t = tempArray[j];
+				tempArray[j] = tempArray[j+1];
+				tempArray[j+1] = t;
+			}
+			else
+			{
+				continue ;
+			}
+		}
+	} /* sorting ends */
+	/* calculation of median  */
+	if (NumElements % 2 == 0)
+	{
+		*Median = (tempArray[NumElements/2] + tempArray[NumElements/2+1])/2.0 ;
+	}
+	else
+	{
+		*Median = tempArray[NumElements/2 + 1];
+	}
+
+}

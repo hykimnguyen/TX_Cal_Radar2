@@ -1,0 +1,251 @@
+#
+# An unexpected error has been detected by Java Runtime Environment:
+#
+#  EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x6d8fa785, pid=6540, tid=3908
+#
+# Java VM: Java HotSpot(TM) Client VM (10.0-b22 mixed mode windows-x86)
+# Problematic frame:
+# V  [jvm.dll+0x8a785]
+#
+# If you would like to submit a bug report, please visit:
+#   http://java.sun.com/webapps/bugreport/crash.jsp
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0be29c00):  VMThread [stack: 0x0fae0000,0x0fbe0000] [id=3908]
+
+siginfo: ExceptionCode=0xc0000005, reading address 0xdd7be068
+
+Registers:
+EAX=0x00000000, EBX=0x128ac734, ECX=0x00000000, EDX=0xdd7be000
+ESP=0x0fbdf920, EBP=0x16456ab0, ESI=0x00000000, EDI=0x128ad208
+EIP=0x6d8fa785, EFLAGS=0x00010293
+
+Top of Stack: (sp=0x0fbdf920)
+0x0fbdf920:   6d9ac280 128ad208 16456aa8 128ac730
+0x0fbdf930:   6d922ff8 00000003 0bdaf098 0000000d
+0x0fbdf940:   128ac720 12550000 6d9ac258 128ac720
+0x0fbdf950:   128abb5c 128abb44 6d9ba2cb 00000003
+0x0fbdf960:   6da7f024 6da7f024 6d9abf3a 128abad8
+0x0fbdf970:   6d9ac31a 00000003 6d9ffb91 6da97d30
+0x0fbdf980:   6da7f024 6da7f024 6da1b02d 6da7f024
+0x0fbdf990:   6da7f024 0bdaf098 0bdaf098 6d9e399b 
+
+Instructions: (pc=0x6d8fa785)
+0x6d8fa775:   00 83 e0 07 83 f8 05 74 1f 8b 54 24 04 8b 52 04
+0x6d8fa785:   8b 52 68 83 e2 07 80 fa 05 74 12 83 f8 01 75 0d 
+
+
+Stack: [0x0fae0000,0x0fbe0000],  sp=0x0fbdf920,  free space=1022k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x8a785]
+
+VM_Operation (0x1e3bf9e0): GenCollectForAllocation, mode: safepoint, requested by thread 0x1ab28400
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x1ab28400 JavaThread "NameServerCheck3" [_thread_blocked, id=7972, stack(0x1e2c0000,0x1e3c0000)]
+  0x1ab26c00 JavaThread "NameServerCheck2" [_thread_blocked, id=1672, stack(0x1cf50000,0x1d050000)]
+  0x1ab29000 JavaThread "NameServerCheck1" [_thread_blocked, id=7400, stack(0x1ce50000,0x1cf50000)]
+  0x1ab28800 JavaThread "Keep-Alive-Timer" daemon [_thread_blocked, id=5640, stack(0x1f0a0000,0x1f1a0000)]
+  0x1ab27800 JavaThread "StatisticUpdater" [_thread_blocked, id=8084, stack(0x1c250000,0x1c350000)]
+  0x1ab27400 JavaThread "StatisticWorker" [_thread_blocked, id=2104, stack(0x1c150000,0x1c250000)]
+  0x1ab26000 JavaThread "MonitorAgentThread" [_thread_blocked, id=6596, stack(0x1b550000,0x1b650000)]
+  0x1ab25c00 JavaThread "ManagementThread" [_thread_blocked, id=1208, stack(0x1b010000,0x1b110000)]
+  0x1ab25400 JavaThread "p: default-threadpool; w: Idle" daemon [_thread_blocked, id=7436, stack(0x1bf50000,0x1c050000)]
+  0x1ab25000 JavaThread "p: default-threadpool; w: Idle" daemon [_thread_blocked, id=7856, stack(0x1be50000,0x1bf50000)]
+  0x1ab24800 JavaThread "p: default-threadpool; w: Idle" daemon [_thread_blocked, id=3056, stack(0x1bd50000,0x1be50000)]
+  0x1ab21000 JavaThread "p: default-threadpool; w: Idle" daemon [_thread_blocked, id=228, stack(0x1bc50000,0x1bd50000)]
+  0x1ab20c00 JavaThread "p: default-threadpool; w: Idle" daemon [_thread_blocked, id=1180, stack(0x1bb50000,0x1bc50000)]
+  0x1aafc400 JavaThread "SelectorThread" daemon [_thread_in_native, id=2852, stack(0x1ba50000,0x1bb50000)]
+  0x1aaf9800 JavaThread "NonExistentCheckWorker3" [_thread_blocked, id=6760, stack(0x1b950000,0x1ba50000)]
+  0x1aaf9400 JavaThread "NonExistentCheckWorker2" [_thread_blocked, id=5536, stack(0x1b850000,0x1b950000)]
+  0x1aaf8c00 JavaThread "NonExistentCheckWorker1" [_thread_blocked, id=7764, stack(0x1b750000,0x1b850000)]
+  0x0be4e000 JavaThread "Low Memory Detector" daemon [_thread_blocked, id=8060, stack(0x1a570000,0x1a670000)]
+  0x0be49000 JavaThread "CompilerThread0" daemon [_thread_blocked, id=6872, stack(0x1a370000,0x1a470000)]
+  0x0be48c00 JavaThread "Attach Listener" daemon [_thread_blocked, id=5252, stack(0x1a270000,0x1a370000)]
+  0x0be40000 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=4424, stack(0x1a170000,0x1a270000)]
+  0x0be2d800 JavaThread "Finalizer" daemon [_thread_blocked, id=7412, stack(0x0fde0000,0x0fee0000)]
+  0x0be2c800 JavaThread "Reference Handler" daemon [_thread_blocked, id=4552, stack(0x0fbe0000,0x0fce0000)]
+  0x0672bc00 JavaThread "main" [_thread_in_native, id=7520, stack(0x00030000,0x00130000)]
+
+Other Threads:
+=>0x0be29c00 VMThread [stack: 0x0fae0000,0x0fbe0000] [id=3908]
+  0x0be58c00 WatcherThread [stack: 0x1a670000,0x1a770000] [id=3676]
+
+VM state:at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x0672a8b8/0x0000180c] Threads_lock - owner thread: 0x0be29c00
+[0x06729b98/0x0000184c] Heap_lock - owner thread: 0x1ab28400
+
+Heap
+ def new generation   total 960K, used 63K [0x12070000, 0x12170000, 0x12550000)
+  eden space 896K,   0% used [0x12070000, 0x12070000, 0x12150000)
+  from space 64K,  99% used [0x12150000, 0x1215ff30, 0x12160000)
+  to   space 64K,   0% used [0x12160000, 0x12160000, 0x12170000)
+ tenured generation   total 4224K, used 4182K [0x12550000, 0x12970000, 0x16070000)
+   the space 4224K,  99% used [0x12550000, 0x12965a30, 0x12965c00, 0x12970000)
+ compacting perm gen  total 12288K, used 9357K [0x16070000, 0x16c70000, 0x1a070000)
+   the space 12288K,  76% used [0x16070000, 0x16993690, 0x16993800, 0x16c70000)
+No shared spaces configured.
+
+Dynamic libraries:
+0x00400000 - 0x04f6b000 	C:\NB_Project\Main\Main.exe
+0x773d0000 - 0x7750c000 	C:\Windows\SYSTEM32\ntdll.dll
+0x75a20000 - 0x75af4000 	C:\Windows\system32\kernel32.dll
+0x756b0000 - 0x756fb000 	C:\Windows\system32\KERNELBASE.dll
+0x68420000 - 0x68a2c000 	C:\Windows\system32\cvirte.dll
+0x73910000 - 0x73942000 	C:\Windows\system32\WINMM.dll
+0x758e0000 - 0x7598c000 	C:\Windows\system32\msvcrt.dll
+0x76e90000 - 0x76f59000 	C:\Windows\system32\USER32.dll
+0x75850000 - 0x7589e000 	C:\Windows\system32\GDI32.dll
+0x77520000 - 0x7752a000 	C:\Windows\system32\LPK.dll
+0x76cc0000 - 0x76d5d000 	C:\Windows\system32\USP10.dll
+0x71b30000 - 0x71b42000 	C:\Windows\system32\MPR.dll
+0x73170000 - 0x73175000 	C:\Windows\system32\MSIMG32.dll
+0x77530000 - 0x77565000 	C:\Windows\system32\WS2_32.dll
+0x75fc0000 - 0x76062000 	C:\Windows\system32\RPCRT4.dll
+0x758a0000 - 0x758a6000 	C:\Windows\system32\NSI.dll
+0x71530000 - 0x71581000 	C:\Windows\system32\WINSPOOL.DRV
+0x770c0000 - 0x77160000 	C:\Windows\system32\ADVAPI32.dll
+0x77580000 - 0x77599000 	C:\Windows\SYSTEM32\sechost.dll
+0x76070000 - 0x76cba000 	C:\Windows\system32\SHELL32.dll
+0x757d0000 - 0x75827000 	C:\Windows\system32\SHLWAPI.dll
+0x76f60000 - 0x770bc000 	C:\Windows\system32\ole32.dll
+0x75740000 - 0x757cf000 	C:\Windows\system32\OLEAUT32.dll
+0x10000000 - 0x10063000 	C:\NB_Project\Main\ewMII.dll
+0x6d870000 - 0x6dac0000 	C:\ewMII\java\jre\bin\client\jvm.dll
+0x7c360000 - 0x7c3b6000 	C:\Windows\system32\MSVCR71.dll
+0x73730000 - 0x7374c000 	C:\Windows\system32\IPHLPAPI.DLL
+0x73720000 - 0x73727000 	C:\Windows\system32\WINNSI.DLL
+0x75830000 - 0x7584f000 	C:\Windows\system32\IMM32.DLL
+0x77300000 - 0x773cc000 	C:\Windows\system32\MSCTF.dll
+0x75310000 - 0x7535c000 	C:\Windows\system32\apphelp.dll
+0x71b50000 - 0x71bd4000 	C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_5.82.7601.18201_none_ec80f00e8593ece5\Comctl32.dll
+0x73f90000 - 0x73fd0000 	C:\Windows\system32\uxtheme.dll
+0x05c80000 - 0x05c96000 	C:\Program Files\Common Files\Portrait Displays\Plugins\DP\msgHook.dll
+0x77510000 - 0x77515000 	C:\Windows\system32\PSAPI.DLL
+0x73cb0000 - 0x73cc3000 	C:\Windows\system32\dwmapi.dll
+0x75360000 - 0x7536c000 	C:\Windows\system32\CRYPTBASE.dll
+0x065e0000 - 0x066c2000 	C:\Program Files\National Instruments\Shared\Mesa\mesa.dll
+0x71a70000 - 0x71b13000 	C:\Windows\WinSxS\x86_microsoft.vc90.crt_1fc8b3b9a1e18e3b_9.0.30729.6161_none_50934f2ebcb7eb57\MSVCR90.dll
+0x67d20000 - 0x67d99000 	C:\Windows\system32\mscms.dll
+0x74a30000 - 0x74a47000 	C:\Windows\system32\USERENV.dll
+0x753e0000 - 0x753eb000 	C:\Windows\system32\profapi.dll
+0x748d0000 - 0x748d9000 	C:\Windows\system32\version.dll
+0x72970000 - 0x729ba000 	C:\Windows\system32\mscoree.dll
+0x728f0000 - 0x7296b000 	C:\Windows\Microsoft.NET\Framework\v4.0.30319\mscoreei.dll
+0x730c0000 - 0x730cf000 	C:\Windows\Microsoft.NET\Framework\v4.0.30319\fusion.dll
+0x67530000 - 0x67bcb000 	C:\Windows\Microsoft.NET\Framework\v4.0.30319\clr.dll
+0x670b0000 - 0x67183000 	C:\Windows\system32\MSVCR110_CLR0400.dll
+0x05fa0000 - 0x05fb7000 	C:\Windows\system32\cvidotnetv4.0.dll
+0x66e00000 - 0x66ebf000 	C:\Windows\system32\MSVCR100.dll
+0x65870000 - 0x6689e000 	C:\Windows\assembly\NativeImages_v4.0.30319_32\mscorlib\ce5f61c5754789df97be8dc991c47d07\mscorlib.ni.dll
+0x66be0000 - 0x66c5d000 	C:\Windows\Microsoft.NET\Framework\v4.0.30319\clrjit.dll
+0x74e80000 - 0x74e96000 	C:\Windows\system32\CRYPTSP.dll
+0x74c20000 - 0x74c5b000 	C:\Windows\system32\rsaenh.dll
+0x067c0000 - 0x067fb000 	C:\Windows\Microsoft.Net\assembly\GAC_32\NationalInstruments.CVI.Reflector\v4.0_13.0.201.2__f83b88e0aaf4fb33\NationalInstruments.CVI.Reflector.dll
+0x71be0000 - 0x71bf2000 	C:\Windows\Microsoft.NET\Framework\v4.0.30319\nlssorting.dll
+0x72a60000 - 0x72a71000 	C:\NB_Project\Main\NiCanWrp.dll
+0x52000000 - 0x5200d000 	C:\NB_Project\Main\NICAN.dll
+0x52160000 - 0x521a6000 	C:\Windows\system32\NICANfrm.dll
+0x64580000 - 0x645e0000 	C:\Windows\system32\NIPALU.dll
+0x64500000 - 0x64506000 	C:\Windows\system32\nipalut.dll
+0x1f700000 - 0x1f707000 	C:\Windows\system32\NIPAL32.dll
+0x77160000 - 0x772fd000 	C:\Windows\system32\SETUPAPI.dll
+0x75670000 - 0x75697000 	C:\Windows\system32\CFGMGR32.dll
+0x75700000 - 0x75712000 	C:\Windows\system32\DEVOBJ.dll
+0x52380000 - 0x52386000 	C:\Windows\system32\nicanpu.dll
+0x52060000 - 0x52074000 	C:\Windows\system32\NicanCfq.dll
+0x520e0000 - 0x520ff000 	C:\Windows\system32\nicanDBA.dll
+0x52240000 - 0x52250000 	C:\Windows\system32\NICANTSK.dll
+0x63800000 - 0x63812000 	C:\Windows\system32\NiSpyLog.dll
+0x70fd0000 - 0x7105e000 	C:\Windows\WinSxS\x86_microsoft.vc90.crt_1fc8b3b9a1e18e3b_9.0.30729.6161_none_50934f2ebcb7eb57\MSVCP90.dll
+0x68020000 - 0x680ee000 	C:\Windows\system32\cviauto.dll
+0x75990000 - 0x75a13000 	C:\Windows\system32\CLBCatQ.DLL
+0x69730000 - 0x69863000 	C:\Windows\System32\msxml3.dll
+0x753d0000 - 0x753de000 	C:\Windows\system32\RpcRtRemote.dll
+0x0c2f0000 - 0x0c341000 	C:\Windows\system32\cvidb32.dll
+0x65640000 - 0x656cc000 	C:\Windows\system32\ODBC32.dll
+0x6ab40000 - 0x6ab78000 	C:\Windows\system32\odbcint.dll
+0x5fb80000 - 0x5fc79000 	C:\Program Files\Common Files\System\ado\msado15.dll
+0x72a30000 - 0x72a4f000 	C:\Windows\system32\MSDART.DLL
+0x61c50000 - 0x61d24000 	C:\Program Files\Common Files\System\Ole DB\oledb32.dll
+0x74f90000 - 0x74fa7000 	C:\Windows\system32\bcrypt.dll
+0x74300000 - 0x7449e000 	C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.7601.17514_none_41e6975e2bd6f2b2\Comctl32.dll
+0x6ae60000 - 0x6ae74000 	C:\Program Files\Common Files\System\Ole DB\OLEDB32R.DLL
+0x5d240000 - 0x5d376000 	C:\Windows\system32\comsvcs.dll
+0x73b00000 - 0x73b14000 	C:\Windows\system32\ATL.DLL
+0x74b60000 - 0x74b9d000 	C:\Windows\system32\bcryptprimitives.dll
+0x655a0000 - 0x65635000 	C:\Program Files\Common Files\System\Ole DB\msdasql.dll
+0x71fa0000 - 0x71fb8000 	C:\Program Files\Common Files\System\Ole DB\MSDATL3.dll
+0x73300000 - 0x7330f000 	C:\Program Files\Common Files\System\Ole DB\MSDASQLR.DLL
+0x75540000 - 0x75660000 	C:\Windows\system32\CRYPT32.dll
+0x75450000 - 0x7545c000 	C:\Windows\system32\MSASN1.dll
+0x65490000 - 0x6554e000 	C:\Windows\system32\SQLSRV32.dll
+0x734e0000 - 0x734f1000 	C:\Windows\system32\NETAPI32.dll
+0x734d0000 - 0x734d9000 	C:\Windows\system32\netutils.dll
+0x75120000 - 0x75139000 	C:\Windows\system32\srvcli.dll
+0x734c0000 - 0x734cf000 	C:\Windows\system32\wkscli.dll
+0x6ae40000 - 0x6ae5a000 	C:\Windows\system32\sqlsrv32.rll
+0x752f0000 - 0x7530b000 	C:\Windows\system32\SspiCli.dll
+0x6ab20000 - 0x6ab3e000 	C:\Windows\system32\odbccp32.dll
+0x69e90000 - 0x69eb1000 	C:\Windows\system32\DBNETLIB.DLL
+0x6c570000 - 0x6c573000 	C:\Windows\system32\security.dll
+0x751a0000 - 0x751a8000 	C:\Windows\system32\SECUR32.DLL
+0x74b20000 - 0x74b28000 	C:\Windows\system32\credssp.dll
+0x74de0000 - 0x74e22000 	C:\Windows\system32\msv1_0.DLL
+0x75070000 - 0x75081000 	C:\Windows\system32\cryptdll.dll
+0x703f0000 - 0x70408000 	C:\Windows\system32\ntdsapi.dll
+0x74e40000 - 0x74e7c000 	C:\Windows\system32\mswsock.dll
+0x74960000 - 0x74965000 	C:\Windows\System32\wshtcpip.dll
+0x74c90000 - 0x74ccf000 	C:\Windows\system32\schannel.DLL
+0x74fb0000 - 0x74fe8000 	C:\Windows\system32\ncrypt.dll
+0x6a860000 - 0x6a874000 	C:\Program Files\Common Files\System\ado\msadrh15.dll
+0x66d30000 - 0x66d68000 	C:\Windows\system32\icm32.dll
+0x0dc50000 - 0x0de8b000 	C:\Windows\system32\nicaiu.dll
+0x6d000000 - 0x6d017000 	C:\Windows\system32\niorbu.dll
+0x64600000 - 0x64618000 	C:\Windows\system32\nirpc.dll
+0x71930000 - 0x71937000 	C:\Windows\system32\WSOCK32.dll
+0x6d280000 - 0x6d2b2000 	C:\Windows\system32\nimdbgu.dll
+0x6e2c0000 - 0x6e2dc000 	C:\Windows\system32\nimstsu.dll
+0x6db40000 - 0x6df26000 	C:\Windows\system32\nidmxfu.dll
+0x0c650000 - 0x0c680000 	C:\Windows\system32\nicrtsiu.dll
+0x6d0f0000 - 0x6d12d000 	C:\Windows\system32\nimxdfu.dll
+0x6e0e0000 - 0x6e1c7000 	C:\Windows\system32\nimhwcfu.dll
+0x63550000 - 0x6355b000 	C:\Windows\system32\nimdnsResponder.dll
+0x6d050000 - 0x6d06e000 	C:\Windows\system32\nidimu.dll
+0x0c6b0000 - 0x0c6b9000 	C:\Windows\system32\niprtsiu.dll
+0x75bd0000 - 0x75d94000 	C:\Windows\system32\WININET.dll
+0x75470000 - 0x75474000 	C:\Windows\system32\api-ms-win-downlevel-user32-l1-1-0.dll
+
+VM Arguments:
+jvm_args: -Ditac.propsdir=./ -Ditac.ewmii.service.name=EWApiServices -Ditac.ewmii.logfilepath=c:\ewMII\ewMIInative.log -Ditac.ewmii.lcffilepath=c:\ewMII\ewMII.lcf -Ditac.ewmii.debug=true -Ditac.mainclass=com.itac.easyworks.api.client.ewmii.EwApiServices 
+java_command: <unknown>
+Launcher Type: generic
+
+Environment Variables:
+PATH=C:\ewMII\java\jre\bin;C:\ewMII\java\jre\bin\client;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\OpenCL SDK\2.0\bin\x86;C:\Program Files\Intel\DMIX;C:\Program Files\IVI Foundation\VISA\WinNT\Bin\;C:\Program Files\IVI Foundation\VISA\WinNT\Bin;C:\Program Files\IVI Foundation\IVI\bin;C:\Program Files\doxygen\bin;C:\Program Files\Common Files\Acronis\SnapAPI\;C:\Program Files\Acronis\CommandLineTool\
+USERNAME=nb
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=x86 Family 6 Model 42 Stepping 7, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows NT 6.1 Build 7601 Service Pack 1
+
+CPU:total 4 (8 cores per cpu, 2 threads per core) family 6 model 10 stepping 7, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, ht
+
+Memory: 4k page, physical 3652700k(2267516k free), swap 4194303k(4194303k free)
+
+vm_info: Java HotSpot(TM) Client VM (10.0-b22) for windows-x86 JRE (1.6.0_06-b02), built on Mar 25 2008 01:22:05 by "java_re" with MS VC++ 7.1
+
+time: Sun Jan 24 04:58:09 2016
+elapsed time: 189 seconds
+
